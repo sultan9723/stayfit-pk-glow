@@ -19,6 +19,14 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        
+        // StayFit Brand Colors
+        "navy-primary": "hsl(var(--navy-primary))",
+        "golden-accent": "hsl(var(--golden-accent))",
+        "green-secondary": "hsl(var(--green-secondary))",
+        "white-text": "hsl(var(--white-text))",
+        "gray-muted": "hsl(var(--gray-muted))",
+        
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -47,16 +55,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -84,6 +82,21 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fadeIn 0.5s ease-out",
+        "slide-up": "slideUp 0.5s ease-out",
+        "scale-in": "scaleIn 0.3s ease-out",
+        "pulse-slow": "pulse 3s ease-in-out infinite",
+      },
+      backgroundImage: {
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-golden": "var(--gradient-golden)",
+        "gradient-green": "var(--gradient-green)",
+        "gradient-card": "var(--gradient-card)",
+      },
+      boxShadow: {
+        "golden": "var(--shadow-golden)",
+        "green": "var(--shadow-green)",
+        "elegant": "var(--shadow-elegant)",
       },
     },
   },
