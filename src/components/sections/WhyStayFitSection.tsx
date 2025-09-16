@@ -26,13 +26,13 @@ const WhyStayFitSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-navy-primary to-muted">
+    <section className="py-20 bg-gradient-to-br from-very-dark-brown to-dark-brown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
             Why Choose StayFit.pk?
           </h2>
-          <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-warm-beige max-w-3xl mx-auto leading-relaxed">
             We provide comprehensive fitness solutions with expert guidance, 
             modern equipment, and personalized programs to help you achieve your goals.
           </p>
@@ -43,12 +43,12 @@ const WhyStayFitSection = () => {
             <Card key={index} className="card-elegant group hover:shadow-golden transition-all duration-500 hover:-translate-y-2">
               <CardContent className="p-8 text-center">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-golden rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-8 h-8 text-navy-primary" />
+                  <feature.icon className="w-8 h-8 text-very-dark-brown" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4 text-white-text">
+                <h3 className="text-xl font-semibold mb-4 text-white">
                   {feature.title}
                 </h3>
-                <p className="text-gray-muted leading-relaxed">
+                <p className="text-warm-beige leading-relaxed">
                   {feature.description}
                 </p>
               </CardContent>

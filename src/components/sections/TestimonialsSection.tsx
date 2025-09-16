@@ -161,11 +161,11 @@ const TestimonialsSection = () => {
                 alt={`${testimonial.name} video testimonial`}
                 className="w-full h-32 object-cover rounded-lg transition-all duration-300 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-navy-primary/40 rounded-lg flex items-center justify-center group-hover:bg-navy-primary/20 transition-colors duration-300">
+              <div className="absolute inset-0 bg-very-dark-brown/40 rounded-lg flex items-center justify-center group-hover:bg-very-dark-brown/20 transition-colors duration-300">
                 <Play className="w-6 h-6 text-golden-accent" />
               </div>
               <div className="absolute bottom-2 left-2 right-2">
-                <p className="text-white-text text-xs font-medium truncate">
+                <p className="text-white text-xs font-medium truncate">
                   {testimonial.name}
                 </p>
               </div>
