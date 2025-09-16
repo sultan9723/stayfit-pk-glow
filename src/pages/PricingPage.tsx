@@ -4,8 +4,8 @@ const PricingPage = () => {
   return (
     <>
       <Helmet>
-        <title>Membership Pricing - StayFit.pk | Affordable Fitness Plans</title>
-        <meta name="description" content="Choose from our flexible and affordable membership plans at StayFit.pk. Find the perfect fitness package for your budget and goals." />
+        <title>Membership Pricing - StayFit | Affordable Fitness Plans</title>
+        <meta name="description" content="Choose from our flexible and affordable membership plans at StayFit. Find the perfect fitness package for your budget and goals." />
       </Helmet>
       
       <div className="min-h-screen bg-navy-primary pt-20">

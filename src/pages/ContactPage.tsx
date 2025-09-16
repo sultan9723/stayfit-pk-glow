@@ -4,8 +4,8 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us - StayFit.pk | Get in Touch</title>
-        <meta name="description" content="Contact StayFit.pk for inquiries about membership, training programs, or any questions. Visit our gym or reach out online." />
+        <title>Contact Us - StayFit | Get in Touch</title>
+        <meta name="description" content="Contact StayFit for inquiries about membership, training programs, or any questions. Visit our gym or reach out online." />
       </Helmet>
       
       <div className="min-h-screen bg-navy-primary pt-20">
