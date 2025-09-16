@@ -6,54 +6,94 @@
 
 @layer base {
   :root {
-    /* StayFit Brand Colors */
+    /* Default: StayFit Navy & Gold Theme */
     --navy-primary: 222 84% 5%;        /* Dark Navy #0F172A */
     --golden-accent: 48 96% 53%;       /* Golden Yellow #FACC15 */
     --green-secondary: 142 76% 36%;    /* Fresh Green #16A34A */
     --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
     --gray-muted: 220 9% 67%;          /* Light Gray #9CA3AF */
-    
+  }
+
+  /* Alternative Color Schemes */
+  :root[data-theme="blue-orange"] {
+    --navy-primary: 210 100% 12%;      /* Deep Blue #003D82 */
+    --golden-accent: 25 95% 53%;       /* Vibrant Orange #FF6B35 */
+    --green-secondary: 195 100% 42%;   /* Cyan Blue #0077BE */
+    --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
+    --gray-muted: 210 11% 67%;         /* Blue Gray #9BB5CC */
+  }
+
+  :root[data-theme="purple-pink"] {
+    --navy-primary: 258 90% 8%;        /* Deep Purple #1A0B3D */
+    --golden-accent: 320 85% 60%;      /* Hot Pink #E91E63 */
+    --green-secondary: 266 85% 58%;    /* Electric Purple #8B5CF6 */
+    --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
+    --gray-muted: 258 15% 67%;         /* Purple Gray #A78BFA */
+  }
+
+  :root[data-theme="dark-red"] {
+    --navy-primary: 0 0% 7%;           /* Almost Black #1C1C1C */
+    --golden-accent: 0 84% 55%;        /* Bold Red #DC2626 */
+    --green-secondary: 24 95% 53%;     /* Orange Accent #FB923C */
+    --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
+    --gray-muted: 0 0% 67%;            /* Neutral Gray #ABABAB */
+  }
+
+  :root[data-theme="forest-gold"] {
+    --navy-primary: 150 50% 10%;       /* Forest Green #0D4F3C */
+    --golden-accent: 45 93% 47%;       /* Rich Gold #E6B800 */
+    --green-secondary: 84 81% 44%;     /* Lime Green #7CB342 */
+    --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
+    --gray-muted: 150 10% 67%;         /* Forest Gray #A3B5A8 */
+  }
+
+  /* Core Theme Variables (Applied to all themes) */
+  :root,
+  :root[data-theme="blue-orange"],
+  :root[data-theme="purple-pink"],
+  :root[data-theme="dark-red"],
+  :root[data-theme="forest-gold"] {
     /* Core Theme */
     --background: var(--navy-primary);
     --foreground: var(--white-text);
     
-    --card: 222 84% 7%;
+    --card: var(--navy-primary);
     --card-foreground: var(--white-text);
     
-    --popover: 222 84% 8%;
+    --popover: var(--navy-primary);
     --popover-foreground: var(--white-text);
     
     --primary: var(--golden-accent);
-    --primary-foreground: 222 84% 5%;
+    --primary-foreground: var(--navy-primary);
     
     --secondary: var(--green-secondary);
     --secondary-foreground: var(--white-text);
     
-    --muted: 222 84% 8%;
+    --muted: var(--navy-primary);
     --muted-foreground: var(--gray-muted);
     
     --accent: var(--golden-accent);
-    --accent-foreground: 222 84% 5%;
+    --accent-foreground: var(--navy-primary);
     
     --destructive: 0 84% 60%;
     --destructive-foreground: var(--white-text);
     
-    --border: 222 84% 15%;
-    --input: 222 84% 10%;
+    --border: var(--gray-muted);
+    --input: var(--navy-primary);
     --ring: var(--golden-accent);
     
     --radius: 0.75rem;
     
     /* Custom Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(222 84% 8%));
-    --gradient-golden: linear-gradient(135deg, hsl(var(--golden-accent)), hsl(45 96% 58%));
-    --gradient-green: linear-gradient(135deg, hsl(var(--green-secondary)), hsl(142 76% 42%));
-    --gradient-card: linear-gradient(135deg, hsl(222 84% 7%), hsl(222 84% 10%));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(var(--navy-primary) / 0.8));
+    --gradient-golden: linear-gradient(135deg, hsl(var(--golden-accent)), hsl(var(--golden-accent) / 0.8));
+    --gradient-green: linear-gradient(135deg, hsl(var(--green-secondary)), hsl(var(--green-secondary) / 0.8));
+    --gradient-card: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(var(--navy-primary) / 0.9));
     
     /* Shadows */
     --shadow-golden: 0 10px 30px -5px hsl(var(--golden-accent) / 0.3);
     --shadow-green: 0 10px 30px -5px hsl(var(--green-secondary) / 0.3);
-    --shadow-elegant: 0 20px 40px -10px hsl(222 84% 3% / 0.5);
+    --shadow-elegant: 0 20px 40px -10px hsl(var(--navy-primary) / 0.5);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

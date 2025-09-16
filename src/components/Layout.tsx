@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import FloatingElements from "./FloatingElements";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,7 +10,10 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-navy-primary text-white-text">
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeSwitcher />
+      </div>
       <Navbar />
       <main className="relative">
         {children}
