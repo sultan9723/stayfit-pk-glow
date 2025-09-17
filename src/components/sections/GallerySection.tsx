@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const sectionRef = useScrollAnimation();
 
   const galleryImages = [
     {
@@ -81,8 +83,8 @@ const GallerySection = () => {
 
   return (
     <section className="py-20 bg-gradient-to-br from-dark-brown to-very-dark-brown">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
+        <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
             Gallery Highlights
           </h2>
@@ -115,7 +117,8 @@ const GallerySection = () => {
           {filteredImages.map((image, index) => (
             <div
               key={index}
-              className="relative group cursor-pointer overflow-hidden rounded-xl bg-gradient-card shadow-elegant hover:shadow-golden transition-all duration-500 hover:-translate-y-2"
+              className="relative group cursor-pointer overflow-hidden rounded-xl bg-gradient-card shadow-elegant hover:shadow-golden transition-all duration-500 hover:-translate-y-2 animate-on-scroll"
+              style={{ animationDelay: `${index * 100}ms` }}
               onClick={() => openLightbox(index)}
             >
               <img

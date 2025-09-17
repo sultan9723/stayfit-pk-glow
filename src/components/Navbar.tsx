@@ -1,31 +1,22 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DarkModeToggle } from "@/components/ui/dark-mode-toggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const location = useLocation();
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  // Dark mode effect
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -42,69 +33,57 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-warm-beige dark:bg-very-dark-brown shadow-md"
-          : "bg-warm-beige dark:bg-transparent"
+          ? "bg-navy-primary/90 dark:bg-navy-primary/95 backdrop-blur-md shadow-lg"
+          : "bg-navy-primary/80 dark:bg-navy-primary/80 backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img
-              src="/stayfit.png"
-              alt="StayFit Logo"
+          <Link to="/" className="flex items-center space-x-2">
+            <img 
+              src="/stayfit.png" 
+              alt="StayFit.pk Logo" 
               className="h-10 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`relative px-3 py-2 rounded-lg transition-all duration-300 ${
+                className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActivePath(item.path)
                     ? "text-golden-accent"
-                    : "text-dark-brown dark:text-white hover:text-golden-accent"
+                    : "text-white-text hover:text-golden-accent"
                 }`}
               >
                 {item.name}
+                {isActivePath(item.path) && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-golden-accent rounded-full" />
+                )}
               </Link>
             ))}
-            <Button variant="outline" className="text-sm">
+            
+            <Button className="btn-hero-primary text-sm">
               Join Now
             </Button>
 
             {/* Dark Mode Toggle */}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="ml-4 p-2 rounded-lg bg-light-wood dark:bg-dark-brown hover:bg-wood-brown dark:hover:bg-coffee-brown transition"
-            >
-              {darkMode ? (
-                <Sun className="w-5 h-5 text-golden-accent" />
-              ) : (
-                <Moon className="w-5 h-5 text-dark-brown" />
-              )}
-            </button>
+            <DarkModeToggle />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            {/* Dark Mode Toggle (mobile) */}
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="mr-3 p-2 rounded-lg bg-light-wood dark:bg-dark-brown"
-            >
-              {darkMode ? (
-                <Sun className="w-5 h-5 text-golden-accent" />
-              ) : (
-                <Moon className="w-5 h-5 text-dark-brown" />
-              )}
-            </button>
+          <div className="md:hidden flex items-center space-x-3">
+            {/* Dark Mode Toggle - Mobile */}
+            <DarkModeToggle />
+            
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-dark-brown dark:text-white hover:text-golden-accent transition-colors duration-200"
+              className="text-white-text hover:text-golden-accent transition-colors duration-200"
+              aria-label="Toggle mobile menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -113,23 +92,23 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-warm-beige dark:bg-very-dark-brown border-t border-light-wood dark:border-white/10">
-            <div className="px-4 py-4 space-y-3">
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-navy-primary/95 backdrop-blur-md border-t border-golden-accent/20">
+            <div className="px-4 py-6 space-y-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 rounded-lg transition-all duration-300 ${
+                  className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
                     isActivePath(item.path)
-                      ? "text-golden-accent"
-                      : "text-dark-brown dark:text-white hover:text-golden-accent"
+                      ? "text-golden-accent bg-golden-accent/10"
+                      : "text-white-text hover:text-golden-accent hover:bg-white/5"
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button variant="outline" className="w-full mt-4">
+              <Button className="w-full mt-4 btn-hero-primary">
                 Join Now
               </Button>
             </div>

@@ -2,8 +2,11 @@ import { ArrowRight, Clock, Users, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const ProgramsSection = () => {
+  const sectionRef = useScrollAnimation();
+  
   const programs = [
     {
       title: "Strength & Power",
@@ -63,8 +66,8 @@ const ProgramsSection = () => {
 
   return (
     <section className="py-20 bg-very-dark-brown">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
+        <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
             Programs & Classes
           </h2>
@@ -76,7 +79,7 @@ const ProgramsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (
-            <Card key={index} className="card-elegant group hover:shadow-golden transition-all duration-500 hover:-translate-y-2 relative">
+            <Card key={index} className="card-elegant group hover:shadow-golden transition-all duration-500 hover:-translate-y-2 relative animate-on-scroll" style={{ animationDelay: `${index * 150}ms` }}>
               {program.popular && (
                 <Badge className="absolute -top-3 left-6 bg-gradient-golden text-very-dark-brown font-semibold px-4 py-1">
                   <Star className="w-4 h-4 mr-1" />

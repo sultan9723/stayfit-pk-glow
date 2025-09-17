@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const sectionRef = useScrollAnimation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,8 +62,8 @@ const NewsletterSection = () => {
 
   return (
     <section className="py-20 bg-gradient-to-r from-navy-primary via-muted to-navy-primary">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
+        <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
             Stay Connected with StayFit.pk
           </h2>
@@ -71,7 +73,7 @@ const NewsletterSection = () => {
           </p>
         </div>
 
-        <Card className="card-elegant">
+        <Card className="card-elegant animate-on-scroll">
           <CardContent className="p-8 lg:p-12">
             {!isSubscribed ? (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
