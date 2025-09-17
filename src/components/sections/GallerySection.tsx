@@ -124,16 +124,16 @@ const GallerySection = () => {
                 className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
               />
               
-              <div className="absolute inset-0 bg-navy-primary/0 group-hover:bg-navy-primary/40 transition-all duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-very-dark-brown/0 group-hover:bg-very-dark-brown/40 transition-all duration-300 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="bg-golden-accent rounded-full p-3">
-                    <ZoomIn className="w-6 h-6 text-navy-primary" />
+                    <ZoomIn className="w-6 h-6 text-very-dark-brown" />
                   </div>
                 </div>
               </div>
 
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy-primary/80 to-transparent p-4">
-                <span className="inline-block bg-golden-accent text-navy-primary text-xs font-semibold px-2 py-1 rounded">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-very-dark-brown/80 to-transparent p-4">
+                <span className="inline-block bg-golden-accent text-very-dark-brown text-xs font-semibold px-2 py-1 rounded">
                   {image.category}
                 </span>
               </div>
