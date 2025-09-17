@@ -20,30 +20,12 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         
-        // StayFit Brand Colors - Warm Earthy Theme
+        // StayFit Brand Colors
         "navy-primary": "hsl(var(--navy-primary))",
         "golden-accent": "hsl(var(--golden-accent))",
         "green-secondary": "hsl(var(--green-secondary))",
         "white-text": "hsl(var(--white-text))",
         "gray-muted": "hsl(var(--gray-muted))",
-        
-        // Additional Earthy Colors
-        "deep-brown": "hsl(var(--deep-brown))",
-        "coffee-brown": "hsl(var(--coffee-brown))",
-        "very-dark-brown": "hsl(var(--very-dark-brown))",
-        "light-wood": "hsl(var(--light-wood))",
-        "warm-beige": "hsl(var(--warm-beige))",
-        "wood-brown": "hsl(var(--wood-brown))",
-        "sandstone": "hsl(var(--sandstone))",
-        "dark-brown": "hsl(var(--dark-brown))",
-        "dark-chocolate": "hsl(var(--dark-chocolate))",
-        "golden-yellow": "hsl(var(--golden-yellow))",
-        "accent-yellow": "hsl(var(--accent-yellow))",
-        "dark-coffee": "hsl(var(--dark-coffee))",
-        "walnut": "hsl(var(--walnut))",
-        "mahogany": "hsl(var(--mahogany))",
-        "black-coffee": "hsl(var(--black-coffee))",
-        "espresso": "hsl(var(--espresso))",
         
         primary: {
           DEFAULT: "hsl(var(--primary))",

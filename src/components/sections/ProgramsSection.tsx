@@ -65,13 +65,21 @@ const ProgramsSection = () => {
   ];
 
   return (
+<<<<<<< HEAD
     <section className="py-20 bg-gradient-to-br from-sandstone to-warm-beige">
+=======
+    <section className="py-20 bg-navy-primary">
+>>>>>>> parent of ac5510b (theme changed)
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
             Programs & Classes
           </h2>
+<<<<<<< HEAD
           <p className="text-xl text-very-dark-brown max-w-3xl mx-auto leading-relaxed">
+=======
+          <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
+>>>>>>> parent of ac5510b (theme changed)
             Choose from our diverse range of fitness programs designed by experts 
             to help you achieve your specific goals.
           </p>
@@ -81,28 +89,43 @@ const ProgramsSection = () => {
           {programs.map((program, index) => (
             <Card key={index} className="card-elegant group hover:shadow-golden transition-all duration-500 hover:-translate-y-2 relative animate-on-scroll" style={{ animationDelay: `${index * 150}ms` }}>
               {program.popular && (
-                <Badge className="absolute -top-3 left-6 bg-gradient-golden text-very-dark-brown font-semibold px-4 py-1">
+                <Badge className="absolute -top-3 left-6 bg-gradient-golden text-navy-primary font-semibold px-4 py-1">
                   <Star className="w-4 h-4 mr-1" />
                   Popular
                 </Badge>
               )}
               
               <CardHeader className="pb-4">
+<<<<<<< HEAD
                 <h3 className="text-2xl font-semibold text-very-dark-brown mb-2">
                   {program.title}
                 </h3>
                 <p className="text-deep-brown leading-relaxed">
+=======
+                <h3 className="text-2xl font-semibold text-white-text mb-2">
+                  {program.title}
+                </h3>
+                <p className="text-gray-muted leading-relaxed">
+>>>>>>> parent of ac5510b (theme changed)
                   {program.description}
                 </p>
               </CardHeader>
 
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between text-sm">
+<<<<<<< HEAD
                   <div className="flex items-center text-deep-brown">
                     <Clock className="w-4 h-4 mr-2" />
                     {program.duration}
                   </div>
                   <div className="flex items-center text-deep-brown">
+=======
+                  <div className="flex items-center text-gray-muted">
+                    <Clock className="w-4 h-4 mr-2" />
+                    {program.duration}
+                  </div>
+                  <div className="flex items-center text-gray-muted">
+>>>>>>> parent of ac5510b (theme changed)
                     <Users className="w-4 h-4 mr-2" />
                     {program.capacity}
                   </div>
@@ -116,7 +139,11 @@ const ProgramsSection = () => {
 
                 <ul className="space-y-2">
                   {program.features.map((feature, featureIndex) => (
+<<<<<<< HEAD
                     <li key={featureIndex} className="flex items-center text-sm text-deep-brown">
+=======
+                    <li key={featureIndex} className="flex items-center text-sm text-gray-muted">
+>>>>>>> parent of ac5510b (theme changed)
                       <div className="w-2 h-2 bg-golden-accent rounded-full mr-3" />
                       {feature}
                     </li>

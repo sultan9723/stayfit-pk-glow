@@ -6,32 +6,22 @@
 
 @layer base {
   :root {
+<<<<<<< HEAD
     /* Light Mode: StayFit Warm Earthy Theme */
     --navy-primary: 0 0% 0%;           /* Black #000000 */
     --golden-accent: 48 75% 60%;       /* Bright Yellow #e3d34a */
     --green-secondary: 30 25% 35%;     /* Warm Beige/Brown #8c6a44 */
+=======
+    /* Default: StayFit Navy & Gold Theme */
+    --navy-primary: 222 84% 5%;        /* Dark Navy #0F172A */
+    --golden-accent: 48 96% 53%;       /* Golden Yellow #FACC15 */
+    --green-secondary: 142 76% 36%;    /* Fresh Green #16A34A */
+>>>>>>> parent of ac5510b (theme changed)
     --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
-    --gray-muted: 0 0% 60%;            /* Gray #9a9a9a */
-    
-    /* Additional Earthy Colors */
-    --deep-brown: 30 30% 30%;          /* Deep Brown #6c5237 */
-    --coffee-brown: 30 25% 32%;        /* Coffee Brown #6e5439 */
-    --very-dark-brown: 30 60% 3%;      /* Very Dark Brown #0e0602 */
-    --light-wood: 30 20% 45%;          /* Light Wood/Tan #957755 */
-    --warm-beige: 30 20% 46%;          /* Warm Beige #967856 */
-    --wood-brown: 30 20% 47%;          /* Wood Brown #977957 */
-    --sandstone: 30 20% 44%;           /* Sandstone #947654 */
-    --dark-brown: 30 40% 12%;          /* Dark Brown #281c10 */
-    --dark-chocolate: 30 40% 11%;      /* Dark Chocolate #271b0f */
-    --golden-yellow: 48 75% 61%;       /* Golden Yellow #e4d44b */
-    --accent-yellow: 48 75% 60%;       /* Accent Yellow #e3d34b */
-    --dark-coffee: 30 35% 12%;         /* Dark Coffee #23190f */
-    --walnut: 30 35% 13%;              /* Walnut #22180e */
-    --mahogany: 30 35% 14%;            /* Mahogany #251b11 */
-    --black-coffee: 30 50% 5%;         /* Black Coffee #140b06 */
-    --espresso: 30 40% 8%;             /* Espresso #1d130a */
+    --gray-muted: 220 9% 67%;          /* Light Gray #9CA3AF */
   }
 
+<<<<<<< HEAD
   /* Dark Mode Theme */
   .dark {
     --navy-primary: 0 0% 8%;           /* Very Dark Gray */
@@ -63,40 +53,47 @@
     --navy-primary: 30 50% 5%;         /* Black Coffee #140b06 */
     --golden-accent: 48 75% 60%;       /* Bright Yellow #e3d34a */
     --green-secondary: 30 35% 13%;     /* Walnut #22180e */
+=======
+  /* Alternative Color Schemes */
+  :root[data-theme="blue-orange"] {
+    --navy-primary: 210 100% 12%;      /* Deep Blue #003D82 */
+    --golden-accent: 25 95% 53%;       /* Vibrant Orange #FF6B35 */
+    --green-secondary: 195 100% 42%;   /* Cyan Blue #0077BE */
+>>>>>>> parent of ac5510b (theme changed)
     --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
-    --gray-muted: 30 20% 45%;          /* Light Wood #957755 */
+    --gray-muted: 210 11% 67%;         /* Blue Gray #9BB5CC */
   }
 
-  :root[data-theme="mahogany-sandstone"] {
-    --navy-primary: 30 35% 14%;        /* Mahogany #251b11 */
-    --golden-accent: 48 75% 61%;       /* Golden Yellow #e4d44b */
-    --green-secondary: 30 20% 44%;     /* Sandstone #947654 */
+  :root[data-theme="purple-pink"] {
+    --navy-primary: 258 90% 8%;        /* Deep Purple #1A0B3D */
+    --golden-accent: 320 85% 60%;      /* Hot Pink #E91E63 */
+    --green-secondary: 266 85% 58%;    /* Electric Purple #8B5CF6 */
     --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
-    --gray-muted: 30 20% 46%;          /* Warm Beige #967856 */
+    --gray-muted: 258 15% 67%;         /* Purple Gray #A78BFA */
   }
 
-  :root[data-theme="espresso-wood"] {
-    --navy-primary: 30 40% 8%;         /* Espresso #1d130a */
-    --golden-accent: 48 75% 60%;       /* Accent Yellow #e3d34b */
-    --green-secondary: 30 20% 47%;     /* Wood Brown #977957 */
+  :root[data-theme="dark-red"] {
+    --navy-primary: 0 0% 7%;           /* Almost Black #1C1C1C */
+    --golden-accent: 0 84% 55%;        /* Bold Red #DC2626 */
+    --green-secondary: 24 95% 53%;     /* Orange Accent #FB923C */
     --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
-    --gray-muted: 30 25% 35%;          /* Warm Beige/Brown #8c6a44 */
+    --gray-muted: 0 0% 67%;            /* Neutral Gray #ABABAB */
   }
 
-  :root[data-theme="dark-chocolate"] {
-    --navy-primary: 30 40% 11%;        /* Dark Chocolate #271b0f */
-    --golden-accent: 48 75% 60%;       /* Bright Yellow #e3d34a */
-    --green-secondary: 30 40% 12%;     /* Dark Brown #281c10 */
+  :root[data-theme="forest-gold"] {
+    --navy-primary: 150 50% 10%;       /* Forest Green #0D4F3C */
+    --golden-accent: 45 93% 47%;       /* Rich Gold #E6B800 */
+    --green-secondary: 84 81% 44%;     /* Lime Green #7CB342 */
     --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
-    --gray-muted: 30 30% 30%;          /* Deep Brown #6c5237 */
+    --gray-muted: 150 10% 67%;         /* Forest Gray #A3B5A8 */
   }
 
   /* Core Theme Variables (Applied to all themes) */
   :root,
-  :root[data-theme="coffee-walnut"],
-  :root[data-theme="mahogany-sandstone"],
-  :root[data-theme="espresso-wood"],
-  :root[data-theme="dark-chocolate"] {
+  :root[data-theme="blue-orange"],
+  :root[data-theme="purple-pink"],
+  :root[data-theme="dark-red"],
+  :root[data-theme="forest-gold"] {
     /* Core Theme */
     --background: 0 0% 100%;
     --foreground: var(--very-dark-brown);
@@ -164,11 +161,15 @@
 @layer components {
   /* Hero Button Variants */
   .btn-hero-primary {
-    @apply bg-gradient-to-r from-golden-accent to-golden-yellow text-very-dark-brown font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-golden transition-all duration-300 hover:scale-105;
+    @apply bg-gradient-to-r from-golden-accent to-yellow-400 text-navy-primary font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-golden transition-all duration-300 hover:scale-105;
   }
   
   .btn-hero-secondary {
+<<<<<<< HEAD
     @apply bg-gradient-to-r from-very-dark-brown to-dark-brown text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-elegant transition-all duration-300 hover:scale-105;
+=======
+    @apply bg-gradient-to-r from-green-secondary to-green-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-green transition-all duration-300 hover:scale-105;
+>>>>>>> parent of ac5510b (theme changed)
   }
   
   /* Card Components */
@@ -183,11 +184,11 @@
   
   /* Gradient Text */
   .text-gradient-golden {
-    @apply bg-gradient-to-r from-golden-accent to-golden-yellow bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-golden-accent to-yellow-400 bg-clip-text text-transparent;
   }
   
-  .text-gradient-wood {
-    @apply bg-gradient-to-r from-warm-beige to-wood-brown bg-clip-text text-transparent;
+  .text-gradient-green {
+    @apply bg-gradient-to-r from-green-secondary to-green-400 bg-clip-text text-transparent;
   }
   
   /* Counter Animation */
