@@ -62,13 +62,13 @@ const ProgramsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-very-dark-brown">
+    <section className="py-20 bg-gradient-to-br from-sandstone to-warm-beige">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
             Programs & Classes
           </h2>
-          <p className="text-xl text-warm-beige max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-very-dark-brown max-w-3xl mx-auto leading-relaxed">
             Choose from our diverse range of fitness programs designed by experts 
             to help you achieve your specific goals.
           </p>
@@ -85,21 +85,21 @@ const ProgramsSection = () => {
               )}
               
               <CardHeader className="pb-4">
-                <h3 className="text-2xl font-semibold text-white mb-2">
+                <h3 className="text-2xl font-semibold text-very-dark-brown mb-2">
                   {program.title}
                 </h3>
-                <p className="text-warm-beige leading-relaxed">
+                <p className="text-deep-brown leading-relaxed">
                   {program.description}
                 </p>
               </CardHeader>
 
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between text-sm">
-                  <div className="flex items-center text-warm-beige">
+                  <div className="flex items-center text-deep-brown">
                     <Clock className="w-4 h-4 mr-2" />
                     {program.duration}
                   </div>
-                  <div className="flex items-center text-warm-beige">
+                  <div className="flex items-center text-deep-brown">
                     <Users className="w-4 h-4 mr-2" />
                     {program.capacity}
                   </div>
@@ -113,7 +113,7 @@ const ProgramsSection = () => {
 
                 <ul className="space-y-2">
                   {program.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-warm-beige">
+                    <li key={featureIndex} className="flex items-center text-sm text-deep-brown">
                       <div className="w-2 h-2 bg-golden-accent rounded-full mr-3" />
                       {feature}
                     </li>

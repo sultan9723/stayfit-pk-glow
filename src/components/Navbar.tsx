@@ -42,8 +42,8 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-warm-beige dark:bg-very-dark-brown shadow-md"
-          : "bg-warm-beige dark:bg-transparent"
+          ? "bg-white/95 dark:bg-very-dark-brown shadow-md backdrop-blur-sm"
+          : "bg-white/80 dark:bg-transparent backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,7 +66,7 @@ const Navbar = () => {
                 className={`relative px-3 py-2 rounded-lg transition-all duration-300 ${
                   isActivePath(item.path)
                     ? "text-golden-accent"
-                    : "text-dark-brown dark:text-white hover:text-golden-accent"
+                    : "text-very-dark-brown dark:text-white hover:text-golden-accent"
                 }`}
               >
                 {item.name}
@@ -79,12 +79,12 @@ const Navbar = () => {
             {/* Dark Mode Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="ml-4 p-2 rounded-lg bg-light-wood dark:bg-dark-brown hover:bg-wood-brown dark:hover:bg-coffee-brown transition"
+              className="ml-4 p-2 rounded-lg bg-warm-beige dark:bg-dark-brown hover:bg-wood-brown dark:hover:bg-coffee-brown transition"
             >
               {darkMode ? (
                 <Sun className="w-5 h-5 text-golden-accent" />
               ) : (
-                <Moon className="w-5 h-5 text-dark-brown" />
+                <Moon className="w-5 h-5 text-very-dark-brown" />
               )}
             </button>
           </div>
@@ -94,17 +94,17 @@ const Navbar = () => {
             {/* Dark Mode Toggle (mobile) */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="mr-3 p-2 rounded-lg bg-light-wood dark:bg-dark-brown"
+              className="mr-3 p-2 rounded-lg bg-warm-beige dark:bg-dark-brown"
             >
               {darkMode ? (
                 <Sun className="w-5 h-5 text-golden-accent" />
               ) : (
-                <Moon className="w-5 h-5 text-dark-brown" />
+                <Moon className="w-5 h-5 text-very-dark-brown" />
               )}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-dark-brown dark:text-white hover:text-golden-accent transition-colors duration-200"
+              className="text-very-dark-brown dark:text-white hover:text-golden-accent transition-colors duration-200"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -113,7 +113,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-warm-beige dark:bg-very-dark-brown border-t border-light-wood dark:border-white/10">
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-white/95 dark:bg-very-dark-brown border-t border-warm-beige dark:border-white/10 backdrop-blur-sm">
             <div className="px-4 py-4 space-y-3">
               {navItems.map((item) => (
                 <Link
@@ -123,7 +123,7 @@ const Navbar = () => {
                   className={`block px-3 py-2 rounded-lg transition-all duration-300 ${
                     isActivePath(item.path)
                       ? "text-golden-accent"
-                      : "text-dark-brown dark:text-white hover:text-golden-accent"
+                      : "text-very-dark-brown dark:text-white hover:text-golden-accent"
                   }`}
                 >
                   {item.name}
