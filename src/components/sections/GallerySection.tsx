@@ -143,7 +143,7 @@ const GallerySection = () => {
 
         {/* Lightbox Modal */}
         {selectedImage !== null && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-navy-primary/95 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-very-dark-brown/95 backdrop-blur-md">
             <div className="relative max-w-4xl max-h-full mx-4">
               <img
                 src={filteredImages[selectedImage].src}
@@ -157,7 +157,7 @@ const GallerySection = () => {
                 className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors duration-200"
                 aria-label="Close gallery"
               >
-                <X className="w-6 h-6 text-white-text" />
+                <X className="w-6 h-6 text-white" />
               </button>
 
               {/* Navigation Buttons */}
@@ -166,7 +166,7 @@ const GallerySection = () => {
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors duration-200"
                 aria-label="Previous image"
               >
-                <ChevronLeft className="w-6 h-6 text-white-text" />
+                <ChevronLeft className="w-6 h-6 text-white" />
               </button>
 
               <button
@@ -174,12 +174,12 @@ const GallerySection = () => {
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 rounded-full p-3 transition-colors duration-200"
                 aria-label="Next image"
               >
-                <ChevronRight className="w-6 h-6 text-white-text" />
+                <ChevronRight className="w-6 h-6 text-white" />
               </button>
 
               {/* Image Counter */}
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-                <span className="text-white-text text-sm">
+                <span className="text-white text-sm">
                   {selectedImage + 1} / {filteredImages.length}
                 </span>
               </div>

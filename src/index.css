@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    /* Default: StayFit Warm Earthy Theme */
+    /* Light Mode: StayFit Warm Earthy Theme */
     --navy-primary: 0 0% 0%;           /* Black #000000 */
     --golden-accent: 48 75% 60%;       /* Bright Yellow #e3d34a */
     --green-secondary: 30 25% 35%;     /* Warm Beige/Brown #8c6a44 */
@@ -30,6 +30,32 @@
     --mahogany: 30 35% 14%;            /* Mahogany #251b11 */
     --black-coffee: 30 50% 5%;         /* Black Coffee #140b06 */
     --espresso: 30 40% 8%;             /* Espresso #1d130a */
+  }
+
+  /* Dark Mode Theme */
+  .dark {
+    --navy-primary: 0 0% 8%;           /* Very Dark Gray */
+    --golden-accent: 48 75% 65%;       /* Brighter Yellow for contrast */
+    --green-secondary: 30 25% 45%;     /* Lighter Beige/Brown */
+    --white-text: 0 0% 95%;            /* Off White #f2f2f2 */
+    --gray-muted: 0 0% 70%;            /* Lighter Gray for better readability */
+    
+    --deep-brown: 30 30% 40%;
+    --coffee-brown: 30 25% 42%;
+    --very-dark-brown: 30 60% 13%;
+    --light-wood: 30 20% 55%;
+    --warm-beige: 30 20% 56%;
+    --wood-brown: 30 20% 57%;
+    --sandstone: 30 20% 54%;
+    --dark-brown: 30 40% 22%;
+    --dark-chocolate: 30 40% 21%;
+    --golden-yellow: 48 75% 68%;
+    --accent-yellow: 48 75% 65%;
+    --dark-coffee: 30 35% 22%;
+    --walnut: 30 35% 23%;
+    --mahogany: 30 35% 24%;
+    --black-coffee: 30 50% 15%;
+    --espresso: 30 40% 18%;
   }
 
   /* Alternative Color Schemes - All Warm Earthy Variants */
@@ -176,6 +202,41 @@
   
   .fade-in-up.animate {
     @apply opacity-100 translate-y-0;
+  }
+
+  /* Scroll Animations */
+  .animate-on-scroll {
+    @apply opacity-0 transform translate-y-8 transition-all duration-700 ease-out;
+  }
+  
+  .animate-on-scroll.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Scale on scroll */
+  .scale-on-scroll {
+    @apply opacity-0 transform scale-95 transition-all duration-500 ease-out;
+  }
+  
+  .scale-on-scroll.in-view {
+    @apply opacity-100 scale-100;
+  }
+
+  /* Slide in from left/right */
+  .slide-in-left {
+    @apply opacity-0 transform -translate-x-8 transition-all duration-700 ease-out;
+  }
+  
+  .slide-in-left.in-view {
+    @apply opacity-100 translate-x-0;
+  }
+
+  .slide-in-right {
+    @apply opacity-0 transform translate-x-8 transition-all duration-700 ease-out;
+  }
+  
+  .slide-in-right.in-view {
+    @apply opacity-100 translate-x-0;
   }
 }
 

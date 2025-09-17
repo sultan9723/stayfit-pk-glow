@@ -1,31 +1,22 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DarkModeToggle } from "@/components/ui/dark-mode-toggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const location = useLocation();
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  // Dark mode effect
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -49,30 +40,34 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img
-              src="/stayfit.png"
-              alt="StayFit Logo"
+          <Link to="/" className="flex items-center space-x-2">
+            <img 
+              src="/stayfit.png" 
+              alt="StayFit.pk Logo" 
               className="h-10 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`relative px-3 py-2 rounded-lg transition-all duration-300 ${
+                className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActivePath(item.path)
                     ? "text-golden-accent"
                     : "text-very-dark-brown dark:text-white hover:text-golden-accent"
                 }`}
               >
                 {item.name}
+                {isActivePath(item.path) && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-golden-accent rounded-full" />
+                )}
               </Link>
             ))}
-            <Button variant="outline" className="text-sm">
+            
+            <Button className="btn-hero-primary text-sm">
               Join Now
             </Button>
 
@@ -120,7 +115,7 @@ const Navbar = () => {
                   key={item.name}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`block px-3 py-2 rounded-lg transition-all duration-300 ${
+                  className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
                     isActivePath(item.path)
                       ? "text-golden-accent"
                       : "text-very-dark-brown dark:text-white hover:text-golden-accent"
@@ -129,7 +124,7 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button variant="outline" className="w-full mt-4">
+              <Button className="w-full mt-4 btn-hero-primary">
                 Join Now
               </Button>
             </div>

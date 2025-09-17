@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Play, Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const TestimonialsSection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const sectionRef = useScrollAnimation();
 
   const testimonials = [
     {
@@ -51,13 +53,13 @@ const TestimonialsSection = () => {
 
   return (
     <section className="py-20 bg-navy-primary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
+        <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
-            Success Stories
+            What Our Members Say
           </h2>
           <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
-            Hear from our members who have transformed their lives through our programs.
+            Real transformations, real results. Hear from our members who have achieved their fitness goals.
           </p>
         </div>
 
