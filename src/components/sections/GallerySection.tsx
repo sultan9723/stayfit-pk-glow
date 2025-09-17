@@ -80,13 +80,13 @@ const GallerySection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-muted to-navy-primary">
+    <section className="py-20 bg-gradient-to-br from-dark-brown to-very-dark-brown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
             Gallery Highlights
           </h2>
-          <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-warm-beige max-w-3xl mx-auto leading-relaxed">
             Take a visual tour of our state-of-the-art facilities, equipment, and the incredible 
             transformation journeys of our members.
           </p>
@@ -100,7 +100,7 @@ const GallerySection = () => {
               variant={activeCategory === category ? "default" : "outline"}
               className={`${
                 activeCategory === category 
-                  ? "bg-gradient-golden text-navy-primary font-semibold" 
+                  ? "bg-gradient-golden text-very-dark-brown font-semibold" 
                   : "border-golden-accent/30 text-golden-accent hover:bg-golden-accent/10"
               } transition-all duration-300`}
               onClick={() => setActiveCategory(category)}
