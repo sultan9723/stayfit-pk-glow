@@ -61,7 +61,7 @@ const NewsletterSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-navy-primary via-muted to-navy-primary">
+    <section className="py-20 bg-gradient-to-r from-dark-brown via-warm-beige to-dark-brown">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
         <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">

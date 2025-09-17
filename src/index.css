@@ -98,7 +98,7 @@
   :root[data-theme="espresso-wood"],
   :root[data-theme="dark-chocolate"] {
     /* Core Theme */
-    --background: var(--light-wood);
+    --background: 0 0% 100%;
     --foreground: var(--very-dark-brown);
     
     --card: var(--warm-beige);

@@ -47,13 +47,13 @@ const BlogSection = () => {
   };
 
   return (
-    <section className="py-20 bg-navy-primary">
+    <section className="py-20 bg-gradient-to-br from-light-wood to-sandstone">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
             Latest from Our Blog
           </h2>
-          <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-deep-brown max-w-3xl mx-auto leading-relaxed">
             Stay updated with the latest fitness tips, nutrition advice, and wellness insights 
             from our expert trainers and health professionals.
           </p>
@@ -82,11 +82,11 @@ const BlogSection = () => {
               </CardHeader>
 
               <CardContent className="space-y-4">
-                <p className="text-gray-muted leading-relaxed line-clamp-3">
+                <p className="text-deep-brown leading-relaxed line-clamp-3">
                   {post.excerpt}
                 </p>
 
-                <div className="flex items-center justify-between text-sm text-gray-muted">
+                <div className="flex items-center justify-between text-sm text-deep-brown">
                   <div className="flex items-center space-x-2">
                     <User className="w-4 h-4" />
                     <span>{post.author}</span>
@@ -98,7 +98,7 @@ const BlogSection = () => {
                 </div>
 
                 <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <div className="flex items-center text-sm text-gray-muted">
+                  <div className="flex items-center text-sm text-deep-brown">
                     <Calendar className="w-4 h-4 mr-2" />
                     <time dateTime={post.date}>
                       {formatDate(post.date)}

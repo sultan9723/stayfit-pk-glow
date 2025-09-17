@@ -44,13 +44,13 @@ const TrainersSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-muted to-navy-primary">
+    <section className="py-20 bg-gradient-to-br from-warm-beige to-light-wood">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
             Meet Our Expert Trainers
           </h2>
-          <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-deep-brown max-w-3xl mx-auto leading-relaxed">
             Our certified fitness professionals are dedicated to helping you achieve 
             your goals with personalized guidance and expertise.
           </p>
@@ -76,7 +76,7 @@ const TrainersSection = () => {
                 </div>
 
                 <div className="text-center mb-4">
-                  <h3 className="text-xl font-semibold text-white-text mb-1">
+                  <h3 className="text-xl font-semibold text-white mb-1">
                     {trainer.name}
                   </h3>
                   <p className="text-golden-accent font-medium mb-2">
@@ -85,12 +85,12 @@ const TrainersSection = () => {
                   
                   <div className="flex items-center justify-center mb-3">
                     <Star className="w-4 h-4 text-golden-accent fill-current" />
-                    <span className="text-white-text font-medium ml-1">
+                    <span className="text-white font-medium ml-1">
                       {trainer.rating}
                     </span>
                   </div>
 
-                  <p className="text-gray-muted text-sm leading-relaxed mb-4">
+                  <p className="text-deep-brown text-sm leading-relaxed mb-4">
                     {trainer.bio}
                   </p>
                 </div>
@@ -107,14 +107,14 @@ const TrainersSection = () => {
                   <div className="flex items-center justify-center space-x-3">
                     <a
                       href="#"
-                      className="text-gray-muted hover:text-golden-accent transition-colors duration-300"
+                      className="text-deep-brown hover:text-golden-accent transition-colors duration-300"
                       aria-label={`${trainer.name} Instagram`}
                     >
                       <Instagram className="w-5 h-5" />
                     </a>
                     <a
                       href="#"
-                      className="text-gray-muted hover:text-golden-accent transition-colors duration-300"
+                      className="text-deep-brown hover:text-golden-accent transition-colors duration-300"
                       aria-label={`${trainer.name} LinkedIn`}
                     >
                       <Linkedin className="w-5 h-5" />

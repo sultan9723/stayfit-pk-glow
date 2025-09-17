@@ -262,7 +262,7 @@ const ContactMapSection = () => {
             </p>
           </CardHeader>
           <CardContent className="p-6">
-            <div className="relative h-96 rounded-xl overflow-hidden bg-muted">
+            <div className="relative h-96 rounded-xl overflow-hidden bg-warm-beige">
               {/* Placeholder for Google Maps - Replace with actual Google Maps embed */}
               <div className="absolute inset-0 bg-gradient-to-br from-navy-primary to-dark-brown flex items-center justify-center">
                 <div className="text-center space-y-4">
