@@ -30,7 +30,11 @@ const WhyStayFitSection = () => {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
     <section className="py-20 bg-gradient-to-br from-light-wood to-sandstone">
+=======
+    <section className="py-20 bg-gradient-to-br from-navy-primary to-muted">
+>>>>>>> parent of ac5510b (theme changed)
 =======
     <section className="py-20 bg-gradient-to-br from-navy-primary to-muted">
 >>>>>>> parent of ac5510b (theme changed)
@@ -40,7 +44,11 @@ const WhyStayFitSection = () => {
             Why Choose StayFit.pk?
           </h2>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <p className="text-xl text-very-dark-brown max-w-3xl mx-auto leading-relaxed">
+=======
+          <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
+>>>>>>> parent of ac5510b (theme changed)
 =======
           <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
 >>>>>>> parent of ac5510b (theme changed)
@@ -57,10 +65,17 @@ const WhyStayFitSection = () => {
                   <feature.icon className="w-8 h-8 text-navy-primary" />
                 </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <h3 className="text-xl font-semibold mb-4 text-very-dark-brown">
                   {feature.title}
                 </h3>
                 <p className="text-deep-brown leading-relaxed">
+=======
+                <h3 className="text-xl font-semibold mb-4 text-white-text">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-muted leading-relaxed">
+>>>>>>> parent of ac5510b (theme changed)
 =======
                 <h3 className="text-xl font-semibold mb-4 text-white-text">
                   {feature.title}

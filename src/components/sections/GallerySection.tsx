@@ -81,7 +81,11 @@ const GallerySection = () => {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
     <section className="py-20 bg-gradient-to-br from-warm-beige to-light-wood">
+=======
+    <section className="py-20 bg-gradient-to-br from-muted to-navy-primary">
+>>>>>>> parent of ac5510b (theme changed)
 =======
     <section className="py-20 bg-gradient-to-br from-muted to-navy-primary">
 >>>>>>> parent of ac5510b (theme changed)
@@ -91,7 +95,11 @@ const GallerySection = () => {
             Gallery Highlights
           </h2>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <p className="text-xl text-very-dark-brown max-w-3xl mx-auto leading-relaxed">
+=======
+          <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
+>>>>>>> parent of ac5510b (theme changed)
 =======
           <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
 >>>>>>> parent of ac5510b (theme changed)

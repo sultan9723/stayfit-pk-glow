@@ -18,7 +18,11 @@ const Footer = () => {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
     <footer className="bg-gradient-to-r from-dark-brown to-very-dark-brown border-t border-deep-brown/20">
+=======
+    <footer className="bg-gradient-to-r from-navy-primary to-muted border-t border-white/10">
+>>>>>>> parent of ac5510b (theme changed)
 =======
     <footer className="bg-gradient-to-r from-navy-primary to-muted border-t border-white/10">
 >>>>>>> parent of ac5510b (theme changed)

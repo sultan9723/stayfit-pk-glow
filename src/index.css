@@ -7,15 +7,19 @@
 @layer base {
   :root {
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* Light Mode: StayFit Warm Earthy Theme */
     --navy-primary: 0 0% 0%;           /* Black #000000 */
     --golden-accent: 48 75% 60%;       /* Bright Yellow #e3d34a */
     --green-secondary: 30 25% 35%;     /* Warm Beige/Brown #8c6a44 */
 =======
+=======
+>>>>>>> parent of ac5510b (theme changed)
     /* Default: StayFit Navy & Gold Theme */
     --navy-primary: 222 84% 5%;        /* Dark Navy #0F172A */
     --golden-accent: 48 96% 53%;       /* Golden Yellow #FACC15 */
     --green-secondary: 142 76% 36%;    /* Fresh Green #16A34A */
+<<<<<<< HEAD
 >>>>>>> parent of ac5510b (theme changed)
     --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
     --gray-muted: 220 9% 67%;          /* Light Gray #9CA3AF */
@@ -54,11 +58,20 @@
     --golden-accent: 48 75% 60%;       /* Bright Yellow #e3d34a */
     --green-secondary: 30 35% 13%;     /* Walnut #22180e */
 =======
+=======
+    --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
+    --gray-muted: 220 9% 67%;          /* Light Gray #9CA3AF */
+  }
+
+>>>>>>> parent of ac5510b (theme changed)
   /* Alternative Color Schemes */
   :root[data-theme="blue-orange"] {
     --navy-primary: 210 100% 12%;      /* Deep Blue #003D82 */
     --golden-accent: 25 95% 53%;       /* Vibrant Orange #FF6B35 */
     --green-secondary: 195 100% 42%;   /* Cyan Blue #0077BE */
+<<<<<<< HEAD
+>>>>>>> parent of ac5510b (theme changed)
+=======
 >>>>>>> parent of ac5510b (theme changed)
     --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
     --gray-muted: 210 11% 67%;         /* Blue Gray #9BB5CC */
@@ -166,7 +179,11 @@
   
   .btn-hero-secondary {
 <<<<<<< HEAD
+<<<<<<< HEAD
     @apply bg-gradient-to-r from-very-dark-brown to-dark-brown text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-elegant transition-all duration-300 hover:scale-105;
+=======
+    @apply bg-gradient-to-r from-green-secondary to-green-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-green transition-all duration-300 hover:scale-105;
+>>>>>>> parent of ac5510b (theme changed)
 =======
     @apply bg-gradient-to-r from-green-secondary to-green-500 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-green transition-all duration-300 hover:scale-105;
 >>>>>>> parent of ac5510b (theme changed)

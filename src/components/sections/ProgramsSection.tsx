@@ -66,7 +66,11 @@ const ProgramsSection = () => {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
     <section className="py-20 bg-gradient-to-br from-sandstone to-warm-beige">
+=======
+    <section className="py-20 bg-navy-primary">
+>>>>>>> parent of ac5510b (theme changed)
 =======
     <section className="py-20 bg-navy-primary">
 >>>>>>> parent of ac5510b (theme changed)
@@ -76,7 +80,11 @@ const ProgramsSection = () => {
             Programs & Classes
           </h2>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <p className="text-xl text-very-dark-brown max-w-3xl mx-auto leading-relaxed">
+=======
+          <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
+>>>>>>> parent of ac5510b (theme changed)
 =======
           <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
 >>>>>>> parent of ac5510b (theme changed)
@@ -97,10 +105,17 @@ const ProgramsSection = () => {
               
               <CardHeader className="pb-4">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <h3 className="text-2xl font-semibold text-very-dark-brown mb-2">
                   {program.title}
                 </h3>
                 <p className="text-deep-brown leading-relaxed">
+=======
+                <h3 className="text-2xl font-semibold text-white-text mb-2">
+                  {program.title}
+                </h3>
+                <p className="text-gray-muted leading-relaxed">
+>>>>>>> parent of ac5510b (theme changed)
 =======
                 <h3 className="text-2xl font-semibold text-white-text mb-2">
                   {program.title}
@@ -114,11 +129,19 @@ const ProgramsSection = () => {
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-between text-sm">
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <div className="flex items-center text-deep-brown">
                     <Clock className="w-4 h-4 mr-2" />
                     {program.duration}
                   </div>
                   <div className="flex items-center text-deep-brown">
+=======
+                  <div className="flex items-center text-gray-muted">
+                    <Clock className="w-4 h-4 mr-2" />
+                    {program.duration}
+                  </div>
+                  <div className="flex items-center text-gray-muted">
+>>>>>>> parent of ac5510b (theme changed)
 =======
                   <div className="flex items-center text-gray-muted">
                     <Clock className="w-4 h-4 mr-2" />
@@ -140,7 +163,11 @@ const ProgramsSection = () => {
                 <ul className="space-y-2">
                   {program.features.map((feature, featureIndex) => (
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <li key={featureIndex} className="flex items-center text-sm text-deep-brown">
+=======
+                    <li key={featureIndex} className="flex items-center text-sm text-gray-muted">
+>>>>>>> parent of ac5510b (theme changed)
 =======
                     <li key={featureIndex} className="flex items-center text-sm text-gray-muted">
 >>>>>>> parent of ac5510b (theme changed)
