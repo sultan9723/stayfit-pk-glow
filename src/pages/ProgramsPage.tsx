@@ -4,8 +4,8 @@ const ProgramsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Fitness Programs - StayFit.pk | Strength, Cardio, MMA & Nutrition</title>
-        <meta name="description" content="Explore our comprehensive fitness programs including strength training, cardio workouts, MMA, and nutrition coaching at StayFit.pk." />
+        <title>Fitness Programs - StayFit | Strength, Cardio, MMA & Nutrition</title>
+        <meta name="description" content="Explore our comprehensive fitness programs including strength training, cardio workouts, MMA, and nutrition coaching at StayFit." />
       </Helmet>
       
       <div className="min-h-screen bg-navy-primary pt-20">
