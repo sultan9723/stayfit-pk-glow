@@ -10,10 +10,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: "Facebook", icon: Facebook, url: "https://facebook.com/stayfitpk" },
-    { name: "Instagram", icon: Instagram, url: "https://instagram.com/stayfitpk" },
-    { name: "Twitter", icon: Twitter, url: "https://twitter.com/stayfitpk" },
-    { name: "YouTube", icon: Youtube, url: "https://youtube.com/stayfitpk" },
+    { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/share/16znbiAdTF/?mibextid=wwXIfr" },
+    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/stayfitpakistan?igsh=MXZzdzN4b2s2dTdkdw==" },
+    { name: "YouTube", icon: Youtube, url: "https://youtube.com/@stayfitpakistan1?si=18jr5bMp-vZA5-of" },
   ];
 
   return (
@@ -24,7 +23,7 @@ const Footer = () => {
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2 text-golden-accent font-bold text-xl">
               <Dumbbell className="w-8 h-8" />
-              <span className="text-gradient-golden">StayFit.pk</span>
+              <span className="text-gradient-golden">StayFit</span>
             </Link>
             <p className="text-warm-beige text-sm leading-relaxed">
               Transform your fitness journey with Pakistan's premier fitness center. 
@@ -81,7 +80,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-golden-accent flex-shrink-0" />
-                <span className="text-warm-beige text-sm">+92-XXX-XXXXXXX</span>
+                <span className="text-warm-beige text-sm">+92-333-0711555</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-golden-accent flex-shrink-0" />
@@ -113,7 +112,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
           <p className="text-warm-beige text-sm">
-            © {new Date().getFullYear()} StayFit.pk. All rights reserved. | 
+            © {new Date().getFullYear()} StayFit . All rights reserved. | 
             <Link to="/privacy" className="hover:text-golden-accent transition-colors duration-300 ml-1">
               Privacy Policy
             </Link>
