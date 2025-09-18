@@ -22,7 +22,8 @@ export default {
         
         // StayFit Brand Colors - Warm Earthy Theme
         "navy-primary": "hsl(var(--navy-primary))",
-        "golden-accent": "hsl(var(--golden-accent))",
+        "golden-accent": "#D4AF37", // Metallic Gold
+        "deep-golden": "#C99700", // Deep Golden
         "green-secondary": "hsl(var(--green-secondary))",
         "white-text": "hsl(var(--white-text))",
         "gray-muted": "hsl(var(--gray-muted))",
@@ -107,12 +108,12 @@ export default {
       },
       backgroundImage: {
         "gradient-hero": "var(--gradient-hero)",
-        "gradient-golden": "var(--gradient-golden)",
+        "gradient-golden": "linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #C99700 100%)",
         "gradient-green": "var(--gradient-green)",
         "gradient-card": "var(--gradient-card)",
       },
       boxShadow: {
-        "golden": "var(--shadow-golden)",
+        "golden": "0 4px 12px rgba(212, 175, 55, 0.5)",
         "green": "var(--shadow-green)",
         "elegant": "var(--shadow-elegant)",
       },

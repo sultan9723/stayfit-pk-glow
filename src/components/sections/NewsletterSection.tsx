@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Mail, Send, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -123,7 +123,9 @@ const NewsletterSection = () => {
                       <Button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full btn-hero-primary text-lg py-3"
+                        variant="primary"
+                        size="lg"
+                        className="w-full"
                       >
                         {isLoading ? (
                           <>
@@ -166,13 +168,13 @@ const NewsletterSection = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <Button
                     onClick={() => setIsSubscribed(false)}
-                    variant="outline"
-                    className="border-golden-accent text-golden-accent hover:bg-golden-accent/10"
+                    variant="secondary"
+                    size="md"
                   >
                     Subscribe Another Email
                   </Button>
                   
-                  <Button className="btn-hero-secondary">
+                  <Button variant="secondary" size="md">
                     Explore Our Programs
                   </Button>
                 </div>

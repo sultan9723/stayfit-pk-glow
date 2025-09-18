@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Play, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import { Card, CardContent } from "@/components/ui/card";
 
 const TestimonialsSection = () => {
@@ -84,8 +84,9 @@ const TestimonialsSection = () => {
                     />
                     <div className="absolute inset-0 bg-navy-primary/40 rounded-xl flex items-center justify-center group-hover:bg-navy-primary/20 transition-colors duration-300">
                       <Button
+                        variant="accent"
                         size="lg"
-                        className="bg-golden-accent hover:bg-yellow-500 text-navy-primary rounded-full p-4"
+                        className="p-4"
                         onClick={() => {
                           // Placeholder for video modal
                           console.log("Open video modal for:", testimonials[currentTestimonial].name);
@@ -174,7 +175,7 @@ const TestimonialsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" className="btn-hero-secondary">
+          <Button variant="secondary" size="md">
             View All Success Stories
           </Button>
         </div>
