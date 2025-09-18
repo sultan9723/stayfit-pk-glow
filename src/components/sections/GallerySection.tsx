@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
@@ -97,12 +97,9 @@ const GallerySection = () => {
           {categories.map((category) => (
             <Button
               key={category}
-              variant={activeCategory === category ? "default" : "outline"}
-              className={`${
-                activeCategory === category 
-                  ? "bg-gradient-golden text-very-dark-brown font-semibold" 
-                  : "border-golden-accent/30 text-golden-accent hover:bg-golden-accent/10"
-              } transition-all duration-300`}
+              variant={activeCategory === category ? "primary" : "secondary"}
+              size="sm"
+              className="transition-all duration-300"
               onClick={() => setActiveCategory(category)}
             >
               {category}
@@ -188,7 +185,7 @@ const GallerySection = () => {
         )}
 
         <div className="text-center mt-12">
-          <Button variant="outline" className="btn-hero-secondary">
+          <Button variant="secondary" size="md">
             View Full Gallery
           </Button>
         </div>

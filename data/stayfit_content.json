@@ -1,0 +1,152 @@
+{
+  "male_trainers": [
+    {
+      "name": "Salman Ahmad",
+      "role": "Senior Trainer",
+      "experience": "10+ Years",
+      "specialty": "Strength & Body Building",
+      "certifications": ["Certified Personal Trainer", "Strength & Conditioning Specialist"],
+      "rating": 5.0,
+      "bio": "Senior trainer with extensive experience in strength training, bodybuilding, and fitness transformation. Specializes in helping clients achieve their fitness goals through personalized training programs.",
+      "image": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop&crop=face"
+    },
+    {
+      "name": "Ammar Asif",
+      "role": "Senior Trainer", 
+      "experience": "8+ Years",
+      "specialty": "Cardio & Nutrition",
+      "certifications": ["Certified Personal Trainer", "Nutrition Specialist"],
+      "rating": 4.9,
+      "bio": "Senior trainer focused on holistic fitness approach combining strength training, cardio, and nutrition. Expert in weight loss, muscle building, and lifestyle transformation.",
+      "image": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=400&h=400&fit=crop&crop=face"
+    }
+  ],
+  "female_trainers": [
+    {
+      "name": "Sarah Khan",
+      "role": "Fitness Instructor",
+      "experience": "6+ Years",
+      "specialty": "Yoga & Wellness",
+      "certifications": ["RYT-500", "Meditation Instructor"],
+      "rating": 4.8,
+      "bio": "Certified yoga instructor focused on mindfulness and holistic wellness. Specializes in stress relief, flexibility, and mental well-being through guided sessions.",
+      "image": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=400&fit=crop&crop=face"
+    },
+    {
+      "name": "Fatima Sheikh",
+      "role": "Nutrition Coach",
+      "experience": "5+ Years", 
+      "specialty": "Diet & Nutrition",
+      "certifications": ["Certified Nutritionist", "Meal Planning Specialist"],
+      "rating": 4.9,
+      "bio": "Expert nutrition coach providing personalized meal plans and dietary guidance. Helps clients optimize their fitness results through proper nutrition and lifestyle changes.",
+      "image": "https://images.unsplash.com/photo-1506629905606-b5625f6f8bb7?w=400&h=400&fit=crop&crop=face"
+    }
+  ],
+  "programs": [
+    {
+      "title": "Strength & Body Building",
+      "description": "Build lean muscle mass and increase your strength with our comprehensive bodybuilding program designed for all levels.",
+      "duration": "60-90 min",
+      "capacity": "8-12 people",
+      "level": "All Levels",
+      "features": ["Free weights training", "Progressive overload", "Muscle building techniques"],
+      "popular": true
+    },
+    {
+      "title": "Cardio and Strength",
+      "description": "Combine cardiovascular fitness with strength training for a complete body transformation and improved endurance.",
+      "duration": "60 min",
+      "capacity": "10-15 people", 
+      "level": "All Levels",
+      "features": ["Cardio intervals", "Strength circuits", "Fat burning"],
+      "popular": true
+    },
+    {
+      "title": "Mixed Martial Arts",
+      "description": "Learn MMA techniques including striking, grappling, and self-defense with our professional martial arts training.",
+      "duration": "90 min",
+      "capacity": "8-12 people",
+      "level": "Beginner to Advanced",
+      "features": ["Boxing techniques", "Grappling", "Self-defense"],
+      "popular": false
+    },
+    {
+      "title": "Diet and Nutrition",
+      "description": "Expert nutritional guidance and meal planning to optimize your fitness results and achieve your health goals.",
+      "duration": "Consultation",
+      "capacity": "Individual",
+      "level": "All Levels", 
+      "features": ["Personalized meal plans", "Nutrition education", "Progress tracking"],
+      "popular": false
+    },
+    {
+      "title": "Crossfit",
+      "description": "High-intensity functional fitness training that combines weightlifting, cardio, and gymnastics for maximum results.",
+      "duration": "60 min",
+      "capacity": "12-15 people",
+      "level": "Intermediate to Advanced",
+      "features": ["Functional movements", "High intensity", "Community training"],
+      "popular": true
+    },
+    {
+      "title": "Training Services",
+      "description": "One-on-one personal training with certified trainers for personalized fitness goals and maximum results.",
+      "duration": "60 min",
+      "capacity": "1-on-1",
+      "level": "All Levels",
+      "features": ["Personalized programs", "Dedicated trainer", "Flexible scheduling"],
+      "popular": false
+    }
+  ],
+  "blog_posts": [
+    {
+      "title": "Latest News: StayFit.pk Expands Training Programs",
+      "excerpt": "StayFit.pk introduces new specialized training programs including advanced MMA techniques and personalized nutrition coaching to help members achieve their fitness goals.",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+      "author": "StayFit Team",
+      "date": "2024-01-20",
+      "readTime": "3 min read",
+      "category": "Latest News",
+      "slug": "stayfit-expands-training-programs"
+    },
+    {
+      "title": "Highlights from StayFit: Member Success Stories",
+      "excerpt": "Discover inspiring transformation stories from our members who have achieved remarkable fitness goals through our comprehensive training programs and expert guidance.",
+      "image": "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=600&h=400&fit=crop",
+      "author": "Salman Ahmad",
+      "date": "2024-01-18",
+      "readTime": "5 min read",
+      "category": "Success Stories",
+      "slug": "member-success-stories-highlights"
+    },
+    {
+      "title": "StayFit.pk Equipment Upgrade: State-of-the-Art Facilities",
+      "excerpt": "We've upgraded our gym with the latest fitness equipment and technology to provide our members with the best possible training experience and results.",
+      "image": "https://images.unsplash.com/photo-1571019612209-669c0214d02d?w=600&h=400&fit=crop",
+      "author": "Ammar Asif",
+      "date": "2024-01-15",
+      "readTime": "4 min read",
+      "category": "Facilities",
+      "slug": "stayfit-equipment-upgrade"
+    }
+  ],
+  "contact": {
+    "email": "info@stayfit.com",
+    "phone": "(+92) 3330711555",
+    "address": "Rawalpindi, Pakistan",
+    "socials": {
+      "facebook": "https://facebook.com/stayfitpk",
+      "instagram": "https://instagram.com/stayfitpk", 
+      "youtube": "https://youtube.com/stayfitpk"
+    },
+    "business_hours": {
+      "weekdays": "Mon - Fri: 6:00 AM - 10:00 PM",
+      "weekends": "Sat - Sun: 7:00 AM - 8:00 PM"
+    }
+  },
+  "map": {
+    "embed_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.123456789!2d73.0479!3d33.6844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbfd07891722f%3A0x6059515c3bdb02b6!2sRawalpindi%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1640000000000!5m2!1sen!2s",
+    "title": "StayFit.pk Location in Rawalpindi"
+  }
+}

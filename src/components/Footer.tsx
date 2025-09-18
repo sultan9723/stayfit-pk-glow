@@ -10,9 +10,15 @@ const Footer = () => {
   ];
 
   const socialLinks = [
+
     { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/share/16znbiAdTF/?mibextid=wwXIfr" },
     { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/stayfitpakistan?igsh=MXZzdzN4b2s2dTdkdw==" },
     { name: "YouTube", icon: Youtube, url: "https://youtube.com/@stayfitpakistan1?si=18jr5bMp-vZA5-of" },
+
+    { name: "Facebook", icon: Facebook, url: "https://facebook.com/stayfitpk" },
+    { name: "Instagram", icon: Instagram, url: "https://instagram.com/stayfitpk" },
+    { name: "YouTube", icon: Youtube, url: "https://youtube.com/stayfitpk" },
+
   ];
 
   return (
@@ -26,8 +32,8 @@ const Footer = () => {
               <span className="text-gradient-golden">StayFit</span>
             </Link>
             <p className="text-warm-beige text-sm leading-relaxed">
-              Transform your fitness journey with Pakistan's premier fitness center. 
-              Expert trainers, state-of-the-art equipment, and personalized programs.
+              Transform your fitness journey with StayFit.pk - Pakistan's premier fitness center. 
+              Expert trainers, state-of-the-art equipment, and personalized programs in Rawalpindi.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
@@ -76,15 +82,19 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-golden-accent flex-shrink-0" />
-                <span className="text-warm-beige text-sm">Main Boulevard, Karachi, Pakistan</span>
+                <span className="text-warm-beige text-sm">Rawalpindi, Pakistan</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-golden-accent flex-shrink-0" />
+
                 <span className="text-warm-beige text-sm">+92-333-0711555</span>
+
+                <span className="text-warm-beige text-sm">(+92) 3330711555</span>
+
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-golden-accent flex-shrink-0" />
-                <span className="text-warm-beige text-sm">info@stayfit.pk</span>
+                <span className="text-warm-beige text-sm">info@stayfit.com</span>
               </li>
             </ul>
           </div>

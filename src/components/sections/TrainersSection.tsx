@@ -1,47 +1,13 @@
 import { Star, Award, Calendar, Instagram, Linkedin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Link } from "react-router-dom";
+import stayfitData from "../../../data/stayfit_content.json";
 
 const TrainersSection = () => {
-  const trainers = [
-    {
-      name: "Ahmed Khan",
-      specialty: "Strength & Conditioning",
-      experience: "8 Years",
-      certifications: ["NASM-CPT", "CSCS"],
-      rating: 4.9,
-      bio: "Former powerlifter with expertise in strength training and muscle building.",
-      image: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=400&h=400&fit=crop&crop=face"
-    },
-    {
-      name: "Sarah Ali",
-      specialty: "HIIT & Cardio",
-      experience: "6 Years",
-      certifications: ["ACE-CPT", "HIIT Specialist"],
-      rating: 4.8,
-      bio: "High-energy trainer specializing in fat loss and cardiovascular fitness.",
-      image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&h=400&fit=crop&crop=face"
-    },
-    {
-      name: "Muhammad Usman",
-      specialty: "MMA & Boxing",
-      experience: "12 Years",
-      certifications: ["Pro Fighter", "Boxing Coach"],
-      rating: 5.0,
-      bio: "Professional MMA fighter and certified boxing coach with championship experience.",
-      image: "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=400&h=400&fit=crop&crop=face"
-    },
-    {
-      name: "Fatima Sheikh",
-      specialty: "Yoga & Wellness",
-      experience: "10 Years",
-      certifications: ["RYT-500", "Meditation Instructor"],
-      rating: 4.9,
-      bio: "Certified yoga instructor focused on mindfulness and holistic wellness.",
-      image: "https://images.unsplash.com/photo-1506629905606-b5625f6f8bb7?w=400&h=400&fit=crop&crop=face"
-    }
-  ];
+  const { male_trainers, female_trainers } = stayfitData;
+  const allTrainers = [...male_trainers, ...female_trainers];
 
   return (
     <section className="py-20 bg-gradient-to-br from-muted to-navy-primary">
@@ -57,7 +23,7 @@ const TrainersSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {trainers.map((trainer, index) => (
+          {allTrainers.map((trainer, index) => (
             <Card key={index} className="card-elegant group hover:shadow-golden transition-all duration-500 hover:-translate-y-2">
               <CardContent className="p-6">
                 <div className="relative mb-6">
@@ -80,7 +46,7 @@ const TrainersSection = () => {
                     {trainer.name}
                   </h3>
                   <p className="text-golden-accent font-medium mb-2">
-                    {trainer.specialty}
+                    {trainer.role}
                   </p>
                   
                   <div className="flex items-center justify-center mb-3">
@@ -121,7 +87,7 @@ const TrainersSection = () => {
                     </a>
                   </div>
 
-                  <Button className="w-full btn-hero-secondary text-sm">
+                  <Button variant="secondary" size="sm" className="w-full">
                     <Calendar className="w-4 h-4 mr-2" />
                     Book Session
                   </Button>
@@ -132,8 +98,10 @@ const TrainersSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" className="btn-hero-primary">
-            View All Trainers
+          <Button variant="primary" size="md" asChild>
+            <Link to="/trainers">
+              View All Trainers
+            </Link>
           </Button>
         </div>
       </div>

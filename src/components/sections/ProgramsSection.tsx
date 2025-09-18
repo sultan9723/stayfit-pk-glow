@@ -1,65 +1,11 @@
 import { ArrowRight, Clock, Users, Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import stayfitData from "../../../data/stayfit_content.json";
 
 const ProgramsSection = () => {
-  const programs = [
-    {
-      title: "Strength & Power",
-      description: "Build lean muscle and increase your strength with our progressive training methods.",
-      duration: "60 min",
-      capacity: "8-12 people",
-      level: "All Levels",
-      features: ["Free weights", "Functional training", "Progressive overload"],
-      popular: false
-    },
-    {
-      title: "HIIT Cardio",
-      description: "High-intensity interval training to burn fat and improve cardiovascular fitness.",
-      duration: "45 min",
-      capacity: "15-20 people",
-      level: "Intermediate",
-      features: ["Fat burning", "Metabolic boost", "Full body workout"],
-      popular: true
-    },
-    {
-      title: "MMA Fundamentals",
-      description: "Learn the basics of mixed martial arts including striking, grappling, and self-defense.",
-      duration: "90 min",
-      capacity: "10-15 people",
-      level: "Beginner",
-      features: ["Boxing", "Wrestling", "Brazilian Jiu-Jitsu"],
-      popular: false
-    },
-    {
-      title: "Yoga & Flexibility",
-      description: "Improve flexibility, balance, and mental well-being through guided yoga sessions.",
-      duration: "75 min",
-      capacity: "12-18 people",
-      level: "All Levels",
-      features: ["Stress relief", "Flexibility", "Mindfulness"],
-      popular: false
-    },
-    {
-      title: "Personal Training",
-      description: "One-on-one coaching with certified trainers for personalized fitness goals.",
-      duration: "60 min",
-      capacity: "1-on-1",
-      level: "All Levels",
-      features: ["Customized plan", "Dedicated coach", "Flexible schedule"],
-      popular: true
-    },
-    {
-      title: "Nutrition Coaching",
-      description: "Expert nutritional guidance and meal planning to optimize your fitness results.",
-      duration: "Consultation",
-      capacity: "Individual",
-      level: "All Levels",
-      features: ["Meal plans", "Supplement advice", "Progress tracking"],
-      popular: false
-    }
-  ];
+  const { programs } = stayfitData;
 
   return (
     <section className="py-20 bg-very-dark-brown">
@@ -120,7 +66,7 @@ const ProgramsSection = () => {
                   ))}
                 </ul>
 
-                <Button className="w-full btn-hero-primary group-hover:shadow-golden transition-all duration-300">
+                <Button variant="primary" size="md" className="w-full group-hover:shadow-golden transition-all duration-300">
                   Book Now
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -130,7 +76,7 @@ const ProgramsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" className="btn-hero-secondary">
+          <Button variant="secondary" size="md">
             View All Programs
           </Button>
         </div>

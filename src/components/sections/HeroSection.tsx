@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import heroGym1 from "@/assets/hero-gym-1.jpg";
 import heroCardio2 from "@/assets/hero-cardio-2.jpg";
 import heroMma3 from "@/assets/hero-mma-3.jpg";
@@ -81,10 +81,10 @@ const HeroSection = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button className="btn-hero-primary text-lg px-8 py-4">
+              <Button variant="primary" size="lg">
                 Join Now
               </Button>
-              <Button className="btn-hero-secondary text-lg px-8 py-4">
+              <Button variant="secondary" size="lg">
                 Explore Programs
               </Button>
             </div>
