@@ -4,9 +4,11 @@ import { Button } from "@/components/Button";
 import heroGym1 from "@/assets/hero-gym-1.jpg";
 import heroCardio2 from "@/assets/hero-cardio-2.jpg";
 import heroMma3 from "@/assets/hero-mma-3.jpg";
+import useScrollAnimation from "../../hooks/useScrollAnimation";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [heroRef, heroVisible] = useScrollAnimation({ threshold: 0.2 });
 
   const slides = [
     {
@@ -49,7 +51,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-screen overflow-hidden">
+    <section ref={heroRef as React.RefObject<HTMLDivElement>} className="relative h-screen overflow-hidden">
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -69,11 +71,11 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="fade-in-up animate">
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight">
+          <div className={`${heroVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight gradient-animate">
               {slides[currentSlide].title}
             </h1>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 text-golden-accent">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 text-accent-primary">
               {slides[currentSlide].subtitle}
             </h2>
             <p className="text-lg sm:text-xl text-warm-beige mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -116,7 +118,7 @@ const HeroSection = () => {
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-golden-accent" : "bg-white/30 hover:bg-white/50"
+              index === currentSlide ? "bg-accent-primary" : "bg-white/30 hover:bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

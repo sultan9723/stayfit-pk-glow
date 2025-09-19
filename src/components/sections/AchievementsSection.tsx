@@ -106,7 +106,7 @@ const AchievementsSection = () => {
     <section ref={sectionRef} className="py-20 bg-gradient-to-r from-navy-primary via-muted to-navy-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
+          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Our Achievements
           </h2>
           <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
@@ -120,7 +120,7 @@ const AchievementsSection = () => {
               key={index} 
               className="text-center group hover:-translate-y-2 transition-all duration-500"
             >
-              <div className="bg-gradient-card rounded-2xl p-8 shadow-elegant hover:shadow-golden transition-all duration-500">
+              <div className="bg-gradient-card rounded-2xl p-8 shadow-elegant hover:shadow-accent transition-all duration-500">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-golden rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
                   <achievement.icon className="w-8 h-8 text-navy-primary" />
                 </div>
@@ -131,7 +131,7 @@ const AchievementsSection = () => {
                   </h3>
                 </div>
 
-                <p className="text-xl font-semibold text-golden-accent mb-2">
+                <p className="text-xl font-semibold text-accent-primary mb-2">
                   {achievement.label}
                 </p>
 
@@ -163,7 +163,7 @@ const AchievementsSection = () => {
               <div key={index} className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-white-text font-medium">{metric.label}</span>
-                  <span className="text-golden-accent font-bold">{metric.percentage}%</span>
+                  <span className="text-accent-primary font-bold">{metric.percentage}%</span>
                 </div>
                 <div className="w-full bg-gray-700 rounded-full h-3">
                   <div 

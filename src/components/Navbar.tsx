@@ -65,8 +65,8 @@ const Navbar = () => {
                 to={item.path}
                 className={`relative px-3 py-2 rounded-lg transition-all duration-300 ${
                   isActivePath(item.path)
-                    ? "text-golden-accent"
-                    : "text-dark-brown dark:text-white hover:text-golden-accent"
+                    ? "text-accent-primary"
+                    : "text-dark-brown dark:text-white hover:text-accent-primary"
                 }`}
               >
                 {item.name}
@@ -82,7 +82,7 @@ const Navbar = () => {
               className="ml-4 p-2 rounded-lg bg-light-wood dark:bg-dark-brown hover:bg-wood-brown dark:hover:bg-coffee-brown transition"
             >
               {darkMode ? (
-                <Sun className="w-5 h-5 text-golden-accent" />
+                <Sun className="w-5 h-5 text-accent-primary" />
               ) : (
                 <Moon className="w-5 h-5 text-dark-brown" />
               )}
@@ -97,14 +97,14 @@ const Navbar = () => {
               className="mr-3 p-2 rounded-lg bg-light-wood dark:bg-dark-brown"
             >
               {darkMode ? (
-                <Sun className="w-5 h-5 text-golden-accent" />
+                <Sun className="w-5 h-5 text-accent-primary" />
               ) : (
                 <Moon className="w-5 h-5 text-dark-brown" />
               )}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-dark-brown dark:text-white hover:text-golden-accent transition-colors duration-200"
+              className="text-dark-brown dark:text-white hover:text-accent-primary transition-colors duration-200"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -122,8 +122,8 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className={`block px-3 py-2 rounded-lg transition-all duration-300 ${
                     isActivePath(item.path)
-                      ? "text-golden-accent"
-                      : "text-dark-brown dark:text-white hover:text-golden-accent"
+                      ? "text-accent-primary"
+                      : "text-dark-brown dark:text-white hover:text-accent-primary"
                   }`}
                 >
                   {item.name}

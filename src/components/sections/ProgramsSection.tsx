@@ -6,12 +6,15 @@ import stayfitData from "../../../data/stayfit_content.json";
 
 const ProgramsSection = () => {
   const { programs } = stayfitData;
+  
+  // Optional button configuration
+  const showButtons = true; // Set to false to hide all action buttons
 
   return (
     <section className="py-20 bg-very-dark-brown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
+          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Programs & Classes
           </h2>
           <p className="text-xl text-warm-beige max-w-3xl mx-auto leading-relaxed">
@@ -22,9 +25,9 @@ const ProgramsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (
-            <Card key={index} className="card-elegant group hover:shadow-golden transition-all duration-500 hover:-translate-y-2 relative">
+            <Card key={index} className="card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative">
               {program.popular && (
-                <Badge className="absolute -top-3 left-6 bg-gradient-golden text-very-dark-brown font-semibold px-4 py-1">
+                <Badge className="absolute -top-3 left-6 bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1">
                   <Star className="w-4 h-4 mr-1" />
                   Popular
                 </Badge>
@@ -52,7 +55,7 @@ const ProgramsSection = () => {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="border-golden-accent text-golden-accent">
+                  <Badge variant="outline" className="border-accent-primary text-accent-primary">
                     {program.level}
                   </Badge>
                 </div>
@@ -60,26 +63,30 @@ const ProgramsSection = () => {
                 <ul className="space-y-2">
                   {program.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center text-sm text-warm-beige">
-                      <div className="w-2 h-2 bg-golden-accent rounded-full mr-3" />
+                      <div className="w-2 h-2 bg-accent-primary rounded-full mr-3" />
                       {feature}
                     </li>
                   ))}
                 </ul>
 
-                <Button variant="primary" size="md" className="w-full group-hover:shadow-golden transition-all duration-300">
-                  Book Now
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                {showButtons && (
+                  <Button variant="primary" size="md" className="w-full group-hover:shadow-accent transition-all duration-300">
+                    Book Now
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button variant="secondary" size="md">
-            View All Programs
-          </Button>
-        </div>
+        {showButtons && (
+          <div className="text-center mt-12">
+            <Button variant="secondary" size="md">
+              View All Programs
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

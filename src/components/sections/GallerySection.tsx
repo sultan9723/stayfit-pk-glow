@@ -83,7 +83,7 @@ const GallerySection = () => {
     <section className="py-20 bg-gradient-to-br from-dark-brown to-very-dark-brown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
+          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Gallery Highlights
           </h2>
           <p className="text-xl text-warm-beige max-w-3xl mx-auto leading-relaxed">
@@ -112,7 +112,7 @@ const GallerySection = () => {
           {filteredImages.map((image, index) => (
             <div
               key={index}
-              className="relative group cursor-pointer overflow-hidden rounded-xl bg-gradient-card shadow-elegant hover:shadow-golden transition-all duration-500 hover:-translate-y-2"
+              className="relative group cursor-pointer overflow-hidden rounded-xl bg-gradient-card shadow-elegant hover:shadow-accent transition-all duration-500 hover:-translate-y-2"
               onClick={() => openLightbox(index)}
             >
               <img

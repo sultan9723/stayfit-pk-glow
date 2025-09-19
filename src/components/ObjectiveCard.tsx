@@ -54,7 +54,7 @@ const ObjectiveCard = ({ title, subtitle }: ObjectiveCardProps) => {
 
         {/* Content */}
         <div className="relative z-10 text-center" style={{ transform: "translateZ(30px)" }}>
-          <div className="mx-auto mb-4 h-12 w-12 rounded-xl bg-gradient-to-br from-golden-accent to-golden-yellow shadow-golden" />
+          <div className="mx-auto mb-4 h-12 w-12 rounded-xl bg-gradient-to-br from-accent-primary to-accent-secondary shadow-accent" />
           <h3 className="text-lg font-bold text-white-text">{title}</h3>
           {subtitle ? (
             <p className="text-gray-muted text-sm mt-1">{subtitle}</p>

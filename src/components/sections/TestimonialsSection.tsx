@@ -53,7 +53,7 @@ const TestimonialsSection = () => {
     <section className="py-20 bg-navy-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
+          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Success Stories
           </h2>
           <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
@@ -101,7 +101,7 @@ const TestimonialsSection = () => {
                   <div className="space-y-4">
                     <div className="flex items-center mb-4">
                       {Array.from({ length: testimonials[currentTestimonial].rating }).map((_, i) => (
-                        <Star key={i} className="w-5 h-5 text-golden-accent fill-current" />
+                        <Star key={i} className="w-5 h-5 text-accent-primary fill-current" />
                       ))}
                     </div>
 
@@ -109,11 +109,11 @@ const TestimonialsSection = () => {
                       "{testimonials[currentTestimonial].quote}"
                     </blockquote>
 
-                    <div className="border-l-4 border-golden-accent pl-4">
+                    <div className="border-l-4 border-accent-primary pl-4">
                       <h4 className="text-xl font-semibold text-white-text">
                         {testimonials[currentTestimonial].name}
                       </h4>
-                      <p className="text-golden-accent font-medium">
+                      <p className="text-accent-primary font-medium">
                         {testimonials[currentTestimonial].transformation}
                       </p>
                       <p className="text-gray-muted text-sm">
@@ -163,7 +163,7 @@ const TestimonialsSection = () => {
                 className="w-full h-32 object-cover rounded-lg transition-all duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-very-dark-brown/40 rounded-lg flex items-center justify-center group-hover:bg-very-dark-brown/20 transition-colors duration-300">
-                <Play className="w-6 h-6 text-golden-accent" />
+                <Play className="w-6 h-6 text-accent-primary" />
               </div>
               <div className="absolute bottom-2 left-2 right-2">
                 <p className="text-white text-xs font-medium truncate">

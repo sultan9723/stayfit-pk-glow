@@ -62,7 +62,7 @@ const NewsletterSection = () => {
     <section className="py-20 bg-gradient-to-r from-navy-primary via-muted to-navy-primary">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
+          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Stay Connected with StayFit.pk
           </h2>
           <p className="text-xl text-gray-muted leading-relaxed">
@@ -116,7 +116,7 @@ const NewsletterSection = () => {
                         placeholder="Enter your email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-white/10 border-white/20 text-white-text placeholder:text-gray-muted focus:border-golden-accent focus:ring-golden-accent"
+                        className="bg-white/10 border-white/20 text-white-text placeholder:text-gray-muted focus:border-accent-primary focus:ring-golden-accent"
                         required
                       />
                       
@@ -186,7 +186,7 @@ const NewsletterSection = () => {
         {/* Social Proof */}
         <div className="text-center mt-12">
           <p className="text-gray-muted mb-4">
-            Join <span className="text-golden-accent font-semibold">2,500+</span> fitness enthusiasts 
+            Join <span className="text-accent-primary font-semibold">2,500+</span> fitness enthusiasts 
             who get our weekly newsletter
           </p>
           

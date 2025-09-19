@@ -1,5 +1,14 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, Clock } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Youtube,
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Dumbbell,
+} from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
@@ -20,12 +29,11 @@ const Footer = () => {
     <footer className="bg-gradient-to-r from-very-dark-brown to-dark-brown border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
           {/* Logo & Description */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center space-x-2">
-              <img src="/stayfit.png" alt="StayFit Logo" className="h-10 md:h-12 w-auto" />
-              <span className="text-golden-accent font-bold text-xl">StayFit</span>
+              <Dumbbell className="w-8 h-8 text-accent-primary" />
+              <span className="text-gradient-accent font-bold text-xl">StayFit.pk</span>
             </Link>
             <p className="text-warm-beige text-sm leading-relaxed">
               Transform your fitness journey with StayFit — Pakistan's premier fitness center. 
@@ -38,7 +46,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-warm-beige hover:text-golden-accent transition-colors duration-300"
+                  className="text-warm-beige hover:text-accent-primary transition-colors duration-300"
                   aria-label={social.name}
                 >
                   <social.icon className="w-5 h-5" />
@@ -55,7 +63,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.path}
-                    className="text-warm-beige hover:text-golden-accent transition-colors duration-300 text-sm"
+                    className="text-warm-beige hover:text-accent-primary transition-colors duration-300 text-sm"
                   >
                     {link.name}
                   </Link>
@@ -69,18 +77,24 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Contact Info</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-golden-accent" />
+                <MapPin className="w-4 h-4 text-accent-primary flex-shrink-0" />
                 <span className="text-warm-beige">Rawalpindi, Pakistan</span>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-golden-accent" />
-                <a href="tel:+923330711555" className="text-warm-beige hover:text-golden-accent transition-colors">
+                <Phone className="w-4 h-4 text-accent-primary flex-shrink-0" />
+                <a
+                  href="tel:+923330711555"
+                  className="text-warm-beige hover:text-accent-primary transition-colors"
+                >
                   +92 333 0711555
                 </a>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-golden-accent" />
-                <a href="mailto:info@stayfit.com" className="text-warm-beige hover:text-golden-accent transition-colors">
+                <Mail className="w-4 h-4 text-accent-primary flex-shrink-0" />
+                <a
+                  href="mailto:info@stayfit.com"
+                  className="text-warm-beige hover:text-accent-primary transition-colors"
+                >
                   info@stayfit.com
                 </a>
               </li>
@@ -111,7 +125,10 @@ const Footer = () => {
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
           <p className="text-warm-beige text-sm">
             © {new Date().getFullYear()} StayFit.pk. All rights reserved. | 
-            <Link to="/privacy" className="hover:text-golden-accent transition-colors duration-300 ml-1">
+            <Link
+              to="/privacy"
+              className="hover:text-accent-primary transition-colors duration-300 ml-1"
+            >
               Privacy Policy
             </Link>
           </p>

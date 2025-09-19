@@ -8,12 +8,15 @@ import stayfitData from "../../../data/stayfit_content.json";
 const TrainersSection = () => {
   const { male_trainers, female_trainers } = stayfitData;
   const allTrainers = [...male_trainers, ...female_trainers];
+  
+  // Optional button configuration
+  const showButtons = true; // Set to false to hide all action buttons
 
   return (
     <section className="py-20 bg-gradient-to-br from-muted to-navy-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
+          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Meet Our Expert Trainers
           </h2>
           <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
@@ -24,13 +27,13 @@ const TrainersSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {allTrainers.map((trainer, index) => (
-            <Card key={index} className="card-elegant group hover:shadow-golden transition-all duration-500 hover:-translate-y-2">
+            <Card key={index} className="card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2">
               <CardContent className="p-6">
                 <div className="relative mb-6">
                   <img
                     src={trainer.image}
                     alt={`${trainer.name} - ${trainer.specialty} trainer at StayFit.pk`}
-                    className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-golden-accent/20 group-hover:border-golden-accent transition-colors duration-300"
+                    className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-accent-primary/20 group-hover:border-accent-primary transition-colors duration-300"
                   />
                   
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
@@ -45,12 +48,12 @@ const TrainersSection = () => {
                   <h3 className="text-xl font-semibold text-white-text mb-1">
                     {trainer.name}
                   </h3>
-                  <p className="text-golden-accent font-medium mb-2">
+                  <p className="text-accent-primary font-medium mb-2">
                     {trainer.role}
                   </p>
                   
                   <div className="flex items-center justify-center mb-3">
-                    <Star className="w-4 h-4 text-golden-accent fill-current" />
+                    <Star className="w-4 h-4 text-accent-primary fill-current" />
                     <span className="text-white-text font-medium ml-1">
                       {trainer.rating}
                     </span>
@@ -73,37 +76,41 @@ const TrainersSection = () => {
                   <div className="flex items-center justify-center space-x-3">
                     <a
                       href="#"
-                      className="text-gray-muted hover:text-golden-accent transition-colors duration-300"
+                      className="text-gray-muted hover:text-accent-primary transition-colors duration-300"
                       aria-label={`${trainer.name} Instagram`}
                     >
                       <Instagram className="w-5 h-5" />
                     </a>
                     <a
                       href="#"
-                      className="text-gray-muted hover:text-golden-accent transition-colors duration-300"
+                      className="text-gray-muted hover:text-accent-primary transition-colors duration-300"
                       aria-label={`${trainer.name} LinkedIn`}
                     >
                       <Linkedin className="w-5 h-5" />
                     </a>
                   </div>
 
-                  <Button variant="secondary" size="sm" className="w-full">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Book Session
-                  </Button>
+                  {showButtons && (
+                    <Button variant="secondary" size="sm" className="w-full">
+                      <Calendar className="w-4 h-4 mr-2" />
+                      Book Session
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button variant="primary" size="md" asChild>
-            <Link to="/trainers">
-              View All Trainers
-            </Link>
-          </Button>
-        </div>
+        {showButtons && (
+          <div className="text-center mt-12">
+            <Button variant="primary" size="md" asChild>
+              <Link to="/trainers">
+                View All Trainers
+              </Link>
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -20,7 +20,7 @@ const BlogSection = () => {
     <section className="py-20 bg-navy-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
+          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Latest News
           </h2>
           <p className="text-xl text-gray-muted max-w-3xl mx-auto leading-relaxed">
@@ -31,7 +31,7 @@ const BlogSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blog_posts.map((post, index) => (
-            <Card key={index} className="card-elegant group hover:shadow-golden transition-all duration-500 hover:-translate-y-2">
+            <Card key={index} className="card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2">
               <div className="relative overflow-hidden rounded-t-2xl">
                 <img
                   src={post.image}
@@ -46,7 +46,7 @@ const BlogSection = () => {
               </div>
 
               <CardHeader className="pb-3">
-                <h3 className="text-xl font-semibold text-white-text leading-tight group-hover:text-golden-accent transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-white-text leading-tight group-hover:text-accent-primary transition-colors duration-300">
                   {post.title}
                 </h3>
               </CardHeader>
