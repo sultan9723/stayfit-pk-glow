@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Dumbbell, Facebook, Instagram, Twitter, Youtube, MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Facebook, Instagram, Youtube, MapPin, Phone, Mail, Clock } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
@@ -7,32 +7,28 @@ const Footer = () => {
     { name: "Trainers", path: "/trainers" },
     { name: "Pricing", path: "/pricing" },
     { name: "Blog", path: "/blog" },
+    { name: "Privacy Policy", path: "/privacy" },
   ];
 
   const socialLinks = [
-
-    { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/share/16znbiAdTF/?mibextid=wwXIfr" },
-    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/stayfitpakistan?igsh=MXZzdzN4b2s2dTdkdw==" },
-    { name: "YouTube", icon: Youtube, url: "https://youtube.com/@stayfitpakistan1?si=18jr5bMp-vZA5-of" },
-
-    { name: "Facebook", icon: Facebook, url: "https://facebook.com/stayfitpk" },
-    { name: "Instagram", icon: Instagram, url: "https://instagram.com/stayfitpk" },
-    { name: "YouTube", icon: Youtube, url: "https://youtube.com/stayfitpk" },
-
+    { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/stayfitpk" },
+    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/stayfitpk" },
+    { name: "YouTube", icon: Youtube, url: "https://www.youtube.com/@stayfitpakistan1" },
   ];
 
   return (
     <footer className="bg-gradient-to-r from-very-dark-brown to-dark-brown border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
           {/* Logo & Description */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-2 text-golden-accent font-bold text-xl">
-              <Dumbbell className="w-8 h-8" />
-              <span className="text-gradient-golden">StayFit</span>
+            <Link to="/" className="flex items-center space-x-2">
+              <img src="/stayfit.png" alt="StayFit Logo" className="h-10 md:h-12 w-auto" />
+              <span className="text-golden-accent font-bold text-xl">StayFit</span>
             </Link>
             <p className="text-warm-beige text-sm leading-relaxed">
-              Transform your fitness journey with StayFit.pk - Pakistan's premier fitness center. 
+              Transform your fitness journey with StayFit — Pakistan's premier fitness center. 
               Expert trainers, state-of-the-art equipment, and personalized programs in Rawalpindi.
             </p>
             <div className="flex space-x-4">
@@ -65,36 +61,28 @@ const Footer = () => {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  to="/privacy"
-                  className="text-gray-muted hover:text-golden-accent transition-colors duration-300 text-sm"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
             <h3 className="text-white font-semibold mb-4">Contact Info</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 text-sm">
               <li className="flex items-center space-x-3">
-                <MapPin className="w-4 h-4 text-golden-accent flex-shrink-0" />
-                <span className="text-warm-beige text-sm">Rawalpindi, Pakistan</span>
+                <MapPin className="w-4 h-4 text-golden-accent" />
+                <span className="text-warm-beige">Rawalpindi, Pakistan</span>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-golden-accent flex-shrink-0" />
-
-                <span className="text-warm-beige text-sm">+92-333-0711555</span>
-
-                <span className="text-warm-beige text-sm">(+92) 3330711555</span>
-
+                <Phone className="w-4 h-4 text-golden-accent" />
+                <a href="tel:+923330711555" className="text-warm-beige hover:text-golden-accent transition-colors">
+                  +92 333 0711555
+                </a>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail className="w-4 h-4 text-golden-accent flex-shrink-0" />
-                <span className="text-warm-beige text-sm">info@stayfit.com</span>
+                <Mail className="w-4 h-4 text-golden-accent" />
+                <a href="mailto:info@stayfit.com" className="text-warm-beige hover:text-golden-accent transition-colors">
+                  info@stayfit.com
+                </a>
               </li>
             </ul>
           </div>
@@ -102,18 +90,18 @@ const Footer = () => {
           {/* Business Hours */}
           <div>
             <h3 className="text-white font-semibold mb-4">Business Hours</h3>
-            <ul className="space-y-2">
-              <li className="flex items-center justify-between">
-                <span className="text-warm-beige text-sm">Mon - Fri</span>
-                <span className="text-white text-sm font-medium">6:00 AM - 10:00 PM</span>
+            <ul className="space-y-2 text-sm">
+              <li className="flex justify-between">
+                <span className="text-warm-beige">Mon - Fri</span>
+                <span className="text-white font-medium">6:00 AM - 10:00 PM</span>
               </li>
-              <li className="flex items-center justify-between">
-                <span className="text-warm-beige text-sm">Saturday</span>
-                <span className="text-white text-sm font-medium">7:00 AM - 8:00 PM</span>
+              <li className="flex justify-between">
+                <span className="text-warm-beige">Saturday</span>
+                <span className="text-white font-medium">7:00 AM - 8:00 PM</span>
               </li>
-              <li className="flex items-center justify-between">
-                <span className="text-warm-beige text-sm">Sunday</span>
-                <span className="text-white text-sm font-medium">7:00 AM - 8:00 PM</span>
+              <li className="flex justify-between">
+                <span className="text-warm-beige">Sunday</span>
+                <span className="text-white font-medium">7:00 AM - 8:00 PM</span>
               </li>
             </ul>
           </div>
@@ -122,7 +110,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
           <p className="text-warm-beige text-sm">
-            © {new Date().getFullYear()} StayFit . All rights reserved. | 
+            © {new Date().getFullYear()} StayFit.pk. All rights reserved. | 
             <Link to="/privacy" className="hover:text-golden-accent transition-colors duration-300 ml-1">
               Privacy Policy
             </Link>

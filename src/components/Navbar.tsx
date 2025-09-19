@@ -53,7 +53,7 @@ const Navbar = () => {
             <img
               src="/stayfit.png"
               alt="StayFit Logo"
-              className="h-10 w-auto dark:invert"
+              className="h-12 md:h-16 w-auto dark:invert"
             />
           </Link>
 

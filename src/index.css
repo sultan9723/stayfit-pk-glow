@@ -30,6 +30,10 @@
     --mahogany: 30 35% 14%;            /* Mahogany #251b11 */
     --black-coffee: 30 50% 5%;         /* Black Coffee #140b06 */
     --espresso: 30 40% 8%;             /* Espresso #1d130a */
+
+    /* 🔹 New Bronze Colors */
+    --bronze-primary: 30 45% 45%;      /* Bronze */
+    --bronze-dark: 30 50% 30%;         /* Dark Bronze */
   }
 
   /* Alternative Color Schemes - All Warm Earthy Variants */
@@ -107,6 +111,10 @@
     --gradient-golden: linear-gradient(135deg, hsl(var(--golden-accent)), hsl(var(--golden-accent) / 0.8));
     --gradient-green: linear-gradient(135deg, hsl(var(--green-secondary)), hsl(var(--green-secondary) / 0.8));
     --gradient-card: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(var(--navy-primary) / 0.9));
+
+    /* 🔹 New Bronze Gradient + Shadow */
+    --gradient-bronze: linear-gradient(135deg, hsl(var(--golden-accent)) 0%, hsl(var(--bronze-primary)) 50%, hsl(var(--bronze-dark)) 100%);
+    --shadow-bronze: 0 10px 30px -5px hsl(var(--bronze-primary) / 0.4);
     
     /* Shadows */
     --shadow-golden: 0 10px 30px -5px hsl(var(--golden-accent) / 0.3);
@@ -178,4 +186,3 @@
     @apply opacity-100 translate-y-0;
   }
 }
-
