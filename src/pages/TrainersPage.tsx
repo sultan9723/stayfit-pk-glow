@@ -119,7 +119,7 @@ const TrainersPage = () => {
     <>
       <Helmet>
         <title>
-          Expert Trainers - StayFit.pk | Certified Fitness Professionals
+          Expert Trainers - StayFit | Certified Fitness Professionals
         </title>
         <meta
           name="description"
