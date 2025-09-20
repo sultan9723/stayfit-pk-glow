@@ -15,26 +15,26 @@
     --gray-muted: 0 0% 60%;            /* Gray #9a9a9a */
 
     /* Professional Accent Colors - Matching Gym Theme */
-    --deep-brown: 30 30% 30%;          /* Deep Brown #6c5237 */
-    --coffee-brown: 30 25% 32%;        /* Coffee Brown #6e5439 */
-    --very-dark-brown: 30 60% 3%;      /* Very Dark Brown #0e0602 */
-    --light-wood: 30 20% 45%;          /* Light Wood/Tan #957755 */
-    --warm-beige: 30 20% 46%;          /* Warm Beige #967856 */
-    --wood-brown: 30 20% 47%;          /* Wood Brown #977957 */
-    --sandstone: 30 20% 44%;           /* Sandstone #947654 */
-    --dark-brown: 30 40% 12%;          /* Dark Brown #281c10 */
-    --dark-chocolate: 30 40% 11%;      /* Dark Chocolate #271b0f */
-    --accent-light: 30 15% 60%;        /* Light Beige #a59685 */
-    --accent-dark: 30 20% 40%;         /* Dark Tan #7a6a5a */
-    --dark-coffee: 30 35% 12%;         /* Dark Coffee #23190f */
-    --walnut: 30 35% 13%;              /* Walnut #22180e */
-    --mahogany: 30 35% 14%;            /* Mahogany #251b11 */
-    --black-coffee: 30 50% 5%;         /* Black Coffee #140b06 */
-    --espresso: 30 40% 8%;             /* Espresso #1d130a */
+    --deep-brown: 30 30% 30%;
+    --coffee-brown: 30 25% 32%;
+    --very-dark-brown: 30 60% 3%;
+    --light-wood: 30 20% 45%;
+    --warm-beige: 30 20% 46%;
+    --wood-brown: 30 20% 47%;
+    --sandstone: 30 20% 44%;
+    --dark-brown: 30 40% 12%;
+    --dark-chocolate: 30 40% 11%;
+    --accent-light: 30 15% 60%;
+    --accent-dark: 30 20% 40%;
+    --dark-coffee: 30 35% 12%;
+    --walnut: 30 35% 13%;
+    --mahogany: 30 35% 14%;
+    --black-coffee: 30 50% 5%;
+    --espresso: 30 40% 8%;
 
     /* 🔹 New Bronze Colors */
-    --bronze-primary: 30 45% 45%;      /* Bronze */
-    --bronze-dark: 30 50% 30%;         /* Dark Bronze */
+    --bronze-primary: 30 45% 45%;
+    --bronze-dark: 30 50% 30%;
   }
 
   /* Core Theme Variables */
@@ -118,6 +118,20 @@
 
   .btn-hero-secondary {
     @apply bg-gradient-to-r from-warm-beige to-wood-brown text-very-dark-brown font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-elegant transition-all duration-300 hover:scale-105;
+  }
+
+  /* 👇 NEW: Program Buttons */
+  .btn-program {
+    @apply bg-warm-beige text-very-dark-brown font-semibold rounded-lg 
+           py-3 px-6 transition-all duration-300 ease-out shadow-md;
+  }
+
+  .btn-program:hover {
+    @apply bg-accent-primary text-white shadow-accent scale-105;
+  }
+
+  .btn-program:active {
+    @apply bg-accent-dark text-white shadow-inner scale-95;
   }
 
   /* Cards */

@@ -25,7 +25,10 @@ const ProgramsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (
-            <Card key={index} className="card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative">
+            <Card
+              key={index}
+              className="card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative"
+            >
               {program.popular && (
                 <Badge className="absolute -top-3 left-6 bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1">
                   <Star className="w-4 h-4 mr-1" />
@@ -62,7 +65,10 @@ const ProgramsSection = () => {
 
                 <ul className="space-y-2">
                   {program.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-warm-beige">
+                    <li
+                      key={featureIndex}
+                      className="flex items-center text-sm text-warm-beige"
+                    >
                       <div className="w-2 h-2 bg-accent-primary rounded-full mr-3" />
                       {feature}
                     </li>
@@ -70,7 +76,11 @@ const ProgramsSection = () => {
                 </ul>
 
                 {showButtons && (
-                  <Button variant="primary" size="md" className="w-full group-hover:shadow-accent transition-all duration-300">
+                  <Button
+                    variant="primary"
+                    size="md"
+                    className="w-full group-hover:shadow-accent transition-all duration-300 btn-program"
+                  >
                     Book Now
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
@@ -82,7 +92,7 @@ const ProgramsSection = () => {
 
         {showButtons && (
           <div className="text-center mt-12">
-            <Button variant="secondary" size="md">
+            <Button variant="secondary" size="md" className="btn-program">
               View All Programs
             </Button>
           </div>
