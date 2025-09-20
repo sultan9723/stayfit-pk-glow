@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import PricingPlans from "@/components/sections/PricingPlans";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import ObjectiveCard from "@/components/ObjectiveCard";
 
 const PricingPage = () => {
   return (
@@ -24,20 +23,32 @@ const PricingPage = () => {
           </div>
         </section>
 
-        {/* Objectives */}
-        <section className="py-12 bg-navy-primary">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8 text-gradient-accent">
+        {/* Objectives - Minimal & Clean */}
+        <section className="py-16 bg-navy-primary">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12 text-gradient-accent">
               What You Can Achieve
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
               {[
-                { title: "Become Fit" },
-                { title: "Weight Loss" },
-                { title: "Tone Up My Body" },
-                { title: "Release The Stress" },
-              ].map((item) => (
-                <ObjectiveCard key={item.title} title={item.title} />
+                { title: "Become Fit", icon: "💪" },
+                { title: "Weight Loss", icon: "⚖️" },
+                { title: "Tone Up My Body", icon: "🏋️" },
+                { title: "Release The Stress", icon: "🧘" },
+              ].map((item, index) => (
+                <div 
+                  key={item.title}
+                  className="text-center group hover:-translate-y-2 transition-all duration-300"
+                >
+                  <div className="bg-gradient-to-br from-navy-primary to-very-dark-brown rounded-xl p-6 border border-accent-primary/20 hover:border-accent-primary/40 transition-colors duration-300">
+                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-white group-hover:text-accent-primary transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

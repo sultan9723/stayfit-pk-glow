@@ -40,7 +40,7 @@ const ObjectiveCard = ({ title, subtitle }: ObjectiveCardProps) => {
     >
       <div
         className="relative card-elegant p-6 rounded-2xl will-change-transform transition-transform duration-200"
-        style={{ transform: transformStyle, transformStyle: "preserve-3d" as any }}
+        style={{ transform: transformStyle, transformStyle: "preserve-3d" }}
       >
         {/* Glow border */}
         <div

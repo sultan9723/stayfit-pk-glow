@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Users, Award, Clock, TrendingUp } from "lucide-react";
 
 const AchievementsSection = () => {
@@ -43,7 +43,7 @@ const AchievementsSection = () => {
     }
   ];
 
-  const animateCounters = () => {
+  const animateCounters = useCallback(() => {
     if (hasAnimated) return;
     
     achievements.forEach((achievement, index) => {
@@ -67,9 +67,12 @@ const AchievementsSection = () => {
     });
 
     setHasAnimated(true);
-  };
+  }, [hasAnimated, achievements]);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
+    if (!currentRef) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -81,16 +84,14 @@ const AchievementsSection = () => {
       { threshold: 0.5 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    observer.observe(currentRef);
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
-  }, [hasAnimated]);
+  }, [hasAnimated, animateCounters]);
 
   const getCountValue = (index: number) => {
     switch (index) {

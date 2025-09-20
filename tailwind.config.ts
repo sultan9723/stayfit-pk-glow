@@ -46,6 +46,10 @@ export default {
         "black-coffee": "hsl(var(--black-coffee))",
         "espresso": "hsl(var(--espresso))",
         
+        // Bronze colors
+        "bronze-primary": "hsl(var(--bronze-primary))",
+        "bronze-dark": "hsl(var(--bronze-dark))",
+        
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -111,13 +115,15 @@ export default {
         "gradient-accent": "var(--gradient-accent)",
         "gradient-green": "var(--gradient-green)",
         "gradient-card": "var(--gradient-card)",
+        "gradient-bronze": "var(--gradient-bronze)",
       },
       boxShadow: {
         "accent": "var(--shadow-accent)",
         "green": "var(--shadow-green)",
         "elegant": "var(--shadow-elegant)",
+        "bronze": "var(--shadow-bronze)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [import("tailwindcss-animate")],
 } satisfies Config;

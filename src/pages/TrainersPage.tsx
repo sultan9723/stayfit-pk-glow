@@ -18,7 +18,7 @@ import {
   Filter,
   Search,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import stayfitData from "../../data/stayfit_content.json";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
@@ -27,6 +27,13 @@ const TrainersPage = () => {
   const allTrainers = [...male_trainers, ...female_trainers];
   const [selectedSpecialty, setSelectedSpecialty] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [hasAnimatedStats, setHasAnimatedStats] = useState(false);
+  const [animatedValues, setAnimatedValues] = useState({
+    clients: 0,
+    stories: 0,
+    certifications: 0,
+    experience: 0
+  });
 
   const showButtons = true;
 
@@ -38,11 +45,48 @@ const TrainersPage = () => {
   const [ctaRef, ctaVisible] = useScrollAnimation({ threshold: 0.3 });
 
   const trainerStats = [
-    { icon: Users, label: "Total Clients", value: "2,000+" },
-    { icon: Trophy, label: "Success Stories", value: "1,500+" },
-    { icon: Award, label: "Certifications", value: "25+" },
-    { icon: Target, label: "Years Experience", value: "50+" },
+    { icon: Users, label: "Total Clients", value: "2,000+", targetValue: 2000 },
+    { icon: Trophy, label: "Success Stories", value: "1,500+", targetValue: 1500 },
+    { icon: Award, label: "Certifications", value: "25+", targetValue: 25 },
+    { icon: Target, label: "Years Experience", value: "50+", targetValue: 50 },
   ];
+
+  // Counter animation function
+  const animateCounters = useCallback(() => {
+    if (hasAnimatedStats) return;
+    
+    const targets = { clients: 2000, stories: 1500, certifications: 25, experience: 50 };
+    const duration = 2500; // 2.5 seconds
+    const steps = 60;
+    
+    Object.keys(targets).forEach((key, index) => {
+      const targetValue = targets[key as keyof typeof targets];
+      const increment = targetValue / steps;
+      let current = 0;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= targetValue) {
+          current = targetValue;
+          clearInterval(timer);
+        }
+        
+        setAnimatedValues(prev => ({
+          ...prev,
+          [key]: Math.floor(current)
+        }));
+      }, duration / steps);
+    });
+    
+    setHasAnimatedStats(true);
+  }, [hasAnimatedStats]);
+
+  // Trigger animation when stats section is visible
+  useEffect(() => {
+    if (statsVisible && !hasAnimatedStats) {
+      animateCounters();
+    }
+  }, [statsVisible, hasAnimatedStats, animateCounters]);
 
   const specializations = [
     "All",
@@ -95,9 +139,14 @@ const TrainersPage = () => {
                 heroVisible ? "fade-in-up animate" : "fade-in-up"
               }`}
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gradient-accent gradient-animate">
-                Meet Our Expert Trainers
-              </h1>
+              <div className="relative inline-block">
+                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gradient-accent gradient-animate">
+                  Meet Our Expert Trainers
+                </h1>
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-accent-primary/20 rounded-full animate-pulse floating" />
+                <div className="absolute -bottom-2 -right-4 w-6 h-6 bg-accent-secondary/20 rounded-full animate-ping floating" />
+              </div>
               <p className="text-xl md:text-2xl text-warm-beige max-w-4xl mx-auto leading-relaxed">
                 Our certified fitness professionals are dedicated to helping you
                 achieve your goals with personalized guidance, expert knowledge,
@@ -110,24 +159,68 @@ const TrainersPage = () => {
               ref={statsRef as React.RefObject<HTMLDivElement>}
               className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
             >
-              {trainerStats.map((stat, index) => (
-                <Card
-                  key={index}
-                  className={`card-elegant text-center group hover:shadow-accent transition-all duration-300 card-entrance ${
-                    statsVisible ? "animate" : ""
-                  } stagger-${index + 1}`}
-                >
-                  <CardContent className="p-6">
-                    <div className="bg-gradient-accent rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <stat.icon className="w-8 h-8 text-very-dark-brown" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      {stat.value}
-                    </h3>
-                    <p className="text-warm-beige text-sm">{stat.label}</p>
-                  </CardContent>
-                </Card>
-              ))}
+              {trainerStats.map((stat, index) => {
+                const getAnimatedValue = () => {
+                  switch (index) {
+                    case 0: return animatedValues.clients.toLocaleString();
+                    case 1: return animatedValues.stories.toLocaleString();
+                    case 2: return animatedValues.certifications.toLocaleString();
+                    case 3: return animatedValues.experience.toLocaleString();
+                    default: return "0";
+                  }
+                };
+
+                return (
+                  <Card
+                    key={index}
+                    className={`card-elegant text-center group hover:shadow-accent transition-all duration-500 card-entrance hover:-translate-y-3 ${
+                      statsVisible ? "animate" : ""
+                    } stagger-${index + 1}`}
+                  >
+                    <CardContent className="p-6 relative overflow-hidden">
+                      {/* Animated background glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-accent-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg" />
+                      
+                      {/* Icon with enhanced animations */}
+                      <div className="relative mb-6">
+                        <div className="bg-gradient-accent rounded-full w-16 h-16 mx-auto flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg group-hover:shadow-accent glow-pulse">
+                          <stat.icon className="w-8 h-8 text-very-dark-brown group-hover:scale-110 transition-transform duration-300 icon-rotate" />
+                        </div>
+                        
+                        {/* Floating particles effect */}
+                        <div className="absolute -top-2 -right-2 w-3 h-3 bg-accent-primary rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-500" />
+                        <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-accent-secondary rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-500" />
+                      </div>
+                      
+                      {/* Animated counter */}
+                      <div className="relative">
+                        <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-accent-primary transition-colors duration-300">
+                          {getAnimatedValue()}
+                          <span className="text-accent-primary">+</span>
+                        </h3>
+                        
+                        {/* Progress bar animation */}
+                        <div className="w-full h-1 bg-gray-700 rounded-full mb-3 overflow-hidden">
+                          <div 
+                            className="h-full bg-gradient-accent rounded-full transition-all duration-2000 ease-out"
+                            style={{ 
+                              width: statsVisible ? '100%' : '0%',
+                              transitionDelay: `${index * 200}ms`
+                            }}
+                          />
+                        </div>
+                      </div>
+                      
+                      <p className="text-warm-beige text-sm group-hover:text-white transition-colors duration-300 font-medium">
+                        {stat.label}
+                      </p>
+                      
+                      {/* Hover effect border */}
+                      <div className="absolute inset-0 border-2 border-transparent group-hover:border-accent-primary/30 rounded-lg transition-colors duration-500" />
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </section>
