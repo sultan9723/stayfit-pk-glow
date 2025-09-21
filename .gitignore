@@ -25,3 +25,8 @@ dist-ssr
 et --hard abc123
 
 /generated/prisma
+# Environment files
+.env
+
+# Cursor editor configs
+.cursor/
