@@ -38,11 +38,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src="/stayfit.png" 
-              alt="StayFit.pk Logo" 
-              className="h-10 w-auto"
+          <Link to="/" className="flex items-center">
+            <img
+              src="/stayfit.png"
+              alt="StayFit Logo"
+              className="h-12 md:h-16 w-auto dark:invert"
             />
           </Link>
 
@@ -54,6 +54,8 @@ const Navbar = () => {
                 to={item.path}
                 className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActivePath(item.path)
+                    ? "text-accent-primary"
+                    : "text-dark-brown dark:text-white hover:text-accent-primary"
                 }`}
               >
                 {item.name}
@@ -62,8 +64,11 @@ const Navbar = () => {
                 )}
               </Link>
             ))}
-            
-            <Button className="btn-hero-primary text-sm">
+            <Button 
+              variant="primary" 
+              size="sm"
+              className="btn-premium px-6 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+            >
               Join Now
             </Button>
 
@@ -73,7 +78,7 @@ const Navbar = () => {
               className="ml-4 p-2 rounded-lg bg-warm-beige dark:bg-dark-brown hover:bg-wood-brown dark:hover:bg-coffee-brown transition"
             >
               {darkMode ? (
-                <Sun className="w-5 h-5 text-golden-accent" />
+                <Sun className="w-5 h-5 text-accent-primary" />
               ) : (
                 <Moon className="w-5 h-5 text-very-dark-brown" />
               )}
@@ -88,14 +93,14 @@ const Navbar = () => {
               className="mr-3 p-2 rounded-lg bg-warm-beige dark:bg-dark-brown"
             >
               {darkMode ? (
-                <Sun className="w-5 h-5 text-golden-accent" />
+                <Sun className="w-5 h-5 text-accent-primary" />
               ) : (
                 <Moon className="w-5 h-5 text-very-dark-brown" />
               )}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-very-dark-brown dark:text-white hover:text-golden-accent transition-colors duration-200"
+              className="text-dark-brown dark:text-white hover:text-accent-primary transition-colors duration-200"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -113,14 +118,18 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className={`block px-3 py-2 rounded-lg transition-all duration-300 ${
                     isActivePath(item.path)
-                      ? "text-golden-accent"
-                      : "text-very-dark-brown dark:text-white hover:text-golden-accent"
+                      ? "text-accent-primary"
+                      : "text-dark-brown dark:text-white hover:text-accent-primary"
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button variant="outline" className="w-full mt-4">
+              <Button 
+                variant="primary" 
+                size="md"
+                className="btn-premium w-full mt-4 px-6 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+              >
                 Join Now
               </Button>
             </div>

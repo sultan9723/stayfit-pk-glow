@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>StayFit.pk - Premium Fitness Center in Pakistan | Gym, MMA, Cardio & Nutrition</title>
+        <title>StayFit - Premium Fitness Center in Pakistan | Gym, MMA, Cardio & Nutrition</title>
         <meta 
           name="description" 
           content="Transform your fitness journey at StayFit.pk - Pakistan's premier fitness center offering strength training, cardio, MMA, and personalized nutrition programs with expert trainers." 
@@ -34,12 +34,12 @@ const HomePage = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "StayFit.pk Home",
+            "name": "StayFit Home",
             "description": "Transform your fitness journey at Pakistan's premier fitness center",
             "url": "https://stayfit.pk",
             "mainEntity": {
               "@type": "LocalBusiness",
-              "name": "StayFit.pk",
+              "name": "StayFit",
               "description": "Premium fitness center offering strength training, cardio, MMA, and nutrition programs"
             }
           })}

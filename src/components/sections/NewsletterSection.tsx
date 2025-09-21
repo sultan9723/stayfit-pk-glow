@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Mail, Send, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -61,10 +61,10 @@ const NewsletterSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-dark-brown via-warm-beige to-dark-brown">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8" ref={sectionRef}>
-        <div className="text-center mb-16 animate-on-scroll">
-          <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
+    <section className="py-20 bg-gradient-to-r from-navy-primary via-muted to-navy-primary">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Stay Connected with StayFit.pk
           </h2>
           <p className="text-xl text-gray-muted leading-relaxed">
@@ -118,18 +118,20 @@ const NewsletterSection = () => {
                         placeholder="Enter your email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-white/10 border-white/20 text-white-text placeholder:text-gray-muted focus:border-golden-accent focus:ring-golden-accent"
+                        className="bg-white/10 border-white/20 text-white-text placeholder:text-gray-muted focus:border-accent-primary focus:ring-golden-accent"
                         required
                       />
                       
                       <Button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full btn-hero-primary text-lg py-3"
+                        variant="primary"
+                        size="lg"
+                        className="btn-premium w-full px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
                       >
                         {isLoading ? (
                           <>
-                            <div className="w-5 h-5 border-2 border-navy-primary border-t-transparent rounded-full animate-spin mr-2" />
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
                             Subscribing...
                           </>
                         ) : (
@@ -168,13 +170,18 @@ const NewsletterSection = () => {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <Button
                     onClick={() => setIsSubscribed(false)}
-                    variant="outline"
-                    className="border-golden-accent text-golden-accent hover:bg-golden-accent/10"
+                    variant="secondary"
+                    size="md"
+                    className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
                   >
                     Subscribe Another Email
                   </Button>
                   
-                  <Button className="btn-hero-secondary">
+                  <Button 
+                    variant="secondary" 
+                    size="md"
+                    className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                  >
                     Explore Our Programs
                   </Button>
                 </div>
@@ -186,7 +193,7 @@ const NewsletterSection = () => {
         {/* Social Proof */}
         <div className="text-center mt-12">
           <p className="text-gray-muted mb-4">
-            Join <span className="text-golden-accent font-semibold">2,500+</span> fitness enthusiasts 
+            Join <span className="text-accent-primary font-semibold">2,500+</span> fitness enthusiasts 
             who get our weekly newsletter
           </p>
           

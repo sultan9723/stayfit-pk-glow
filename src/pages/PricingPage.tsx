@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet-async";
+import PricingPlans from "@/components/sections/PricingPlans";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 
 const PricingPage = () => {
   return (
@@ -8,19 +10,110 @@ const PricingPage = () => {
         <meta name="description" content="Choose from our flexible and affordable membership plans at StayFit. Find the perfect fitness package for your budget and goals." />
       </Helmet>
       
-      <div className="min-h-screen bg-navy-primary pt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <h1 className="text-4xl font-bold text-center mb-8 text-gradient-golden">
-            Membership Plans
-          </h1>
-          <p className="text-center text-gray-muted mb-12 max-w-2xl mx-auto">
-            Choose the perfect membership plan that fits your lifestyle and budget.
-          </p>
-          {/* Content will be expanded in future iterations */}
-          <div className="text-center">
-            <p className="text-white-text">Pricing content coming soon...</p>
+      <div className="min-h-screen bg-very-dark-brown pt-20">
+        {/* Hero */}
+        <section className="py-16 bg-gradient-to-b from-very-dark-brown to-navy-primary">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-5xl md:text-6xl font-extrabold mb-6 text-gradient-accent">
+              Membership Pricing
+            </h1>
+            <p className="text-xl md:text-2xl text-warm-beige max-w-3xl mx-auto leading-relaxed">
+              Choose the perfect fitness plan for your goals. All memberships include access to our premium facilities and expert guidance.
+            </p>
           </div>
-        </div>
+        </section>
+
+        {/* Objectives - Minimal & Clean */}
+        <section className="py-16 bg-navy-primary">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-center mb-12 text-gradient-accent">
+              What You Can Achieve
+            </h2>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { title: "Become Fit", icon: "💪" },
+                { title: "Weight Loss", icon: "⚖️" },
+                { title: "Tone Up My Body", icon: "🏋️" },
+                { title: "Release The Stress", icon: "🧘" },
+              ].map((item, index) => (
+                <div 
+                  key={item.title}
+                  className="text-center group hover:-translate-y-2 transition-all duration-300"
+                >
+                  <div className="bg-gradient-to-br from-navy-primary to-very-dark-brown rounded-xl p-6 border border-accent-primary/20 hover:border-accent-primary/40 transition-colors duration-300">
+                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-white group-hover:text-accent-primary transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Plans */}
+        <PricingPlans />
+
+        {/* Why Choose Our Plans */}
+        <section className="py-16 bg-navy-primary">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
+                Why Choose StayFit?
+              </h2>
+              <p className="text-xl text-warm-beige max-w-3xl mx-auto">
+                Our membership plans are designed to provide maximum value and results
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Expert Trainers",
+                  description: "Certified professionals with years of experience",
+                  icon: "👨‍💼"
+                },
+                {
+                  title: "Premium Equipment",
+                  description: "State-of-the-art fitness equipment and facilities",
+                  icon: "🏋️‍♂️"
+                },
+                {
+                  title: "Flexible Scheduling",
+                  description: "Work out on your schedule with extended hours",
+                  icon: "⏰"
+                },
+                {
+                  title: "Nutrition Guidance",
+                  description: "Personalized diet plans and nutrition counseling",
+                  icon: "🥗"
+                },
+                {
+                  title: "Community Support",
+                  description: "Join a supportive fitness community",
+                  icon: "👥"
+                },
+                {
+                  title: "Results Guaranteed",
+                  description: "Proven programs that deliver real results",
+                  icon: "🎯"
+                }
+              ].map((benefit, index) => (
+                <div key={index} className="card-elegant p-6 text-center group hover:shadow-accent transition-all duration-300">
+                  <div className="text-4xl mb-4">{benefit.icon}</div>
+                  <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
+                  <p className="text-warm-beige">{benefit.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <TestimonialsSection />
       </div>
     </>
   );

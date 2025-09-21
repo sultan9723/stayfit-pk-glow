@@ -53,7 +53,7 @@ const FAQSection = () => {
     <section className="py-20 bg-gradient-to-br from-navy-primary to-muted">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-gradient-golden">
+          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-gray-muted leading-relaxed">
@@ -70,7 +70,7 @@ const FAQSection = () => {
                 value={`item-${index}`}
                 className="border border-white/10 rounded-xl px-6 bg-white/5 hover:bg-white/10 transition-colors duration-300"
               >
-                <AccordionTrigger className="text-left text-white-text hover:text-golden-accent font-semibold py-6 text-lg hover:no-underline">
+                <AccordionTrigger className="text-left text-white-text hover:text-accent-primary font-semibold py-6 text-lg hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-muted leading-relaxed pb-6 text-base">

@@ -20,13 +20,36 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         
-        // StayFit Brand Colors
+<<<<<<< HEAD
+        // StayFit Brand Colors - Professional Gym Theme
         "navy-primary": "hsl(var(--navy-primary))",
-        "golden-accent": "hsl(var(--golden-accent))",
+        "accent-primary": "hsl(var(--accent-primary))", // Professional Light Beige
+        "accent-secondary": "hsl(var(--accent-secondary))", // Warm Tan
         "green-secondary": "hsl(var(--green-secondary))",
         "white-text": "hsl(var(--white-text))",
         "gray-muted": "hsl(var(--gray-muted))",
         
+        // Additional Earthy Colors
+        "deep-brown": "hsl(var(--deep-brown))",
+        "coffee-brown": "hsl(var(--coffee-brown))",
+        "very-dark-brown": "hsl(var(--very-dark-brown))",
+        "light-wood": "hsl(var(--light-wood))",
+        "warm-beige": "hsl(var(--warm-beige))",
+        "wood-brown": "hsl(var(--wood-brown))",
+        "sandstone": "hsl(var(--sandstone))",
+        "dark-brown": "hsl(var(--dark-brown))",
+        "dark-chocolate": "hsl(var(--dark-chocolate))",
+        "accent-light": "hsl(var(--accent-light))",
+        "accent-dark": "hsl(var(--accent-dark))",
+        "dark-coffee": "hsl(var(--dark-coffee))",
+        "walnut": "hsl(var(--walnut))",
+        "mahogany": "hsl(var(--mahogany))",
+        "black-coffee": "hsl(var(--black-coffee))",
+        "espresso": "hsl(var(--espresso))",
+        
+        // Bronze colors
+        "bronze-primary": "hsl(var(--bronze-primary))",
+        "bronze-dark": "hsl(var(--bronze-dark))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -89,16 +112,18 @@ export default {
       },
       backgroundImage: {
         "gradient-hero": "var(--gradient-hero)",
-        "gradient-golden": "var(--gradient-golden)",
+        "gradient-accent": "var(--gradient-accent)",
         "gradient-green": "var(--gradient-green)",
         "gradient-card": "var(--gradient-card)",
+        "gradient-bronze": "var(--gradient-bronze)",
       },
       boxShadow: {
-        "golden": "var(--shadow-golden)",
+        "accent": "var(--shadow-accent)",
         "green": "var(--shadow-green)",
         "elegant": "var(--shadow-elegant)",
+        "bronze": "var(--shadow-bronze)",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [import("tailwindcss-animate")],
 } satisfies Config;
