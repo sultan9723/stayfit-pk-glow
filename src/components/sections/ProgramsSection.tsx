@@ -28,6 +28,7 @@ const ProgramsSection = () => {
   };
 
   return (
+    <section className="py-20 bg-gradient-to-br from-warm-beige to-light-wood">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
@@ -41,7 +42,6 @@ const ProgramsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (
-<<<<<<< HEAD
             <Card
               key={index}
               className="card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative"
@@ -54,14 +54,23 @@ const ProgramsSection = () => {
               )}
               
               <CardHeader className="pb-4">
+                <h3 className="text-xl font-semibold text-white-text leading-tight group-hover:text-accent-primary transition-colors duration-300">
+                  {program.title}
+                </h3>
+                <p className="text-gray-muted leading-relaxed">
                   {program.description}
                 </p>
               </CardHeader>
 
               <CardContent className="space-y-4">
-                <div className="flex items-center justify-between text-sm">
-                    <Users className="w-4 h-4 mr-2" />
-                    {program.capacity}
+                <div className="flex items-center justify-between text-sm text-gray-muted">
+                  <div className="flex items-center space-x-2">
+                    <Clock className="w-4 h-4" />
+                    <span>{program.duration}</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Users className="w-4 h-4" />
+                    <span>{program.capacity}</span>
                   </div>
                 </div>
 
@@ -104,7 +113,7 @@ const ProgramsSection = () => {
             <Button 
               variant="secondary" 
               size="md" 
-              className="btn-premium w-full md:w-auto group-hover:shadow-accent transition-all duration-300 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown"
+              className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
               onClick={handleViewAllPrograms}
             >
               View All Programs
