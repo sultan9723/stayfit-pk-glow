@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Play, Star, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const TestimonialsSection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -185,7 +186,7 @@ const TestimonialsSection = () => {
                 <Play className="w-6 h-6 text-accent-primary" />
               </div>
               <div className="absolute bottom-2 left-2 right-2">
-                <p className="text-white text-xs font-medium truncate">
+                <p className="text-white-text text-xs font-medium truncate">
                   {testimonial.name}
                 </p>
               </div>

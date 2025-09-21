@@ -10,10 +10,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <div className="fixed top-4 right-4 z-50">
-        <ThemeSwitcher />
-      </div>
+    <div className="min-h-screen bg-white text-foreground">
       <Navbar />
       <main className="relative">
         {children}

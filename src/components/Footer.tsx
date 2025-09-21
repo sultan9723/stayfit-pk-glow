@@ -26,7 +26,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-very-dark-brown to-dark-brown border-t border-white/10">
+    <footer className="bg-gradient-to-r from-dark-brown to-very-dark-brown border-t border-deep-brown/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo & Description */}
@@ -57,7 +57,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-white-text font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -123,7 +123,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
-          <p className="text-warm-beige text-sm">
+          <p className="text-gray-muted text-sm">
             © {new Date().getFullYear()} StayFit.pk. All rights reserved. | 
             <Link
               to="/privacy"
