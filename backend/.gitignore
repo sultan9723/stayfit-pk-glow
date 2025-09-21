@@ -96,3 +96,9 @@ jspm_packages/
 # OS
 .DS_Store
 Thumbs.db
+/generated/prisma
+# Environment files
+.env
+
+# Cursor editor configs
+.cursor/
