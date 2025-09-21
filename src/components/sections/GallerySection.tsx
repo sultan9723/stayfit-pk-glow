@@ -78,7 +78,7 @@ const GallerySection = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-warm-beige to-light-wood">
+    <section className="py-20 bg-gradient-to-br from-dark-brown to-very-dark-brown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
@@ -122,6 +122,7 @@ const GallerySection = () => {
                 alt={image.alt}
                 className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
               />
+
               {/* Gradient Overlay for Readability */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy-primary/90 via-navy-primary/50 to-transparent p-4">
                 <span className="inline-block bg-golden-accent text-navy-primary text-xs font-semibold px-3 py-1 rounded-full">
@@ -134,7 +135,7 @@ const GallerySection = () => {
               <div className="absolute inset-0 bg-navy-primary/0 group-hover:bg-navy-primary/40 transition-all duration-300 flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="bg-golden-accent rounded-full p-3">
-                    <ZoomIn className="w-6 h-6 text-very-dark-brown" />
+                    <ZoomIn className="w-6 h-6 text-navy-primary" />
                   </div>
                 </div>
               </div>
@@ -144,7 +145,7 @@ const GallerySection = () => {
 
         {/* Lightbox Modal */}
         {selectedImage !== null && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-very-dark-brown/95 backdrop-blur-md">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-navy-primary/95 backdrop-blur-md">
             <div className="relative max-w-4xl max-h-full mx-4">
               <img
                 src={filteredImages[selectedImage].src}
@@ -158,7 +159,7 @@ const GallerySection = () => {
                 className="absolute top-4 right-4 bg-golden-accent/20 hover:bg-golden-accent/40 rounded-full p-2 transition-colors duration-200"
                 aria-label="Close gallery"
               >
-                <X className="w-6 h-6 text-white" />
+                <X className="w-6 h-6 text-white-text" />
               </button>
 
               {/* Navigation */}
@@ -167,7 +168,7 @@ const GallerySection = () => {
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-golden-accent/20 hover:bg-golden-accent/40 rounded-full p-3 transition-colors duration-200"
                 aria-label="Previous image"
               >
-                <ChevronLeft className="w-6 h-6 text-white" />
+                <ChevronLeft className="w-6 h-6 text-white-text" />
               </button>
 
               <button
@@ -175,12 +176,12 @@ const GallerySection = () => {
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-golden-accent/20 hover:bg-golden-accent/40 rounded-full p-3 transition-colors duration-200"
                 aria-label="Next image"
               >
-                <ChevronRight className="w-6 h-6 text-white" />
+                <ChevronRight className="w-6 h-6 text-white-text" />
               </button>
 
               {/* Image Counter */}
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-                <span className="text-white text-sm">
+                <span className="text-white-text text-sm">
                   {selectedImage + 1} / {filteredImages.length}
                 </span>
               </div>
