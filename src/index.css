@@ -7,12 +7,12 @@
 @layer base {
   :root {
     /* Professional StayFit Theme - Gym-Inspired Minimal & Clean */
-    --navy-primary: 0 0% 0%;           /* Pure Black #000000 */
-    --accent-primary: 30 15% 55%;      /* Professional Light Beige #9a8b7a */
-    --accent-secondary: 30 20% 45%;    /* Warm Tan #8a7a6a */
-    --green-secondary: 30 25% 35%;     /* Warm Beige/Brown #8c6a44 */
-    --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
-    --gray-muted: 0 0% 60%;            /* Gray #9a9a9a */
+    --navy-primary: 0 0% 0%;
+    --accent-primary: 30 15% 55%;
+    --accent-secondary: 30 20% 45%;
+    --green-secondary: 30 25% 35%;
+    --white-text: 0 0% 100%;
+    --gray-muted: 0 0% 60%;
 
     /* Professional Accent Colors - Matching Gym Theme */
     --deep-brown: 30 30% 30%;
@@ -32,7 +32,7 @@
     --black-coffee: 30 50% 5%;
     --espresso: 30 40% 8%;
 
-    /* 🔹 New Bronze Colors */
+    /* Bronze Colors */
     --bronze-primary: 30 45% 45%;
     --bronze-dark: 30 50% 30%;
   }
@@ -70,6 +70,7 @@
     --border: var(--gray-muted);
     --input: var(--navy-primary);
     --ring: var(--accent-primary);
+
     --radius: 0.75rem;
 
     /* Gradients */
@@ -78,7 +79,7 @@
     --gradient-green: linear-gradient(135deg, hsl(var(--green-secondary)), hsl(var(--green-secondary) / 0.8));
     --gradient-card: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(var(--navy-primary) / 0.9));
 
-    /* 🔹 Bronze Gradient + Shadow */
+    /* Bronze Gradient + Shadow */
     --gradient-bronze: linear-gradient(135deg, hsl(var(--accent-primary)) 0%, hsl(var(--bronze-primary)) 50%, hsl(var(--bronze-dark)) 100%);
     --shadow-bronze: 0 10px 30px -5px hsl(var(--bronze-primary) / 0.4);
 
@@ -119,7 +120,7 @@
     @apply bg-gradient-to-r from-very-dark-brown to-dark-brown text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-elegant transition-all duration-300 hover:scale-105;
   }
 
-  /* 👇 NEW: Program Buttons */
+  /* Program Buttons */
   .btn-program {
     @apply bg-warm-beige text-very-dark-brown font-semibold rounded-lg 
            py-3 px-6 transition-all duration-300 ease-out shadow-md;
