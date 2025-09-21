@@ -78,7 +78,7 @@ const BlogSection = () => {
                   <Button 
                     variant="secondary" 
                     size="sm"
-                    className="group-hover:translate-x-1 transition-all duration-300"
+                    className="btn-premium border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown group-hover:translate-x-1 transition-all duration-300"
                   >
                     Read More
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -113,7 +113,11 @@ const BlogSection = () => {
         }} />
 
         <div className="text-center mt-12">
-          <Button variant="primary" size="md">
+          <Button 
+            variant="primary" 
+            size="md"
+            className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+          >
             View All News
           </Button>
         </div>

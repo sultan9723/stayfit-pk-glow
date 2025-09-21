@@ -5,17 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import useScrollAnimation from "@/hooks/useScrollAnimation";
 
 const plans = [
-  {
-    name: "Free Trial",
-    price: "Free",
-    period: "Current Status",
-    features: ["Basic gym access", "Equipment orientation", "Initial assessment", "Trial period"],
-    highlight: false,
-    popular: false,
-    duration: "7 days",
-    capacity: "Unlimited",
-    level: "All Levels",
-  },
+  
   {
     name: "Strength Training",
     price: "Rs4,000",
@@ -24,7 +14,7 @@ const plans = [
     highlight: false,
     popular: false,
     duration: "60-90 min",
-    capacity: "8-12 people",
+    capacity: "8-30 people",
     level: "All Levels",
   },
   {
@@ -46,7 +36,7 @@ const plans = [
     highlight: true,
     popular: true,
     duration: "60-90 min",
-    capacity: "8-12 people",
+    capacity: "8-45 people",
     level: "All Levels",
   },
   {
@@ -181,8 +171,10 @@ const PricingPlans = () => {
                     <Button 
                       variant={plan.popular ? "primary" : "secondary"}
                       size="md" 
-                      className={`w-full btn-premium group-hover:shadow-accent transition-all duration-300 ${
-                        plan.popular ? "bg-gradient-accent hover:bg-gradient-accent/90" : ""
+                      className={`btn-premium w-full px-8 py-3 transition-all duration-300 ${
+                        plan.popular 
+                          ? "bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg" 
+                          : "border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown"
                       }`}
                     >
                       {plan.price === "Free" ? "Start Free Trial" : "Register Now"}
@@ -212,14 +204,14 @@ const PricingPlans = () => {
                   <Button 
                     variant="primary" 
                     size="lg"
-                    className="btn-premium bg-gradient-accent hover:bg-gradient-accent/90 shadow-accent hover:shadow-lg transition-all duration-300"
+                    className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
                   >
                     Get Free Consultation
                   </Button>
                   <Button 
-                    variant="outline" 
+                    variant="secondary" 
                     size="lg"
-                    className="btn-premium border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                    className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
                   >
                     Call Now: +92 300 1234567
                   </Button>

@@ -195,7 +195,11 @@ const TestimonialsSection = () => {
 
         {/* CTA Button */}
         <div className="text-center mt-12">
-          <Button variant="secondary" size="md">
+          <Button 
+            variant="secondary" 
+            size="md"
+            className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+          >
             View All Success Stories
           </Button>
         </div>

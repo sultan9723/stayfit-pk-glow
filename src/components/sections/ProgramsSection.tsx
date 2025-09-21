@@ -2,13 +2,30 @@ import { ArrowRight, Clock, Users, Star } from "lucide-react";
 import { Button } from "@/components/Button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import BookingModal from "@/components/BookingModal";
 import stayfitData from "../../../data/stayfit_content.json";
+import { useState } from "react";
 
 const ProgramsSection = () => {
   const { programs } = stayfitData;
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState<{id: string, title: string} | undefined>(undefined);
   
   // Optional button configuration
   const showButtons = true; // Set to false to hide all action buttons
+
+  const handleBookNow = (program: any, index: number) => {
+    setSelectedProgram({
+      id: `program-${index + 1}`, // Generate ID based on index
+      title: program.title
+    });
+    setIsBookingModalOpen(true);
+  };
+
+  const handleViewAllPrograms = () => {
+    setSelectedProgram(undefined);
+    setIsBookingModalOpen(true);
+  };
 
   return (
     <section className="py-20 bg-very-dark-brown">
@@ -79,7 +96,8 @@ const ProgramsSection = () => {
                   <Button
                     variant="primary"
                     size="md"
-                    className="w-full group-hover:shadow-accent transition-all duration-300 btn-program"
+                    className="btn-premium w-full px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                    onClick={() => handleBookNow(program, index)}
                   >
                     Book Now
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -92,11 +110,23 @@ const ProgramsSection = () => {
 
         {showButtons && (
           <div className="text-center mt-12">
-            <Button variant="secondary" size="md" className="btn-program">
+            <Button 
+              variant="secondary" 
+              size="md" 
+              className="btn-premium w-full md:w-auto group-hover:shadow-accent transition-all duration-300 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown"
+              onClick={handleViewAllPrograms}
+            >
               View All Programs
             </Button>
           </div>
         )}
+
+        {/* Booking Modal */}
+        <BookingModal
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+          selectedProgram={selectedProgram}
+        />
       </div>
     </section>
   );

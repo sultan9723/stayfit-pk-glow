@@ -97,7 +97,11 @@ const GallerySection = () => {
               key={category}
               variant={activeCategory === category ? "primary" : "secondary"}
               size="sm"
-              className="transition-all duration-300"
+              className={`btn-premium transition-all duration-300 ${
+                activeCategory === category 
+                  ? "bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg" 
+                  : "border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown"
+              }`}
               onClick={() => setActiveCategory(category)}
             >
               {category}
@@ -187,7 +191,11 @@ const GallerySection = () => {
 
         {/* View All Button */}
         <div className="text-center mt-12">
-          <Button variant="secondary" size="md">
+          <Button 
+            variant="secondary" 
+            size="md"
+            className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+          >
             View Full Gallery
           </Button>
         </div>

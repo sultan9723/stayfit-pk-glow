@@ -5,6 +5,7 @@ import { Button } from "@/components/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import BookingModal from "@/components/BookingModal";
 import stayfitData from "../../data/stayfit_content.json";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
@@ -12,9 +13,19 @@ const ProgramsPage = () => {
   const { programs } = stayfitData;
   const [selectedLevel, setSelectedLevel] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState<{id: string, title: string} | undefined>(undefined);
   
   // Optional button configuration
   const showButtons = true; // Set to false to hide all action buttons
+
+  const handleBookNow = (program: any, index: number) => {
+    setSelectedProgram({
+      id: `program-${index + 1}`, // Generate ID based on index
+      title: program.title
+    });
+    setIsBookingModalOpen(true);
+  };
 
   // Scroll animations
   const [heroRef, heroVisible] = useScrollAnimation({ threshold: 0.2 });
@@ -183,11 +194,20 @@ const ProgramsPage = () => {
 
                     {showButtons && (
                       <div className="flex gap-2">
-                        <Button variant="primary" size="sm" className="flex-1">
+                        <Button 
+                          variant="primary" 
+                          size="sm" 
+                          className="btn-premium flex-1 px-4 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                          onClick={() => handleBookNow(program, index)}
+                        >
                           <Calendar className="w-4 h-4 mr-2" />
                           Book Now
                         </Button>
-                        <Button variant="secondary" size="sm" className="flex-1">
+                        <Button 
+                          variant="secondary" 
+                          size="sm" 
+                          className="btn-premium flex-1 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                        >
                           <ArrowRight className="w-4 h-4 mr-2" />
                           Learn More
                         </Button>
@@ -204,7 +224,7 @@ const ProgramsPage = () => {
                 <Button 
                   variant="secondary" 
                   size="md" 
-                  className="mt-4"
+                  className="btn-premium mt-4 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
                   onClick={() => {
                     setSearchTerm("");
                     setSelectedLevel("All");
@@ -229,13 +249,23 @@ const ProgramsPage = () => {
               </p>
             {showButtons && (
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="primary" size="lg" asChild>
+                <Button 
+                  variant="primary" 
+                  size="lg" 
+                  className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                  asChild
+                >
                   <Link to="/contact">
                     <Calendar className="w-5 h-5 mr-2" />
                     Book Your First Session
                   </Link>
                 </Button>
-                <Button variant="secondary" size="lg" asChild>
+                <Button 
+                  variant="secondary" 
+                  size="lg" 
+                  className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                  asChild
+                >
                   <Link to="/trainers">
                     Meet Our Trainers
                   </Link>
@@ -245,6 +275,13 @@ const ProgramsPage = () => {
             </div>
           </div>
         </section>
+
+        {/* Booking Modal */}
+        <BookingModal
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+          selectedProgram={selectedProgram}
+        />
       </div>
     </>
   );

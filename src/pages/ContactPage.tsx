@@ -184,9 +184,9 @@ const ContactPage = () => {
                   />
                   <Button
                     type="submit"
-                    variant="secondary"
+                    variant="primary"
                     size="md"
-                    className="w-full"
+                    className="btn-premium w-full px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
                   >
                     Send Message
                   </Button>

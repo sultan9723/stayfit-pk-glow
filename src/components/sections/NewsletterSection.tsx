@@ -125,11 +125,11 @@ const NewsletterSection = () => {
                         disabled={isLoading}
                         variant="primary"
                         size="lg"
-                        className="w-full"
+                        className="btn-premium w-full px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
                       >
                         {isLoading ? (
                           <>
-                            <div className="w-5 h-5 border-2 border-navy-primary border-t-transparent rounded-full animate-spin mr-2" />
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
                             Subscribing...
                           </>
                         ) : (
@@ -170,11 +170,16 @@ const NewsletterSection = () => {
                     onClick={() => setIsSubscribed(false)}
                     variant="secondary"
                     size="md"
+                    className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
                   >
                     Subscribe Another Email
                   </Button>
                   
-                  <Button variant="secondary" size="md">
+                  <Button 
+                    variant="secondary" 
+                    size="md"
+                    className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                  >
                     Explore Our Programs
                   </Button>
                 </div>

@@ -107,7 +107,7 @@ const TrainersSection = () => {
                   <Button
                     variant="primary"
                     size="md"
-                    className="w-full group-hover:shadow-accent transition-all duration-300"
+                    className="btn-premium w-full px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
                   >
                     Book Now
                   </Button>
@@ -120,7 +120,12 @@ const TrainersSection = () => {
         {/* View All Trainers Button */}
         {showButtons && (
           <div className="text-center mt-12">
-            <Button variant="secondary" size="md" asChild>
+            <Button 
+              variant="secondary" 
+              size="md" 
+              className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+              asChild
+            >
               <Link to="/trainers">View All Trainers</Link>
             </Button>
           </div>

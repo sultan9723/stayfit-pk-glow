@@ -72,7 +72,11 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="outline" className="text-sm">
+            <Button 
+              variant="primary" 
+              size="sm"
+              className="btn-premium px-6 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+            >
               Join Now
             </Button>
 
@@ -129,7 +133,11 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button variant="outline" className="w-full mt-4">
+              <Button 
+                variant="primary" 
+                size="md"
+                className="btn-premium w-full mt-4 px-6 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+              >
                 Join Now
               </Button>
             </div>

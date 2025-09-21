@@ -408,11 +408,19 @@ const TrainersPage = () => {
 
                       {showButtons && (
                         <div className="flex gap-2">
-                          <Button variant="primary" size="sm" className="flex-1">
+                          <Button 
+                            variant="primary" 
+                            size="sm" 
+                            className="btn-premium flex-1 px-4 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                          >
                             <Calendar className="w-4 h-4 mr-2" />
                             Book Session
                           </Button>
-                          <Button variant="secondary" size="sm" className="flex-1">
+                          <Button 
+                            variant="secondary" 
+                            size="sm" 
+                            className="btn-premium flex-1 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                          >
                             <MessageCircle className="w-4 h-4 mr-2" />
                             Contact
                           </Button>
@@ -461,13 +469,23 @@ const TrainersPage = () => {
               </p>
               {showButtons && (
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button variant="primary" size="lg" asChild>
+                  <Button 
+                    variant="primary" 
+                    size="lg" 
+                    className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                    asChild
+                  >
                     <Link to="/contact">
                       <Calendar className="w-5 h-5 mr-2" />
                       Book Free Consultation
                     </Link>
                   </Button>
-                  <Button variant="secondary" size="lg" asChild>
+                  <Button 
+                    variant="secondary" 
+                    size="lg" 
+                    className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                    asChild
+                  >
                     <Link to="/programs">View Training Programs</Link>
                   </Button>
                 </div>
