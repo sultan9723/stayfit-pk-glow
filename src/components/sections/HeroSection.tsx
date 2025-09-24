@@ -64,7 +64,7 @@ const HeroSection = () => {
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url(${slide.image})` }}
           />
-          <div className="absolute inset-0 bg-navy-primary/60" />
+          <div className="absolute inset-0 bg-very-dark-brown/70" />
         </div>
       ))}
 
@@ -78,7 +78,7 @@ const HeroSection = () => {
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 text-accent-primary">
               {slides[currentSlide].subtitle}
             </h2>
-            <p className="text-lg sm:text-xl text-gray-muted mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-warm-beige mb-8 max-w-2xl mx-auto leading-relaxed">
               {slides[currentSlide].description}
             </p>
             
@@ -108,7 +108,7 @@ const HeroSection = () => {
         className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all duration-300"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="w-6 h-6 text-white-text" />
+        <ChevronLeft className="w-6 h-6 text-white" />
       </button>
       
       <button
@@ -116,7 +116,7 @@ const HeroSection = () => {
         className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all duration-300"
         aria-label="Next slide"
       >
-        <ChevronRight className="w-6 h-6 text-white-text" />
+        <ChevronRight className="w-6 h-6 text-white" />
       </button>
 
       {/* Slide Indicators */}

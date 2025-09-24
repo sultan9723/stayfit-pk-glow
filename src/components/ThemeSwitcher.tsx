@@ -8,28 +8,28 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Palette } from 'lucide-react';
 
-type Theme = 'default' | 'blue-orange' | 'purple-pink' | 'dark-red' | 'forest-gold';
+type Theme = 'default' | 'coffee-walnut' | 'mahogany-sandstone' | 'espresso-wood' | 'dark-chocolate';
 
 const themes: Record<Theme, { name: string; colors: { primary: string; secondary: string; accent: string } }> = {
   default: {
-    name: 'Navy & Gold (Default)',
-    colors: { primary: '#0F172A', secondary: '#FACC15', accent: '#16A34A' }
+    name: 'Warm Earthy (Default)',
+    colors: { primary: '#000000', secondary: '#e3d34a', accent: '#8c6a44' }
   },
-  'blue-orange': {
-    name: 'Blue & Orange',
-    colors: { primary: '#003D82', secondary: '#FF6B35', accent: '#0077BE' }
+  'coffee-walnut': {
+    name: 'Coffee & Walnut',
+    colors: { primary: '#140b06', secondary: '#e3d34a', accent: '#22180e' }
   },
-  'purple-pink': {
-    name: 'Purple & Pink',
-    colors: { primary: '#1A0B3D', secondary: '#E91E63', accent: '#8B5CF6' }
+  'mahogany-sandstone': {
+    name: 'Mahogany & Sandstone',
+    colors: { primary: '#251b11', secondary: '#e4d44b', accent: '#947654' }
   },
-  'dark-red': {
-    name: 'Dark & Red',
-    colors: { primary: '#1C1C1C', secondary: '#DC2626', accent: '#FB923C' }
+  'espresso-wood': {
+    name: 'Espresso & Wood',
+    colors: { primary: '#1d130a', secondary: '#e3d34b', accent: '#977957' }
   },
-  'forest-gold': {
-    name: 'Forest & Gold',
-    colors: { primary: '#0D4F3C', secondary: '#E6B800', accent: '#7CB342' }
+  'dark-chocolate': {
+    name: 'Dark Chocolate',
+    colors: { primary: '#271b0f', secondary: '#e3d34a', accent: '#281c10' }
   }
 };
 

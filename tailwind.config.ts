@@ -20,7 +20,6 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         
-<<<<<<< HEAD
         // StayFit Brand Colors - Professional Gym Theme
         "navy-primary": "hsl(var(--navy-primary))",
         "accent-primary": "hsl(var(--accent-primary))", // Professional Light Beige
@@ -50,6 +49,7 @@ export default {
         // Bronze colors
         "bronze-primary": "hsl(var(--bronze-primary))",
         "bronze-dark": "hsl(var(--bronze-dark))",
+        
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

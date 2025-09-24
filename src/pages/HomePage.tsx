@@ -9,7 +9,6 @@ import GallerySection from "@/components/sections/GallerySection";
 import BlogSection from "@/components/sections/BlogSection";
 import FAQSection from "@/components/sections/FAQSection";
 import NewsletterSection from "@/components/sections/NewsletterSection";
-import ContactMapSection from "@/components/sections/ContactMapSection";
 
 const HomePage = () => {
   return (
@@ -55,7 +54,6 @@ const HomePage = () => {
       <GallerySection />
       <BlogSection />
       <FAQSection />
-      <ContactMapSection />
       <NewsletterSection />
     </>
   );
