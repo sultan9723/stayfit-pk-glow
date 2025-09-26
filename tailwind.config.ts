@@ -50,6 +50,13 @@ export default {
         "bronze-primary": "hsl(var(--bronze-primary))",
         "bronze-dark": "hsl(var(--bronze-dark))",
         
+        // Seashell White Theme Colors
+        "seashell-white": "hsl(var(--seashell-white))",
+        "seashell-light": "hsl(var(--seashell-light))",
+        "seashell-dark": "hsl(var(--seashell-dark))",
+        "dark-text": "hsl(var(--dark-text))",
+        "medium-text": "hsl(var(--medium-text))",
+        
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

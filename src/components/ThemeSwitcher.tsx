@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Palette } from 'lucide-react';
 
-type Theme = 'default' | 'coffee-walnut' | 'mahogany-sandstone' | 'espresso-wood' | 'dark-chocolate';
+type Theme = 'default' | 'coffee-walnut' | 'mahogany-sandstone' | 'espresso-wood' | 'dark-chocolate' | 'seashell-white';
 
 const themes: Record<Theme, { name: string; colors: { primary: string; secondary: string; accent: string } }> = {
   default: {
@@ -30,6 +30,10 @@ const themes: Record<Theme, { name: string; colors: { primary: string; secondary
   'dark-chocolate': {
     name: 'Dark Chocolate',
     colors: { primary: '#271b0f', secondary: '#e3d34a', accent: '#281c10' }
+  },
+  'seashell-white': {
+    name: 'Seashell White',
+    colors: { primary: '#f5f2ed', secondary: '#9a8b7a', accent: '#8c6a44' }
   }
 };
 

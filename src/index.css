@@ -14,6 +14,13 @@
     --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
     --gray-muted: 0 0% 60%;            /* Gray #9a9a9a */
 
+    /* Seashell White Theme Colors */
+    --seashell-white: 30 20% 95%;      /* Seashell White #f5f2ed */
+    --seashell-light: 30 15% 98%;     /* Very Light Seashell #fdfbf8 */
+    --seashell-dark: 30 25% 90%;       /* Slightly Darker Seashell #f0ebe4 */
+    --dark-text: 30 20% 15%;           /* Dark Brown Text #2d2419 */
+    --medium-text: 30 15% 35%;         /* Medium Brown Text #5a4a3a */
+
     /* Professional Accent Colors - Matching Gym Theme */
     --deep-brown: 30 30% 30%;
     --coffee-brown: 30 25% 32%;
@@ -78,6 +85,45 @@
     --gradient-accent: linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-secondary)));
     --gradient-green: linear-gradient(135deg, hsl(var(--green-secondary)), hsl(var(--green-secondary) / 0.8));
     --gradient-card: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(var(--navy-primary) / 0.9));
+  }
+
+  /* Seashell White Theme */
+  :root[data-theme="seashell-white"] {
+    --background: var(--seashell-white);
+    --foreground: var(--dark-text);
+
+    --card: var(--seashell-light);
+    --card-foreground: var(--dark-text);
+
+    --popover: var(--seashell-light);
+    --popover-foreground: var(--dark-text);
+
+    --primary: var(--accent-primary);
+    --primary-foreground: var(--seashell-white);
+
+    --secondary: var(--green-secondary);
+    --secondary-foreground: var(--seashell-white);
+
+    --muted: var(--seashell-dark);
+    --muted-foreground: var(--medium-text);
+
+    --accent: var(--accent-primary);
+    --accent-foreground: var(--seashell-white);
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: var(--seashell-white);
+
+    --border: var(--medium-text);
+    --input: var(--seashell-light);
+    --ring: var(--accent-primary);
+
+    --radius: 0.75rem;
+
+    /* Gradients for Seashell Theme */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--seashell-white)), hsl(var(--seashell-light)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-secondary)));
+    --gradient-green: linear-gradient(135deg, hsl(var(--green-secondary)), hsl(var(--green-secondary) / 0.8));
+    --gradient-card: linear-gradient(135deg, hsl(var(--seashell-light)), hsl(var(--seashell-white)));
 
     /* 🔹 Bronze Gradient + Shadow */
     --gradient-bronze: linear-gradient(135deg, hsl(var(--accent-primary)) 0%, hsl(var(--bronze-primary)) 50%, hsl(var(--bronze-dark)) 100%);
