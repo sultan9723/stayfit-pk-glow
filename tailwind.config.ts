@@ -20,42 +20,29 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         
-        // StayFit Brand Colors - Professional Gym Theme
-        "navy-primary": "hsl(var(--navy-primary))",
-        "accent-primary": "hsl(var(--accent-primary))", // Professional Light Beige
-        "accent-secondary": "hsl(var(--accent-secondary))", // Warm Tan
-        "green-secondary": "hsl(var(--green-secondary))",
-        "white-text": "hsl(var(--white-text))",
-        "gray-muted": "hsl(var(--gray-muted))",
+        // Vibrant Luxury Color Palette
+        "beige-primary": "hsl(var(--beige-primary))",
+        "beige-light": "hsl(var(--beige-light))",
+        "beige-dark": "hsl(var(--beige-dark))",
         
-        // Additional Earthy Colors
-        "deep-brown": "hsl(var(--deep-brown))",
-        "coffee-brown": "hsl(var(--coffee-brown))",
-        "very-dark-brown": "hsl(var(--very-dark-brown))",
-        "light-wood": "hsl(var(--light-wood))",
-        "warm-beige": "hsl(var(--warm-beige))",
-        "wood-brown": "hsl(var(--wood-brown))",
-        "sandstone": "hsl(var(--sandstone))",
-        "dark-brown": "hsl(var(--dark-brown))",
-        "dark-chocolate": "hsl(var(--dark-chocolate))",
-        "accent-light": "hsl(var(--accent-light))",
-        "accent-dark": "hsl(var(--accent-dark))",
-        "dark-coffee": "hsl(var(--dark-coffee))",
-        "walnut": "hsl(var(--walnut))",
-        "mahogany": "hsl(var(--mahogany))",
-        "black-coffee": "hsl(var(--black-coffee))",
-        "espresso": "hsl(var(--espresso))",
+        "champagne-primary": "hsl(var(--champagne-primary))",
+        "champagne-light": "hsl(var(--champagne-light))",
+        "champagne-dark": "hsl(var(--champagne-dark))",
         
-        // Bronze colors
-        "bronze-primary": "hsl(var(--bronze-primary))",
-        "bronze-dark": "hsl(var(--bronze-dark))",
+        "coffee-primary": "hsl(var(--coffee-primary))",
+        "coffee-light": "hsl(var(--coffee-light))",
+        "coffee-dark": "hsl(var(--coffee-dark))",
+        "coffee-deep": "hsl(var(--coffee-deep))",
         
-        // Seashell White Theme Colors
-        "seashell-white": "hsl(var(--seashell-white))",
-        "seashell-light": "hsl(var(--seashell-light))",
-        "seashell-dark": "hsl(var(--seashell-dark))",
-        "dark-text": "hsl(var(--dark-text))",
-        "medium-text": "hsl(var(--medium-text))",
+        "golden-primary": "hsl(var(--golden-primary))",
+        "golden-light": "hsl(var(--golden-light))",
+        "golden-dark": "hsl(var(--golden-dark))",
+        "golden-accent": "hsl(var(--golden-accent))",
+        
+        "text-primary": "hsl(var(--text-primary))",
+        "text-secondary": "hsl(var(--text-secondary))",
+        "text-muted": "hsl(var(--text-muted))",
+        "text-light": "hsl(var(--text-light))",
         
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -118,17 +105,17 @@ export default {
         "pulse-slow": "pulse 3s ease-in-out infinite",
       },
       backgroundImage: {
+        "gradient-main": "var(--gradient-main)",
         "gradient-hero": "var(--gradient-hero)",
-        "gradient-accent": "var(--gradient-accent)",
-        "gradient-green": "var(--gradient-green)",
         "gradient-card": "var(--gradient-card)",
-        "gradient-bronze": "var(--gradient-bronze)",
+        "gradient-golden": "var(--gradient-golden)",
+        "gradient-text": "var(--gradient-text)",
       },
       boxShadow: {
-        "accent": "var(--shadow-accent)",
-        "green": "var(--shadow-green)",
-        "elegant": "var(--shadow-elegant)",
-        "bronze": "var(--shadow-bronze)",
+        "luxury": "var(--shadow-luxury)",
+        "golden": "var(--shadow-golden)",
+        "card": "var(--shadow-card)",
+        "button": "var(--shadow-button)",
       },
     },
   },
