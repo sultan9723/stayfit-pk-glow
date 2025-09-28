@@ -20,7 +20,7 @@ router.post('/', async (req, res) => {
       },
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: 'Contact form submitted successfully',
       data: {
@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
       });
     }
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Failed to submit contact form',
       error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
@@ -67,14 +67,14 @@ router.get('/', async (req, res) => {
       },
     });
 
-    res.json({
+    return res.json({
       success: true,
       data: contacts,
       count: contacts.length,
     });
   } catch (error: any) {
     console.error('Get contacts error:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Failed to fetch contacts',
       error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
@@ -82,4 +82,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-export { router as contactRoutes };
+export default router;

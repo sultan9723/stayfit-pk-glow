@@ -48,7 +48,7 @@ router.post('/', async (req, res) => {
       });
     }
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Failed to submit booking',
       error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
@@ -76,14 +76,14 @@ router.get('/', async (req, res) => {
       },
     });
 
-    res.json({
+    return res.json({
       success: true,
       data: bookings,
       count: bookings.length,
     });
   } catch (error: any) {
     console.error('Get bookings error:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Failed to fetch bookings',
       error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
@@ -110,14 +110,14 @@ router.get('/programs', async (req, res) => {
       },
     });
 
-    res.json({
+    return res.json({
       success: true,
       data: programs,
       count: programs.length,
     });
   } catch (error: any) {
     console.error('Get programs error:', error);
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: 'Failed to fetch programs',
       error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
@@ -125,4 +125,4 @@ router.get('/programs', async (req, res) => {
   }
 });
 
-export { router as bookingRoutes };
+export default router;
