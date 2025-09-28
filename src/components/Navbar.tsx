@@ -36,12 +36,6 @@ const Navbar = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const actionItems = [
-    { name: "Book Program", path: "/book-program" },
-    { name: "Book Trainer", path: "/book-trainer" },
-    { name: "Join Now", path: "/join-now" },
-  ];
-
   const isActivePath = (path: string) => location.pathname === path;
 
   return (
@@ -64,7 +58,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -78,44 +72,18 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            
-            {/* Action Items */}
-            <div className="flex items-center space-x-2 ml-4">
-              {actionItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    item.name === "Join Now"
-                      ? "bg-yellow-400 hover:bg-yellow-500 text-black transform hover:scale-105"
-                      : "bg-slate-600 hover:bg-slate-700 text-white"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-            
-            {/* Auth Buttons */}
-            <div className="flex items-center space-x-3 ml-4">
-              <Link
-                to="/signup"
-                className="px-4 py-2 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-warm-beige dark:focus:ring-offset-very-dark-brown"
-              >
-                Sign Up
-              </Link>
-              <Link
-                to="/login"
-                className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-offset-2 focus:ring-offset-warm-beige dark:focus:ring-offset-very-dark-brown"
-              >
-                Login
-              </Link>
-            </div>
+            <Button 
+              variant="primary" 
+              size="sm"
+              className="btn-premium px-6 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+            >
+              Join Now
+            </Button>
 
             {/* Dark Mode Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="ml-2 p-2 rounded-lg bg-light-wood dark:bg-dark-brown hover:bg-wood-brown dark:hover:bg-coffee-brown transition"
+              className="ml-4 p-2 rounded-lg bg-light-wood dark:bg-dark-brown hover:bg-wood-brown dark:hover:bg-coffee-brown transition"
             >
               {darkMode ? (
                 <Sun className="w-5 h-5 text-accent-primary" />
@@ -165,43 +133,13 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              
-              {/* Mobile Action Items */}
-              <div className="flex flex-col space-y-2 mt-4 pt-4 border-t border-light-wood dark:border-white/10">
-                <h4 className="text-sm font-semibold text-dark-brown dark:text-white mb-2">Quick Actions</h4>
-                {actionItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`w-full px-4 py-3 rounded-lg text-center font-medium transition-all duration-200 ${
-                      item.name === "Join Now"
-                        ? "bg-yellow-400 hover:bg-yellow-500 text-black transform hover:scale-105"
-                        : "bg-slate-600 hover:bg-slate-700 text-white"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-              
-              {/* Mobile Auth Buttons */}
-              <div className="flex flex-col space-y-3 mt-4 pt-4 border-t border-light-wood dark:border-white/10">
-                <Link
-                  to="/signup"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full px-4 py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg transition-all duration-200 text-center transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                >
-                  Sign Up
-                </Link>
-                <Link
-                  to="/login"
-                  onClick={() => setIsOpen(false)}
-                  className="w-full px-4 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-all duration-200 text-center transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-600"
-                >
-                  Login
-                </Link>
-              </div>
+              <Button 
+                variant="primary" 
+                size="md"
+                className="btn-premium w-full mt-4 px-6 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+              >
+                Join Now
+              </Button>
             </div>
           </div>
         )}
