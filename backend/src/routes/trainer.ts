@@ -238,4 +238,4 @@ router.post('/', async (req, res) => {
   }
 });
 
-export { router as trainerRoutes };
+export default router;
