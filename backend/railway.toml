@@ -1,0 +1,11 @@
+[build]
+builder = "NIXPACKS"
+
+[env]
+NODE_ENV = "production"
+
+[install]
+command = "npm install"
+
+[start]
+command = "npm run build && npm start"
