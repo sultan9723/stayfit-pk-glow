@@ -10,6 +10,12 @@ import TrainersPage from "./pages/TrainersPage";
 import PricingPage from "./pages/PricingPage";
 import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import ProgramBookingForm from "./pages/ProgramBookingForm";
+import TrainerBookingForm from "./pages/TrainerBookingForm";
+import JoinNowForm from "./pages/JoinNowForm";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 
@@ -30,6 +36,12 @@ const App = () => (
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/book-program" element={<ProgramBookingForm />} />
+              <Route path="/book-trainer" element={<TrainerBookingForm />} />
+              <Route path="/join-now" element={<JoinNowForm />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>

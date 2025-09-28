@@ -1,22 +1,82 @@
+
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Button } from "@/components/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Youtube, Loader2 } from "lucide-react";
 import stayfitData from "../../data/stayfit_content.json";
+import { BASE_URL } from "../config";
+import { useToast } from "../hooks/use-toast";
+
+// Validation schema
+const contactSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters'),
+  email: z.string().email('Please enter a valid email address'),
+  subject: z.string().min(5, 'Subject must be at least 5 characters'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 const ContactPage = () => {
   const { contact } = stayfitData;
 
-  // Simple form submission state
-  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState({ text: '', type: '' });
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const onSubmit = async (data: ContactFormData) => {
+    setLoading(true);
+    setMessage({ text: '', type: '' });
+
+    try {
+      const response = await fetch(`${BASE_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Success!",
+          description: "Your message has been sent successfully! We will get back to you soon.",
+          variant: "default",
+        });
+        reset();
+      } else {
+        toast({
+          title: "Error",
+          description: result.message || 'Failed to send message. Please try again.',
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Network Error",
+        description: "Please check your connection and try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -157,44 +217,86 @@ const ContactPage = () => {
                 <CardTitle className="text-white-text">Send us a Message</CardTitle>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input
-                      required
-                      placeholder="Your Name"
-                      className="bg-white/10 border-white/20 text-white-text placeholder:text-gray-muted focus:border-accent-primary"
-                    />
-                    <Input
-                      required
-                      type="email"
-                      placeholder="Your Email"
-                      className="bg-white/10 border-white/20 text-white-text placeholder:text-gray-muted focus:border-accent-primary"
-                    />
+                    <div>
+                      <Input
+                        {...register('name')}
+                        placeholder="Your Name"
+                        className={`bg-white/10 border text-white-text placeholder:text-gray-muted focus:border-accent-primary ${
+                          errors.name ? 'border-red-500' : 'border-white/20'
+                        }`}
+                      />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>
+                      )}
+                    </div>
+                    <div>
+                      <Input
+                        {...register('email')}
+                        type="email"
+                        placeholder="Your Email"
+                        className={`bg-white/10 border text-white-text placeholder:text-gray-muted focus:border-accent-primary ${
+                          errors.email ? 'border-red-500' : 'border-white/20'
+                        }`}
+                      />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
+                      )}
+                    </div>
                   </div>
-                  <Input
-                    required
-                    placeholder="Subject"
-                    className="bg-white/10 border-white/20 text-white-text placeholder:text-gray-muted focus:border-accent-primary"
-                  />
-                  <Textarea
-                    required
-                    placeholder="Your Message"
-                    rows={5}
-                    className="bg-white/10 border-white/20 text-white-text placeholder:text-gray-muted focus:border-accent-primary"
-                  />
+                  <div>
+                    <Input
+                      {...register('subject')}
+                      placeholder="Subject"
+                      className={`bg-white/10 border text-white-text placeholder:text-gray-muted focus:border-accent-primary ${
+                        errors.subject ? 'border-red-500' : 'border-white/20'
+                      }`}
+                    />
+                    {errors.subject && (
+                      <p className="mt-1 text-sm text-red-400">{errors.subject.message}</p>
+                    )}
+                  </div>
+                  <div>
+                    <Textarea
+                      {...register('message')}
+                      placeholder="Your Message"
+                      rows={5}
+                      className={`bg-white/10 border text-white-text placeholder:text-gray-muted focus:border-accent-primary ${
+                        errors.message ? 'border-red-500' : 'border-white/20'
+                      }`}
+                    />
+                    {errors.message && (
+                      <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>
+                    )}
+                  </div>
+                  
+                  {message.text && (
+                    <div className={`p-4 rounded-lg text-sm font-medium ${
+                      message.type === 'success' 
+                        ? 'bg-green-900/20 border border-green-500 text-green-400' 
+                        : 'bg-red-900/20 border border-red-500 text-red-400'
+                    }`}>
+                      {message.text}
+                    </div>
+                  )}
+
                   <Button
                     type="submit"
                     variant="primary"
                     size="md"
-                    className="btn-premium w-full px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                    disabled={isSubmitting || loading}
+                    className="btn-premium w-full px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300 flex items-center justify-center"
                   >
-                    Send Message
+                    {isSubmitting || loading ? (
+                      <>
+                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      'Send Message'
+                    )}
                   </Button>
-                  {submitted && (
-                    <p className="text-green-500 text-sm font-medium text-center">
-                      ✅ Your message has been sent successfully!
-                    </p>
-                  )}
                 </form>
               </CardContent>
             </Card>

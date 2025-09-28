@@ -21,6 +21,7 @@ import {
 import { useState, useEffect, useRef, useCallback } from "react";
 import stayfitData from "../../data/stayfit_content.json";
 import useScrollAnimation from "../hooks/useScrollAnimation";
+import TrainerBookingModal from "../components/TrainerBookingModal";
 
 const TrainersPage = () => {
   const { male_trainers, female_trainers } = stayfitData;
@@ -34,8 +35,25 @@ const TrainersPage = () => {
     certifications: 0,
     experience: 0
   });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [selectedTrainer, setSelectedTrainer] = useState<any>(null);
 
   const showButtons = true;
+
+  const handleBookSession = (trainer: any) => {
+    setSelectedTrainer({
+      id: trainer.id || Math.random().toString(),
+      name: trainer.name,
+      specialty: trainer.specialty,
+      experience: trainer.experience
+    });
+    setIsBookingModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsBookingModalOpen(false);
+    setSelectedTrainer(null);
+  };
 
   // Scroll animations
   const [heroRef, heroVisible] = useScrollAnimation({ threshold: 0.2 });
@@ -412,6 +430,7 @@ const TrainersPage = () => {
                             variant="primary" 
                             size="sm" 
                             className="btn-premium flex-1 px-4 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                            onClick={() => handleBookSession(trainer)}
                           >
                             <Calendar className="w-4 h-4 mr-2" />
                             Book Session
@@ -554,6 +573,13 @@ const TrainersPage = () => {
           </div>
         </section>
       </div>
+
+      {/* Trainer Booking Modal */}
+      <TrainerBookingModal
+        isOpen={isBookingModalOpen}
+        onClose={handleCloseModal}
+        trainer={selectedTrainer}
+      />
     </>
   );
 };
