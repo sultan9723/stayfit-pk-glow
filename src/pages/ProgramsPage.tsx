@@ -253,12 +253,13 @@ const ProgramsPage = () => {
                   variant="primary" 
                   size="lg" 
                   className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
-                  asChild
+                  onClick={() => {
+                    setSelectedProgram({ id: "program-0", title: "First Session Booking" });
+                    setIsBookingModalOpen(true);
+                  }}
                 >
-                  <Link to="/contact">
-                    <Calendar className="w-5 h-5 mr-2" />
-                    Book Your First Session
-                  </Link>
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Book Your First Session
                 </Button>
                 <Button 
                   variant="secondary" 

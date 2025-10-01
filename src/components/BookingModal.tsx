@@ -213,6 +213,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
     
     try {
       const payload = {
+        type: "program",
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim(),
@@ -224,7 +225,8 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
         alternativeTime: formData.alternativeTime || undefined
       };
 
-      const response = await fetch('http://localhost:3001/api/book', {
+      const base = import.meta.env.VITE_API_BASE || '';
+      const response = await fetch(`${base}/api/book`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -365,57 +367,40 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
               <Target className="w-5 h-5 mr-2 text-accent-primary" />
               Program Information
             </h3>
-            
-            <div className="space-y-2">
-              <Label className="text-warm-beige">Program *</Label>
-              <Select
-                value={formData.programId}
-                onValueChange={handleProgramChange}
-                disabled={!!selectedProgram}
-              >
-                <SelectTrigger className="bg-deep-brown border-accent-primary text-white focus:ring-accent-primary">
-                  <SelectValue placeholder={isLoadingPrograms ? "Loading programs..." : "Select a program"} />
-                </SelectTrigger>
-                <SelectContent className="bg-deep-brown border-accent-primary">
-                  {programs.map((program) => (
-                    <SelectItem
-                      key={program.id}
-                      value={program.id}
-                      className="text-white hover:bg-accent-primary hover:text-deep-brown"
-                    >
-                      {program.name} - {program.duration} - ${program.price}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {errors.programId && (
-                <p className="text-red-400 text-sm">{errors.programId}</p>
-              )}
-            </div>
 
             <div className="space-y-2">
-              <Label className="text-warm-beige">Fitness Goal *</Label>
-              <Select
-                value={formData.goal}
-                onValueChange={(value) => handleInputChange('goal', value)}
-              >
-                <SelectTrigger className="bg-deep-brown border-accent-primary text-white focus:ring-accent-primary">
-                  <SelectValue placeholder="Select your fitness goal" />
-                </SelectTrigger>
-                <SelectContent className="bg-deep-brown border-accent-primary">
-                  {GOAL_OPTIONS.map((goal) => (
-                    <SelectItem
-                      key={goal}
-                      value={goal}
-                      className="text-white hover:bg-accent-primary hover:text-deep-brown"
-                    >
-                      {goal}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {errors.goal && (
-                <p className="text-red-400 text-sm">{errors.goal}</p>
+              <Label className="text-warm-beige">Program *</Label>
+              {selectedProgram ? (
+                <Input
+                  id="program"
+                  type="text"
+                  value={formData.programName}
+                  readOnly
+                  className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary"
+                />
+              ) : (
+                <Select
+                  value={formData.programId}
+                  onValueChange={handleProgramChange}
+                >
+                  <SelectTrigger className="bg-deep-brown border-accent-primary text-white focus:ring-accent-primary">
+                    <SelectValue placeholder={isLoadingPrograms ? "Loading programs..." : "Select a program"} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-deep-brown border-accent-primary">
+                    {programs.map((program) => (
+                      <SelectItem
+                        key={program.id}
+                        value={program.id}
+                        className="text-white hover:bg-accent-primary hover:text-deep-brown"
+                      >
+                        {program.name} - {program.duration} - ${program.price}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              )}
+              {errors.programId && (
+                <p className="text-red-400 text-sm">{errors.programId}</p>
               )}
             </div>
           </div>

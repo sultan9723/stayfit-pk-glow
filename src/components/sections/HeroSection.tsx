@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/Button";
+import { Link } from "react-router-dom";
 import heroGym1 from "@/assets/hero-gym-1.jpg";
 import heroCardio2 from "@/assets/hero-cardio-2.jpg";
 import heroMma3 from "@/assets/hero-mma-3.jpg";
@@ -15,20 +16,23 @@ const HeroSection = () => {
       image: heroGym1,
       title: "Transform Your Body",
       subtitle: "Build Strength & Endurance",
-      description: "State-of-the-art equipment and expert guidance for your strength training journey"
+      description:
+        "State-of-the-art equipment and expert guidance for your strength training journey",
     },
     {
       image: heroCardio2,
       title: "Ignite Your Cardio",
       subtitle: "Boost Your Energy & Stamina",
-      description: "High-energy cardio programs designed to maximize your fitness potential"
+      description:
+        "High-energy cardio programs designed to maximize your fitness potential",
     },
     {
       image: heroMma3,
       title: "Master Combat Sports",
       subtitle: "MMA & Boxing Training",
-      description: "Professional MMA training with experienced fighters and certified coaches"
-    }
+      description:
+        "Professional MMA training with experienced fighters and certified coaches",
+    },
   ];
 
   useEffect(() => {
@@ -71,7 +75,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`${heroVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
+          <div className={`${heroVisible ? "fade-in-up animate" : "fade-in-up"}`}>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight gradient-animate">
               {slides[currentSlide].title}
             </h1>
@@ -81,22 +85,26 @@ const HeroSection = () => {
             <p className="text-lg sm:text-xl text-warm-beige mb-8 max-w-2xl mx-auto leading-relaxed">
               {slides[currentSlide].description}
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button 
-                variant="primary" 
-                size="lg"
-                className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
-              >
-                Join Now
-              </Button>
-              <Button 
-                variant="secondary" 
-                size="lg"
-                className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
-              >
-                Explore Programs
-              </Button>
+              <Link to="/pricing">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                >
+                  Join Now
+                </Button>
+              </Link>
+              <Link to="/programs">
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                >
+                  Explore Programs
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -110,7 +118,7 @@ const HeroSection = () => {
       >
         <ChevronLeft className="w-6 h-6 text-white" />
       </button>
-      
+
       <button
         onClick={nextSlide}
         className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 rounded-full p-3 transition-all duration-300"
@@ -133,7 +141,6 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Scroll Indicator */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
@@ -141,6 +148,4 @@ const HeroSection = () => {
       </div>
     </section>
   );
-};
-
 export default HeroSection;

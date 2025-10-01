@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import BookingModal from "@/components/BookingModal";
 import stayfitData from "../../../data/stayfit_content.json";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ProgramsSection = () => {
   const { programs } = stayfitData;
@@ -44,7 +45,7 @@ const ProgramsSection = () => {
           {programs.map((program, index) => (
             <Card
               key={index}
-              className="card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative"
+              className="card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative min-h-[380px] w-full lg:min-w-[320px] lg:max-w-[360px]"
             >
               {program.popular && (
                 <Badge className="absolute -top-3 left-6 bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1">
@@ -62,7 +63,7 @@ const ProgramsSection = () => {
                 </p>
               </CardHeader>
 
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-4 p-6">
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center text-warm-beige">
                     <Clock className="w-4 h-4 mr-2" />
@@ -114,9 +115,9 @@ const ProgramsSection = () => {
               variant="secondary" 
               size="md" 
               className="btn-premium w-full md:w-auto group-hover:shadow-accent transition-all duration-300 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown"
-              onClick={handleViewAllPrograms}
+              asChild
             >
-              View All Programs
+              <Link to="/programs">View All Programs</Link>
             </Button>
           </div>
         )}

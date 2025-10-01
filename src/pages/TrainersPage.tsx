@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import stayfitData from "../../data/stayfit_content.json";
+import TrainerBookingModal from "@/components/TrainerBookingModal";
 import useScrollAnimation from "../hooks/useScrollAnimation";
 
 const TrainersPage = () => {
@@ -34,6 +35,10 @@ const TrainersPage = () => {
     certifications: 0,
     experience: 0
   });
+
+  // Trainer booking modal state
+  const [trainerModalOpen, setTrainerModalOpen] = useState(false);
+  const [selectedTrainer, setSelectedTrainer] = useState<{ id: string; name: string } | undefined>(undefined);
 
   const showButtons = true;
 
@@ -304,11 +309,11 @@ const TrainersPage = () => {
               {filteredTrainers.map((trainer, index) => (
                 <Card
                   key={index}
-                  className={`card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative card-entrance ${
+                  className={`h-full flex flex-col card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative card-entrance ${
                     trainersVisible ? "animate" : ""
                   } stagger-${(index % 6) + 1}`}
                 >
-                  <CardContent className="p-6">
+                  <CardContent className="p-6 flex flex-col h-full">
                     <div className="relative mb-6">
                       <img
                         src={trainer.image}
@@ -350,7 +355,7 @@ const TrainersPage = () => {
                       </p>
                     </div>
 
-                    <div className="space-y-3">
+                    <div className="space-y-3 flex-1">
                       <div className="flex flex-wrap gap-2 justify-center">
                         {trainer.specializations.slice(0, 3).map((spec, specIndex) => (
                           <Badge
@@ -407,11 +412,16 @@ const TrainersPage = () => {
                       </div>
 
                       {showButtons && (
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 mt-auto">
                           <Button 
                             variant="primary" 
                             size="sm" 
                             className="btn-premium flex-1 px-4 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                            onClick={() => {
+                              // open trainer modal with selection
+                              setSelectedTrainer({ id: `trainer-${index + 1}`, name: trainer.name });
+                              setTrainerModalOpen(true);
+                            }}
                           >
                             <Calendar className="w-4 h-4 mr-2" />
                             Book Session
@@ -472,7 +482,7 @@ const TrainersPage = () => {
                   <Button 
                     variant="primary" 
                     size="lg" 
-                    className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                    className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300 border border-accent-primary"
                     asChild
                   >
                     <Link to="/contact">
@@ -554,6 +564,15 @@ const TrainersPage = () => {
           </div>
         </section>
       </div>
+
+      {/* Trainer Booking Modal */}
+      {trainerModalOpen && (
+        <TrainerBookingModal
+          isOpen={trainerModalOpen}
+          onClose={() => setTrainerModalOpen(false)}
+          selectedTrainer={selectedTrainer}
+        />
+      )}
     </>
   );
 };

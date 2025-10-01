@@ -1,14 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-  Facebook,
-  Instagram,
-  Youtube,
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Dumbbell,
-} from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
@@ -19,11 +10,7 @@ const Footer = () => {
     { name: "Privacy Policy", path: "/privacy" },
   ];
 
-  const socialLinks = [
-    { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/stayfitpk" },
-    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/stayfitpk" },
-    { name: "YouTube", icon: Youtube, url: "https://www.youtube.com/@stayfitpakistan1" },
-  ];
+  // Social links removed per request
 
   return (
     <footer className="bg-gradient-to-r from-very-dark-brown to-dark-brown border-t border-white/10">
@@ -31,28 +18,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo & Description */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-2">
-              <Dumbbell className="w-8 h-8 text-accent-primary" />
-              <span className="text-gradient-accent font-bold text-xl">StayFit.pk</span>
+            <Link to="/" className="flex items-center">
+              <img src="/stayfit.png" alt="StayFit Logo" className="h-12 w-auto dark:invert" />
             </Link>
             <p className="text-warm-beige text-sm leading-relaxed">
               Transform your fitness journey with StayFit — Pakistan's premier fitness center. 
               Expert trainers, state-of-the-art equipment, and personalized programs in Rawalpindi.
             </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-warm-beige hover:text-accent-primary transition-colors duration-300"
-                  aria-label={social.name}
-                >
-                  <social.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
+            {/* Social icons removed per request */}
           </div>
 
           {/* Quick Links */}
