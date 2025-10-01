@@ -1,12 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Palette } from 'lucide-react';
 
 type Theme = 'default' | 'coffee-walnut' | 'mahogany-sandstone' | 'espresso-wood' | 'dark-chocolate' | 'seashell-white';
 
@@ -41,7 +33,6 @@ export function ThemeSwitcher() {
   const [currentTheme, setCurrentTheme] = useState<Theme>('default');
 
   useEffect(() => {
-    // Get saved theme from localStorage or default
     const savedTheme = (localStorage.getItem('stayfit-theme') as Theme) || 'default';
     setCurrentTheme(savedTheme);
     applyTheme(savedTheme);
@@ -62,37 +53,6 @@ export function ThemeSwitcher() {
     applyTheme(theme);
   };
 
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="gap-2">
-          <Palette className="h-4 w-4" />
-          <span className="hidden sm:inline">Theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56">
-        {Object.entries(themes).map(([key, theme]) => (
-          <DropdownMenuItem
-            key={key}
-            onClick={() => handleThemeChange(key as Theme)}
-            className="flex items-center justify-between"
-          >
-            <span>{theme.name}</span>
-            <div className="flex gap-1">
-              {Object.values(theme.colors).map((color, index) => (
-                <div
-                  key={index}
-                  className="w-3 h-3 rounded-full border border-gray-300"
-                  style={{ backgroundColor: color }}
-                />
-              ))}
-            </div>
-            {currentTheme === key && (
-              <div className="w-2 h-2 bg-primary rounded-full ml-2" />
-            )}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
+  // 🔥 Hide the entire switcher (nothing will render)
+  return null;
 }
