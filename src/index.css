@@ -6,42 +6,44 @@
 
 @layer base {
   :root {
-    /* Professional StayFit Theme - Gym-Inspired Minimal & Clean */
-    --navy-primary: 0 0% 0%;           /* Pure Black #000000 */
-    --accent-primary: 30 15% 55%;      /* Professional Light Beige #9a8b7a */
-    --accent-secondary: 30 20% 45%;    /* Warm Tan #8a7a6a */
-    --green-secondary: 30 25% 35%;     /* Warm Beige/Brown #8c6a44 */
-    --white-text: 0 0% 100%;           /* Pure White #FFFFFF */
-    --gray-muted: 0 0% 60%;            /* Gray #9a9a9a */
+    /* Global Theme: Charcoal foundation + Blaze Orange primary + Volt Cyan secondary */
+    /* Dark-first base */
+    --charcoal: 210 11% 7%;            /* #111315 */
+    --surface: 210 12% 12%;            /* #1A1D21 */
+    --surface-alt: 213 14% 16%;        /* #23272D */
+    --border-lines: 213 13% 22%;       /* #2F343C */
+    --text-primary: 210 10% 96%;       /* #F5F6F7 */
+    --text-secondary: 215 12% 66%;     /* #A0A7B3 */
 
-    /* Seashell White Theme Colors */
-    --seashell-white: 30 20% 95%;      /* Seashell White #f5f2ed */
-    --seashell-light: 30 15% 98%;     /* Very Light Seashell #fdfbf8 */
-    --seashell-dark: 30 25% 90%;       /* Slightly Darker Seashell #f0ebe4 */
-    --dark-text: 30 20% 15%;           /* Dark Brown Text #2d2419 */
-    --medium-text: 30 15% 35%;         /* Medium Brown Text #5a4a3a */
+    /* Accents */
+    --blaze: 0 100% 60%;               /* Fiery Red #FF3131 */
+    --volt: 188 100% 50%;              /* #00E0FF */
 
-    /* Professional Accent Colors - Matching Gym Theme */
-    --deep-brown: 30 30% 30%;
-    --coffee-brown: 30 25% 32%;
-    --very-dark-brown: 30 60% 3%;
-    --light-wood: 30 20% 45%;
-    --warm-beige: 30 20% 46%;
-    --wood-brown: 30 20% 47%;
-    --sandstone: 30 20% 44%;
-    --dark-brown: 30 40% 12%;
-    --dark-chocolate: 30 40% 11%;
-    --accent-light: 30 15% 60%;
-    --accent-dark: 30 20% 40%;
-    --dark-coffee: 30 35% 12%;
-    --walnut: 30 35% 13%;
-    --mahogany: 30 35% 14%;
-    --black-coffee: 30 50% 5%;
-    --espresso: 30 40% 8%;
+    /* Semantics */
+    --success: 142 72% 45%;            /* #22C55E */
+    --danger: 0 84% 60%;               /* #EF4444 */
+    --warning: 48 96% 54%;             /* #FACC15 */
+    --info: 217 91% 60%;               /* #3B82F6 */
 
-    /* 🔹 New Bronze Colors */
-    --bronze-primary: 30 45% 45%;
-    --bronze-dark: 30 50% 30%;
+    /* Heading brand color (Seashell) */
+    --heading-seashell: 24 100% 97%;   /* #FFF5EE */
+
+    /* Light mode mapping */
+    --light-background: 210 40% 98%;   /* #F8FAFC */
+    --light-surface: 210 14% 95%;      /* #F1F3F5 */
+    --light-border: 214 32% 91%;       /* #E5E7EB */
+    --light-text-primary: 210 11% 7%;  /* #111315 */
+    --light-text-secondary: 215 14% 34%; /* #4B5563 */
+
+    /* Legacy aliases to avoid breaking existing classes */
+    --navy-primary: var(--charcoal);
+    --white-text: 0 0% 100%;
+    --gray-muted: var(--text-secondary);
+    --accent-primary: var(--blaze);
+    --accent-secondary: var(--volt);
+    --green-secondary: var(--success);
+    --bronze-primary: var(--warning);
+    --bronze-dark: 48 80% 40%;
   }
 
   /* Core Theme Variables */
@@ -50,91 +52,87 @@
   :root[data-theme="mahogany-sandstone"],
   :root[data-theme="espresso-wood"],
   :root[data-theme="dark-chocolate"] {
-    --background: var(--navy-primary);
-    --foreground: var(--white-text);
+    --background: var(--charcoal);
+    --foreground: var(--text-primary);
 
-    --card: var(--navy-primary);
-    --card-foreground: var(--white-text);
+    --card: var(--surface);
+    --card-foreground: var(--text-primary);
 
-    --popover: var(--navy-primary);
-    --popover-foreground: var(--white-text);
+    --popover: var(--surface);
+    --popover-foreground: var(--text-primary);
 
-    --primary: var(--accent-primary);
-    --primary-foreground: var(--navy-primary);
+    --primary: var(--blaze);
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: var(--green-secondary);
-    --secondary-foreground: var(--white-text);
+    --secondary: var(--volt);
+    --secondary-foreground: 210 11% 7%; /* charcoal text on cyan */
 
-    --muted: var(--navy-primary);
-    --muted-foreground: var(--gray-muted);
+    --muted: var(--surface-alt);
+    --muted-foreground: var(--text-secondary);
 
-    --accent: var(--accent-primary);
-    --accent-foreground: var(--navy-primary);
+    --accent: var(--blaze);
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: var(--white-text);
+    --destructive: var(--danger);
+    --destructive-foreground: 0 0% 100%;
 
-    --border: var(--gray-muted);
-    --input: var(--navy-primary);
-    --ring: var(--accent-primary);
+    --border: var(--border-lines);
+    --input: var(--surface-alt);
+    --ring: var(--blaze);
 
     --radius: 0.75rem;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(var(--navy-primary) / 0.8));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-secondary)));
-    --gradient-green: linear-gradient(135deg, hsl(var(--green-secondary)), hsl(var(--green-secondary) / 0.8));
-    --gradient-card: linear-gradient(135deg, hsl(var(--navy-primary)), hsl(var(--navy-primary) / 0.9));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--charcoal)), hsl(var(--surface-alt)), transparent);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--blaze)), hsl(var(--blaze) / 0.85));
+    --gradient-green: linear-gradient(135deg, hsl(var(--volt)), hsl(var(--volt) / 0.75));
+    --gradient-card: linear-gradient(135deg, hsl(var(--surface)), hsl(var(--surface-alt)));
   }
 
   /* Seashell White Theme */
   :root[data-theme="seashell-white"] {
-    --background: var(--seashell-white);
-    --foreground: var(--dark-text);
+    --background: var(--light-background);
+    --foreground: var(--light-text-primary);
 
-    --card: var(--seashell-light);
-    --card-foreground: var(--dark-text);
+    --card: var(--light-surface);
+    --card-foreground: var(--light-text-primary);
 
-    --popover: var(--seashell-light);
-    --popover-foreground: var(--dark-text);
+    --popover: var(--light-surface);
+    --popover-foreground: var(--light-text-primary);
 
-    --primary: var(--accent-primary);
-    --primary-foreground: var(--seashell-white);
+    --primary: var(--blaze);
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: var(--green-secondary);
-    --secondary-foreground: var(--seashell-white);
+    --secondary: var(--volt);
+    --secondary-foreground: var(--light-text-primary);
 
-    --muted: var(--seashell-dark);
-    --muted-foreground: var(--medium-text);
+    --muted: var(--light-surface);
+    --muted-foreground: var(--light-text-secondary);
 
-    --accent: var(--accent-primary);
-    --accent-foreground: var(--seashell-white);
+    --accent: var(--blaze);
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: var(--seashell-white);
+    --destructive: var(--danger);
+    --destructive-foreground: 0 0% 100%;
 
-    --border: var(--medium-text);
-    --input: var(--seashell-light);
-    --ring: var(--accent-primary);
+    --border: var(--light-border);
+    --input: var(--light-surface);
+    --ring: var(--blaze);
 
     --radius: 0.75rem;
 
-    /* Gradients for Seashell Theme */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--seashell-white)), hsl(var(--seashell-light)));
-    --gradient-accent: linear-gradient(135deg, hsl(var(--accent-primary)), hsl(var(--accent-secondary)));
-    --gradient-green: linear-gradient(135deg, hsl(var(--green-secondary)), hsl(var(--green-secondary) / 0.8));
-    --gradient-card: linear-gradient(135deg, hsl(var(--seashell-light)), hsl(var(--seashell-white)));
-
-    /* 🔹 Bronze Gradient + Shadow */
-    --gradient-bronze: linear-gradient(135deg, hsl(var(--accent-primary)) 0%, hsl(var(--bronze-primary)) 50%, hsl(var(--bronze-dark)) 100%);
-    --shadow-bronze: 0 10px 30px -5px hsl(var(--bronze-primary) / 0.4);
+    /* Gradients for Light Theme */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--light-background)), hsl(var(--light-surface)), transparent);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--blaze)), hsl(var(--blaze) / 0.85));
+    --gradient-green: linear-gradient(135deg, hsl(var(--volt)), hsl(var(--volt) / 0.75));
+    --gradient-card: linear-gradient(135deg, hsl(var(--light-surface)), hsl(var(--light-background)));
 
     /* Shadows */
-    --shadow-accent: 0 10px 30px -5px hsl(var(--accent-primary) / 0.3);
-    --shadow-green: 0 10px 30px -5px hsl(var(--green-secondary) / 0.3);
-    --shadow-elegant: 0 20px 40px -10px hsl(var(--navy-primary) / 0.5);
+    --shadow-accent: 0 10px 30px -5px hsl(var(--blaze) / 0.3);
+    --shadow-green: 0 10px 30px -5px hsl(var(--volt) / 0.25);
+    --shadow-elegant: 0 20px 40px -10px hsl(210 10% 20% / 0.25);
 
-    /* Animations */
+    /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
@@ -149,6 +147,34 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "cv11", "ss01";
     font-variation-settings: "opsz" 32;
+  }
+
+  /* Headings: Seashell, bold (no accent color) */
+  h1, h2, h3, h4, h5, h6 {
+    color: hsl(var(--heading-seashell));
+    font-weight: 700;
+  }
+
+  /* Links: Blaze Orange with underline+slight brighten on hover */
+  a {
+    color: hsl(var(--primary));
+    text-decoration: none;
+    transition: filter 150ms ease, color 150ms ease, text-decoration-color 150ms ease;
+  }
+  a:hover {
+    text-decoration: underline;
+    filter: brightness(1.06);
+  }
+
+  /* Focus states: 2px Blaze outline with offset */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
   }
 
   html {

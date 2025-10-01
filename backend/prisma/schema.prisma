@@ -1,86 +1,48 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// This is your Prisma schema file
+// Learn more: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
-}
+ }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model Contact {
-  id        String   @id @default(cuid())
+model User {
+  id        Int       @id @default(autoincrement())
   name      String
-  email     String
-  subject   String?
-  message   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("contacts")
-}
-
-model Booking {
-  id              String   @id @default(cuid())
-  name            String
-  email           String
-  phone           String?
-  programId       String
-  programName     String
-  goal            String?
-  preferredDate   String?
-  preferredTime   String?
-  alternativeTime String?
-  status          String   @default("pending") // pending, confirmed, cancelled
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-
-  @@map("bookings")
-}
-
-model TrainerBooking {
-  id            String   @id @default(cuid())
-  trainerId     String
-  trainerName   String
-  name          String
-  email         String
-  phone         String?
-  sessionDate   DateTime
-  preferredTime String?
-  status        String   @default("pending") // pending, confirmed, cancelled
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
-  @@map("trainer_bookings")
+  email     String    @unique
+  password  String
+  role      String    @default("user") // can be 'user' or 'admin'
+  phone     String?   // optional
+  createdAt DateTime  @default(now())
+  bookings  Booking[]
 }
 
 model Trainer {
-  id          String   @id @default(cuid())
-  name        String
-  email       String
-  phone       String?
-  specialty   String
-  experience  Int      // years of experience
-  bio         String?
-  imageUrl    String?
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@map("trainers")
+  id        Int       @id @default(autoincrement())
+  name      String
+  expertise String
+  bio       String?
+  createdAt DateTime  @default(now())
+  bookings  Booking[]
 }
 
-model Program {
-  id          String   @id @default(cuid())
-  name        String
-  description String
-  duration    String   // e.g., "4 weeks", "3 months"
-  price       Float
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Booking {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  trainerId Int
+  date      DateTime
+  status    String    @default("pending")
 
-  @@map("programs")
+  user      User      @relation(fields: [userId], references: [id])
+  trainer   Trainer   @relation(fields: [trainerId], references: [id])
+}
+
+model Newsletter {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  createdAt DateTime  @default(now())
 }
