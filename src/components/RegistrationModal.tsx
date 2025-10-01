@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Calendar, Clock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import {
   Dialog,
   DialogContent,
@@ -95,39 +95,39 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto bg-very-dark-brown border-accent-primary">
+      <DialogContent className="max-w-lg max-h-[90vh] overflow-y-auto bg-[#FFF5EE] text-black border border-accent-primary rounded-lg shadow-lg p-6">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-gradient-accent text-center">Register for Plan</DialogTitle>
-          <DialogDescription className="text-warm-beige text-center">Complete your details to register for your selected membership plan.</DialogDescription>
+          <DialogTitle className="text-2xl font-bold text-center text-dark-brown">Register for Plan</DialogTitle>
+          <DialogDescription className="text-dark-brown/80 text-center">Complete your details to register for your selected membership plan.</DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
             <Label className="text-warm-beige">Plan</Label>
-            <Input readOnly value={selectedPlan} className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary" />
+            <Input readOnly value={selectedPlan} className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="name" className="text-warm-beige">Full Name *</Label>
-              <Input id="name" type="text" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary" placeholder="Enter your full name" />
+              <Input id="name" type="text" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary" placeholder="Enter your full name" />
               {errors.name && <p className="text-red-400 text-sm">{errors.name}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="email" className="text-warm-beige">Email Address *</Label>
-              <Input id="email" type="email" value={formData.email} onChange={(e) => handleChange("email", e.target.value)} className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary" placeholder="your.email@example.com" />
+              <Input id="email" type="email" value={formData.email} onChange={(e) => handleChange("email", e.target.value)} className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary" placeholder="your.email@example.com" />
               {errors.email && <p className="text-red-400 text-sm">{errors.email}</p>}
             </div>
           </div>
 
           <div className="space-y-2">
             <Label htmlFor="phone" className="text-warm-beige">Phone Number *</Label>
-            <Input id="phone" type="tel" value={formData.phone} onChange={(e) => handleChange("phone", e.target.value)} className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary" placeholder="+92-300-1234567" />
+            <Input id="phone" type="tel" value={formData.phone} onChange={(e) => handleChange("phone", e.target.value)} className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary" placeholder="+92-300-1234567" />
             {errors.phone && <p className="text-red-400 text-sm">{errors.phone}</p>}
           </div>
 
           <div className="flex justify-center pt-2">
-            <Button type="submit" variant="primary" size="md" disabled={isLoading} className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300">
+            <Button type="submit" variant="primary" size="md" disabled={isLoading} className="w-full md:w-auto bg-gradient-accent hover:bg-gradient-accent/90 text-white">
               {isLoading ? (
                 <>
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />

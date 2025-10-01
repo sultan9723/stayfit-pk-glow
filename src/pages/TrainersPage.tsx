@@ -412,11 +412,11 @@ const TrainersPage = () => {
                       </div>
 
                       {showButtons && (
-                        <div className="flex gap-2 mt-auto">
+                        <div className="flex gap-3 mt-auto">
                           <Button 
                             variant="primary" 
                             size="sm" 
-                            className="btn-premium flex-1 px-4 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                            className="flex-1"
                             onClick={() => {
                               // open trainer modal with selection
                               setSelectedTrainer({ id: `trainer-${index + 1}`, name: trainer.name });
@@ -429,7 +429,7 @@ const TrainersPage = () => {
                           <Button 
                             variant="secondary" 
                             size="sm" 
-                            className="btn-premium flex-1 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                            className="flex-1"
                           >
                             <MessageCircle className="w-4 h-4 mr-2" />
                             Contact
@@ -478,11 +478,10 @@ const TrainersPage = () => {
                 the first step towards achieving your fitness goals.
               </p>
               {showButtons && (
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button 
                     variant="primary" 
                     size="lg" 
-                    className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300 border border-accent-primary"
                     asChild
                   >
                     <Link to="/contact">
@@ -493,7 +492,6 @@ const TrainersPage = () => {
                   <Button 
                     variant="secondary" 
                     size="lg" 
-                    className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
                     asChild
                   >
                     <Link to="/programs">View Training Programs</Link>

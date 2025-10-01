@@ -5,15 +5,15 @@ const Button = React.forwardRef(
   ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
     const baseClasses =
       "inline-flex items-center justify-center gap-2 whitespace-nowrap font-bold " +
-      "transition-all duration-300 ease-out focus-visible:outline-none " +
+      "transition-colors duration-200 ease-out focus-visible:outline-none " +
       "focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 " +
-      "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 btn-professional";
+      "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 btn-professional shadow-none";
 
     const variants = {
       // 🔹 Main CTAs (Join Now, Book Trial, Success Stories)
       primary:
-        "bg-gradient-bronze text-white rounded-md sm:rounded-lg shadow-bronze " +
-        "hover:bg-green-secondary hover:text-white hover:shadow-green hover:scale-105",
+        "bg-gradient-bronze text-white rounded-md sm:rounded-lg " +
+        "hover:bg-green-secondary hover:text-white",
 
       // 🔹 Supporting CTAs (Explore Programs, Send Email, Learn More)
       secondary:
@@ -22,8 +22,8 @@ const Button = React.forwardRef(
 
       // 🔹 Quick actions (WhatsApp, Chatbot, Small CTAs)
       accent:
-        "bg-green-secondary text-white rounded-full shadow-green " +
-        "hover:opacity-90 hover:scale-105",
+        "bg-green-secondary text-white rounded-full " +
+        "hover:opacity-90",
     };
 
     const sizes = {

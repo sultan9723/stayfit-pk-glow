@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import RegistrationModal from "@/components/RegistrationModal";
 
 const Navbar = () => {
@@ -66,12 +66,13 @@ const Navbar = () => {
               </Link>
             ))}
             <Button
-            variant="primary"
-            size="lg"
-           className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white transition-all duration-300"
-          >
-          Join Now
-         </Button>
+              variant="primary"
+              size="lg"
+              className="bg-gradient-accent hover:bg-gradient-accent/90 text-white"
+              onClick={() => setIsRegOpen(true)}
+            >
+              Join Now
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -119,8 +120,8 @@ const Navbar = () => {
               <div className="mt-auto">
                 <Button 
                   variant="primary" 
-                  size="lg"
-                  className="w-full px-6 py-3 bg-[#FF3131] hover:bg-red-600 text-white text-lg shadow-lg"
+                  size="md"
+                  className="w-full"
                   onClick={() => setIsRegOpen(true)}
                 >
                   Join Now

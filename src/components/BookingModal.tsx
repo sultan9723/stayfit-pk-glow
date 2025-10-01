@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, Clock, User, Mail, Phone, Target, Calendar as CalendarIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/Button';
 import {
   Dialog,
   DialogContent,
@@ -289,12 +289,12 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-very-dark-brown border-accent-primary">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFF5EE] text-black border border-accent-primary rounded-lg shadow-lg p-6">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-gradient-accent text-center">
+          <DialogTitle className="text-2xl font-bold text-center text-dark-brown">
             Book Your Fitness Program
           </DialogTitle>
-          <DialogDescription className="text-warm-beige text-center">
+          <DialogDescription className="text-dark-brown/80 text-center">
             Fill out the form below to reserve your spot in our fitness program
           </DialogDescription>
         </DialogHeader>
@@ -302,14 +302,14 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Personal Information Section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white flex items-center">
+            <h3 className="text-lg font-semibold text-dark-brown flex items-center">
               <User className="w-5 h-5 mr-2 text-accent-primary" />
               Personal Information
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-warm-beige">
+                <Label htmlFor="name" className="text-dark-brown">
                   Full Name *
                 </Label>
                 <Input
@@ -317,7 +317,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
                   type="text"
                   value={formData.name}
                   onChange={(e) => handleInputChange('name', e.target.value)}
-                  className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary"
+                  className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary"
                   placeholder="Enter your full name"
                 />
                 {errors.name && (
@@ -326,7 +326,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-warm-beige">
+                <Label htmlFor="email" className="text-dark-brown">
                   Email Address *
                 </Label>
                 <Input
@@ -334,7 +334,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
                   type="email"
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
-                  className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary"
+                  className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary"
                   placeholder="your.email@example.com"
                 />
                 {errors.email && (
@@ -344,7 +344,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone" className="text-warm-beige">
+              <Label htmlFor="phone" className="text-dark-brown">
                 Phone Number *
               </Label>
               <Input
@@ -352,7 +352,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleInputChange('phone', e.target.value)}
-                className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary"
+                className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary"
                 placeholder="+92-300-1234567"
               />
               {errors.phone && (
@@ -363,35 +363,35 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
 
           {/* Program Information Section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white flex items-center">
+            <h3 className="text-lg font-semibold text-dark-brown flex items-center">
               <Target className="w-5 h-5 mr-2 text-accent-primary" />
               Program Information
             </h3>
 
             <div className="space-y-2">
-              <Label className="text-warm-beige">Program *</Label>
+              <Label className="text-dark-brown">Program *</Label>
               {selectedProgram ? (
                 <Input
                   id="program"
                   type="text"
                   value={formData.programName}
                   readOnly
-                  className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary"
+                  className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary"
                 />
               ) : (
                 <Select
                   value={formData.programId}
                   onValueChange={handleProgramChange}
                 >
-                  <SelectTrigger className="bg-deep-brown border-accent-primary text-white focus:ring-accent-primary">
+                  <SelectTrigger className="bg-white border-accent-primary text-dark-brown focus:ring-accent-primary">
                     <SelectValue placeholder={isLoadingPrograms ? "Loading programs..." : "Select a program"} />
                   </SelectTrigger>
-                  <SelectContent className="bg-deep-brown border-accent-primary">
+                  <SelectContent className="bg-white text-dark-brown border-accent-primary">
                     {programs.map((program) => (
                       <SelectItem
                         key={program.id}
                         value={program.id}
-                        className="text-white hover:bg-accent-primary hover:text-deep-brown"
+                        className="text-dark-brown hover:bg-accent-primary/10 hover:text-dark-brown"
                       >
                         {program.name} - {program.duration} - ${program.price}
                       </SelectItem>
@@ -407,20 +407,20 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
 
           {/* Scheduling Section */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white flex items-center">
+            <h3 className="text-lg font-semibold text-dark-brown flex items-center">
               <Calendar className="w-5 h-5 mr-2 text-accent-primary" />
               Scheduling
             </h3>
             
             <div className="space-y-2">
-              <Label className="text-warm-beige">Preferred Date *</Label>
+              <Label className="text-dark-brown">Preferred Date *</Label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
                     variant="secondary"
                     className={cn(
-                      "w-full justify-start text-left font-normal bg-deep-brown border-accent-primary text-white hover:bg-accent-primary hover:text-deep-brown",
-                      !formData.preferredDate && "text-warm-beige"
+                      "w-full justify-start text-left font-normal bg-white border-accent-primary text-dark-brown hover:bg-accent-primary/10 hover:text-dark-brown",
+                      !formData.preferredDate && "text-dark-brown/60"
                     )}
                   >
                     <CalendarIcon className="mr-2 h-4 w-4" />
@@ -431,14 +431,14 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
                     )}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0 bg-deep-brown border-accent-primary" align="start">
+                <PopoverContent className="w-auto p-0 bg-white text-dark-brown border-accent-primary" align="start">
                   <CalendarComponent
                     mode="single"
                     selected={formData.preferredDate}
                     onSelect={(date) => handleInputChange('preferredDate', date)}
                     disabled={(date) => date < new Date()}
                     initialFocus
-                    className="bg-deep-brown text-white"
+                    className="bg-white text-dark-brown"
                   />
                 </PopoverContent>
               </Popover>
@@ -449,20 +449,20 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label className="text-warm-beige">Preferred Time Slot *</Label>
+                <Label className="text-dark-brown">Preferred Time Slot *</Label>
                 <Select
                   value={formData.preferredTime}
                   onValueChange={(value) => handleInputChange('preferredTime', value)}
                 >
-                  <SelectTrigger className="bg-deep-brown border-accent-primary text-white focus:ring-accent-primary">
+                  <SelectTrigger className="bg-white border-accent-primary text-dark-brown focus:ring-accent-primary">
                     <SelectValue placeholder="Select time slot" />
                   </SelectTrigger>
-                  <SelectContent className="bg-deep-brown border-accent-primary">
+                  <SelectContent className="bg-white text-dark-brown border-accent-primary">
                     {TIME_SLOTS.map((time) => (
                       <SelectItem
                         key={time}
                         value={time}
-                        className="text-white hover:bg-accent-primary hover:text-deep-brown"
+                        className="text-dark-brown hover:bg-accent-primary/10 hover:text-dark-brown"
                       >
                         {time}
                       </SelectItem>
@@ -475,20 +475,20 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
               </div>
 
               <div className="space-y-2">
-                <Label className="text-warm-beige">Alternative Time (Optional)</Label>
+                <Label className="text-dark-brown">Alternative Time (Optional)</Label>
                 <Select
                   value={formData.alternativeTime}
                   onValueChange={(value) => handleInputChange('alternativeTime', value)}
                 >
-                  <SelectTrigger className="bg-deep-brown border-accent-primary text-white focus:ring-accent-primary">
+                  <SelectTrigger className="bg-white border-accent-primary text-dark-brown focus:ring-accent-primary">
                     <SelectValue placeholder="Select alternative time" />
                   </SelectTrigger>
-                  <SelectContent className="bg-deep-brown border-accent-primary">
+                  <SelectContent className="bg-white text-dark-brown border-accent-primary">
                     {TIME_SLOTS.map((time) => (
                       <SelectItem
                         key={time}
                         value={time}
-                        className="text-white hover:bg-accent-primary hover:text-deep-brown"
+                        className="text-dark-brown hover:bg-accent-primary/10 hover:text-dark-brown"
                       >
                         {time}
                       </SelectItem>
@@ -506,7 +506,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
               variant="primary"
               size="md"
               disabled={isLoading}
-              className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+              className="w-full md:w-auto bg-gradient-accent hover:bg-gradient-accent/90 text-white"
             >
               {isLoading ? (
                 <>

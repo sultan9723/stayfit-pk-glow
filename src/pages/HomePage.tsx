@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import HeroSection from "@/components/sections/HeroSection";
 import WhyStayFitSection from "@/components/sections/WhyStayFitSection";
 import ProgramsSection from "@/components/sections/ProgramsSection";
-import TrainersSection from "@/components/sections/TrainersSection";
+import PricingPlans from "@/components/sections/PricingPlans";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import AchievementsSection from "@/components/sections/AchievementsSection";
 import GallerySection from "@/components/sections/GallerySection";
@@ -48,8 +48,9 @@ const HomePage = () => {
       <HeroSection />
       <WhyStayFitSection />
       <ProgramsSection />
-      <TrainersSection />
+      <PricingPlans />
       <TestimonialsSection />
+
       <AchievementsSection />
       <GallerySection />
       <BlogSection />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Calendar, Clock, User, Calendar as CalendarIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/Button";
 import {
   Dialog,
   DialogContent,
@@ -197,12 +197,12 @@ const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({ isOpen, onClo
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-very-dark-brown border-accent-primary">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-[#FFF5EE] text-black border border-accent-primary rounded-lg shadow-lg p-6">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-gradient-accent text-center">
+          <DialogTitle className="text-2xl font-bold text-center text-dark-brown">
             Book a Trainer Session
           </DialogTitle>
-          <DialogDescription className="text-warm-beige text-center">
+          <DialogDescription className="text-dark-brown/80 text-center">
             Fill out the form below to request a session with your selected trainer
           </DialogDescription>
         </DialogHeader>
@@ -217,50 +217,50 @@ const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({ isOpen, onClo
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-warm-beige">Full Name *</Label>
-                <Input id="name" type="text" value={formData.name} onChange={(e) => handleInputChange("name", e.target.value)} className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary" placeholder="Enter your full name" />
+                <Label htmlFor="name" className="text-dark-brown">Full Name *</Label>
+                <Input id="name" type="text" value={formData.name} onChange={(e) => handleInputChange("name", e.target.value)} className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary" placeholder="Enter your full name" />
                 {errors.name && <p className="text-red-400 text-sm">{errors.name}</p>}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-warm-beige">Email Address *</Label>
-                <Input id="email" type="email" value={formData.email} onChange={(e) => handleInputChange("email", e.target.value)} className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary" placeholder="your.email@example.com" />
+                <Label htmlFor="email" className="text-dark-brown">Email Address *</Label>
+                <Input id="email" type="email" value={formData.email} onChange={(e) => handleInputChange("email", e.target.value)} className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary" placeholder="your.email@example.com" />
                 {errors.email && <p className="text-red-400 text-sm">{errors.email}</p>}
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone" className="text-warm-beige">Phone Number *</Label>
-              <Input id="phone" type="tel" value={formData.phone} onChange={(e) => handleInputChange("phone", e.target.value)} className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary" placeholder="+92-300-1234567" />
+              <Label htmlFor="phone" className="text-dark-brown">Phone Number *</Label>
+              <Input id="phone" type="tel" value={formData.phone} onChange={(e) => handleInputChange("phone", e.target.value)} className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary" placeholder="+92-300-1234567" />
               {errors.phone && <p className="text-red-400 text-sm">{errors.phone}</p>}
             </div>
           </div>
 
           {/* Trainer Information */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white flex items-center">
-              <Label className="text-warm-beige">Trainer *</Label>
+            <h3 className="text-lg font-semibold text-dark-brown flex items-center">
+              <Label className="text-dark-brown">Trainer *</Label>
             </h3>
-            <Input id="trainer" type="text" value={formData.trainerName} readOnly className="bg-deep-brown border-accent-primary text-white placeholder:text-warm-beige focus:ring-accent-primary" />
+            <Input id="trainer" type="text" value={formData.trainerName} readOnly className="bg-white border-accent-primary text-dark-brown placeholder:text-dark-brown/60 focus:ring-accent-primary" />
             {errors.trainerId && <p className="text-red-400 text-sm">{errors.trainerId}</p>}
           </div>
 
           {/* Scheduling */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white flex items-center">
+            <h3 className="text-lg font-semibold text-dark-brown flex items-center">
               <Calendar className="w-5 h-5 mr-2 text-accent-primary" />
               Scheduling
             </h3>
 
             <div className="space-y-2">
-              <Label className="text-warm-beige">Preferred Date *</Label>
+              <Label className="text-dark-brown">Preferred Date *</Label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
                     variant="secondary"
                     className={cn(
-                      "w-full justify-start text-left font-normal bg-deep-brown border-accent-primary text-white hover:bg-accent-primary hover:text-deep-brown",
-                      !formData.preferredDate && "text-warm-beige"
+                      "w-full justify-start text-left font-normal bg-white border-accent-primary text-dark-brown hover:bg-accent-primary/10 hover:text-dark-brown",
+                      !formData.preferredDate && "text-dark-brown/60"
                     )}
                   >
                     <CalendarIcon className="mr-2 h-4 w-4" />
@@ -271,14 +271,14 @@ const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({ isOpen, onClo
                     )}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0 bg-deep-brown border-accent-primary" align="start">
+                <PopoverContent className="w-auto p-0 bg-white text-dark-brown border-accent-primary" align="start">
                   <CalendarComponent
                     mode="single"
                     selected={formData.preferredDate}
                     onSelect={(date) => handleInputChange("preferredDate", date)}
                     disabled={(date) => date < new Date()}
                     initialFocus
-                    className="bg-deep-brown text-white"
+                    className="bg-white text-dark-brown"
                   />
                 </PopoverContent>
               </Popover>
@@ -287,14 +287,14 @@ const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({ isOpen, onClo
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label className="text-warm-beige">Preferred Time Slot *</Label>
+                <Label className="text-dark-brown">Preferred Time Slot *</Label>
                 <Select value={formData.preferredTime} onValueChange={(v) => handleInputChange("preferredTime", v)}>
-                  <SelectTrigger className="bg-deep-brown border-accent-primary text-white focus:ring-accent-primary">
+                  <SelectTrigger className="bg-white border-accent-primary text-dark-brown focus:ring-accent-primary">
                     <SelectValue placeholder="Select time slot" />
                   </SelectTrigger>
-                  <SelectContent className="bg-deep-brown border-accent-primary">
+                  <SelectContent className="bg-white text-dark-brown border-accent-primary">
                     {TIME_SLOTS.map((time) => (
-                      <SelectItem key={time} value={time} className="text-white hover:bg-accent-primary hover:text-deep-brown">
+                      <SelectItem key={time} value={time} className="text-dark-brown hover:bg-accent-primary/10 hover:text-dark-brown">
                         {time}
                       </SelectItem>
                     ))}
@@ -304,14 +304,14 @@ const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({ isOpen, onClo
               </div>
 
               <div className="space-y-2">
-                <Label className="text-warm-beige">Alternative Time (Optional)</Label>
+                <Label className="text-dark-brown">Alternative Time (Optional)</Label>
                 <Select value={formData.alternativeTime} onValueChange={(v) => handleInputChange("alternativeTime", v)}>
-                  <SelectTrigger className="bg-deep-brown border-accent-primary text-white focus:ring-accent-primary">
+                  <SelectTrigger className="bg-white border-accent-primary text-dark-brown focus:ring-accent-primary">
                     <SelectValue placeholder="Select alternative time" />
                   </SelectTrigger>
-                  <SelectContent className="bg-deep-brown border-accent-primary">
+                  <SelectContent className="bg-white text-dark-brown border-accent-primary">
                     {TIME_SLOTS.map((time) => (
-                      <SelectItem key={time} value={time} className="text-white hover:bg-accent-primary hover:text-deep-brown">
+                      <SelectItem key={time} value={time} className="text-dark-brown hover:bg-accent-primary/10 hover:text-dark-brown">
                         {time}
                       </SelectItem>
                     ))}
@@ -323,7 +323,7 @@ const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({ isOpen, onClo
 
           {/* Submit */}
           <div className="flex justify-center pt-4">
-            <Button type="submit" variant="primary" size="md" disabled={isLoading} className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300">
+            <Button type="submit" variant="primary" size="md" disabled={isLoading} className="w-full md:w-auto">
               {isLoading ? (
                 <>
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
