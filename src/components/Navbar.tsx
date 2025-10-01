@@ -65,14 +65,13 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Button 
-              variant="primary" 
-              size="sm"
-              className="btn-premium px-6 py-2 bg-[#FF3131] hover:bg-red-600 text-white shadow-lg transition-all duration-300"
-              onClick={() => setIsRegOpen(true)}
-            >
-              Join Now
-            </Button>
+            <Button
+            variant="primary"
+            size="lg"
+           className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white transition-all duration-300"
+          >
+          Join Now
+         </Button>
           </div>
 
           {/* Mobile menu button */}
