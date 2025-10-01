@@ -61,7 +61,7 @@ const ProgramsPage = () => {
       
       <div className="min-h-screen bg-very-dark-brown pt-20">
         {/* Hero Section */}
-        <section ref={heroRef as React.RefObject<HTMLDivElement>} className="py-16 bg-gradient-to-b from-very-dark-brown to-navy-primary">
+        <section ref={heroRef as React.RefObject<HTMLDivElement>} className="py-8 lg:py-16 bg-gradient-to-b from-very-dark-brown to-navy-primary">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`text-center mb-16 ${heroVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gradient-accent gradient-animate">
@@ -91,7 +91,7 @@ const ProgramsPage = () => {
         </section>
 
         {/* Search and Filter Section */}
-        <section ref={searchRef as React.RefObject<HTMLDivElement>} className="py-12 bg-navy-primary">
+        <section ref={searchRef as React.RefObject<HTMLDivElement>} className="py-8 lg:py-12 bg-navy-primary">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`text-center mb-8 ${searchVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
               <h2 className="text-3xl font-bold mb-4 text-gradient-accent">
@@ -132,7 +132,7 @@ const ProgramsPage = () => {
         </section>
 
         {/* Programs Grid */}
-        <section ref={programsRef as React.RefObject<HTMLDivElement>} className="py-16 bg-very-dark-brown">
+        <section ref={programsRef as React.RefObject<HTMLDivElement>} className="py-8 lg:py-16 bg-very-dark-brown">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className={`text-center mb-16 ${programsVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
               <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
@@ -146,9 +146,9 @@ const ProgramsPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {filteredPrograms.map((program, index) => (
-                <Card key={index} className={`card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative card-entrance ${programsVisible ? 'animate' : ''} stagger-${(index % 6) + 1}`}>
+                <Card key={index} className={`card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative card-entrance ${programsVisible ? 'animate' : ''} stagger-${(index % 6) + 1} min-h-[320px]`}>
                   {program.popular && (
                     <Badge className="absolute -top-3 left-6 bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1">
                       <Star className="w-4 h-4 mr-1" />
@@ -165,7 +165,7 @@ const ProgramsPage = () => {
                     </p>
                   </CardHeader>
 
-                  <CardContent className="space-y-4">
+                  <CardContent className="space-y-4 p-4">
                     <div className="flex items-center justify-between text-sm">
                       <div className="flex items-center text-warm-beige">
                         <Clock className="w-4 h-4 mr-2" />
@@ -193,7 +193,7 @@ const ProgramsPage = () => {
                     </ul>
 
                     {showButtons && (
-                      <div className="flex gap-2">
+                      <div className="flex gap-3">
                         <Button 
                           variant="primary" 
                           size="sm" 
@@ -238,7 +238,7 @@ const ProgramsPage = () => {
         </section>
 
         {/* Call to Action */}
-        <section ref={ctaRef as React.RefObject<HTMLDivElement>} className="py-16 bg-gradient-to-r from-very-dark-brown to-navy-primary">
+        <section ref={ctaRef as React.RefObject<HTMLDivElement>} className="py-8 lg:py-16 bg-gradient-to-r from-very-dark-brown to-navy-primary">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className={`${ctaVisible ? 'fade-in-up animate' : 'fade-in-up'}`}>
               <h2 className="text-4xl font-bold mb-6 text-gradient-accent">
@@ -248,11 +248,11 @@ const ProgramsPage = () => {
                 Join our programs today and take the first step towards achieving your fitness goals with expert guidance and support.
               </p>
             {showButtons && (
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button 
                   variant="primary" 
                   size="lg" 
-                  className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                  className="btn-premium px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
                   onClick={() => {
                     setSelectedProgram({ id: "program-0", title: "First Session Booking" });
                     setIsBookingModalOpen(true);
@@ -264,7 +264,7 @@ const ProgramsPage = () => {
                 <Button 
                   variant="secondary" 
                   size="lg" 
-                  className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                  className="btn-premium border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
                   asChild
                 >
                   <Link to="/trainers">

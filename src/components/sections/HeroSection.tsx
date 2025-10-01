@@ -76,22 +76,22 @@ const HeroSection = () => {
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`${heroVisible ? "fade-in-up animate" : "fade-in-up"}`}>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight gradient-animate">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight gradient-animate">
               {slides[currentSlide].title}
             </h1>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-4 text-accent-primary">
+            <h2 className="text-lg sm:text-2xl lg:text-3xl font-semibold mb-4 text-accent-primary">
               {slides[currentSlide].subtitle}
             </h2>
-            <p className="text-lg sm:text-xl text-warm-beige mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-xl text-warm-beige mb-8 max-w-2xl mx-auto leading-relaxed">
               {slides[currentSlide].description}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
               <Link to="/pricing">
                 <Button
                   variant="primary"
                   size="lg"
-                  className="btn-premium w-full md:w-auto px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                  className="btn-premium px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
                 >
                   Join Now
                 </Button>
@@ -100,7 +100,7 @@ const HeroSection = () => {
                 <Button
                   variant="secondary"
                   size="lg"
-                  className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                  className="btn-premium border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
                 >
                   Explore Programs
                 </Button>
@@ -148,4 +148,5 @@ const HeroSection = () => {
       </div>
     </section>
   );
+};
 export default HeroSection;

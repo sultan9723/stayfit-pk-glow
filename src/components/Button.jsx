@@ -12,12 +12,12 @@ const Button = React.forwardRef(
     const variants = {
       // 🔹 Main CTAs (Join Now, Book Trial, Success Stories)
       primary:
-        "bg-gradient-bronze text-white rounded-lg shadow-bronze " +
+        "bg-gradient-bronze text-white rounded-md sm:rounded-lg shadow-bronze " +
         "hover:bg-green-secondary hover:text-white hover:shadow-green hover:scale-105",
 
       // 🔹 Supporting CTAs (Explore Programs, Send Email, Learn More)
       secondary:
-        "bg-transparent border border-accent-primary text-accent-primary rounded-lg " +
+        "bg-transparent border border-accent-primary text-accent-primary rounded-md sm:rounded-lg " +
         "hover:bg-accent-primary hover:text-deep-brown",
 
       // 🔹 Quick actions (WhatsApp, Chatbot, Small CTAs)
@@ -28,8 +28,8 @@ const Button = React.forwardRef(
 
     const sizes = {
       sm: "px-4 py-2 text-sm",
-      md: "px-6 py-3 text-base",
-      lg: "px-8 py-4 text-lg",
+      md: "px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base",
+      lg: "px-4 py-2 text-sm sm:px-8 sm:py-4 sm:text-lg",
     };
 
     return (
