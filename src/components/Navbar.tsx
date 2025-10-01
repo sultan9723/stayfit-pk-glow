@@ -88,12 +88,12 @@ const Navbar = () => {
 
         {/* Mobile Navigation - Fullscreen Overlay */}
         {isOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-[#111315] text-[#FFF5EE] animate-slideIn">
+          <div className="md:hidden fixed inset-0 z-50 bg-[#f5f2ed] text-dark-brown animate-slideIn">
             <div className="flex flex-col h-full px-6 py-8 space-y-6">
               {/* Close button */}
               <button
                 onClick={() => setIsOpen(false)}
-                className="self-end text-3xl text-[#FFF5EE] hover:text-[#FF3131]"
+                className="self-end text-3xl text-dark-brown hover:text-[#FF3131]"
               >
                 ×
               </button>
@@ -105,10 +105,10 @@ const Navbar = () => {
                     key={item.name}
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className={`block text-2xl font-semibold transition ${
+                    className={`block text-2xl font-semibold px-2 py-1 rounded-lg transition ${
                       isActivePath(item.path)
                         ? "text-[#FF3131]"
-                        : "hover:text-[#FF3131]"
+                        : "text-[#FF3131] hover:text-white hover:bg-[#FF3131]"
                     }`}
                   >
                     {item.name}
@@ -121,7 +121,7 @@ const Navbar = () => {
                 <Button 
                   variant="primary" 
                   size="md"
-                  className="w-full"
+                  className="w-full bg-gradient-accent hover:bg-gradient-accent/90 text-white"
                   onClick={() => setIsRegOpen(true)}
                 >
                   Join Now

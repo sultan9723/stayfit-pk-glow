@@ -141,9 +141,6 @@ const ProgramsPage = () => {
               <p className="text-xl text-warm-beige max-w-3xl mx-auto">
                 Choose from our diverse range of fitness programs designed by experts
               </p>
-              <p className="text-warm-beige mt-2">
-                Showing {filteredPrograms.length} of {programs.length} programs
-              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
