@@ -9,8 +9,7 @@
     "start": "node dist/server.js",
     "prisma:migrate": "prisma migrate dev",
     "prisma:generate": "prisma generate",
-    "prisma:studio": "prisma studio",
-    "prisma:seed": "tsx src/prisma/seed.ts"
+    "prisma:studio": "prisma studio"
   },
   "keywords": [
     "fitness",
@@ -36,5 +35,8 @@
     "prisma": "^6.16.2",
     "tsx": "^4.6.2",
     "typescript": "^5.3.3"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   }
 }

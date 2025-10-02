@@ -3,9 +3,9 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import { config } from './config/env';
-import { contactRoutes } from './routes/contact';
-import { bookingRoutes } from './routes/booking';
-import { trainerRoutes } from './routes/trainer';
+import contactRoutes from './routes/contact';
+import bookingRoutes from './routes/booking';
+import trainerRoutes from './routes/trainer';
 
 const app = express();
 
@@ -46,6 +46,9 @@ app.get('/ping', (req, res) => {
 app.use('/api/contact', contactRoutes);
 app.use('/api/book', bookingRoutes);
 app.use('/api/trainers', trainerRoutes);
+
+// Backward-compatible alias (in case frontend sends requests without '/api' prefix)
+app.use('/book', bookingRoutes);
 
 // 404 handler
 app.use('*', (req, res) => {

@@ -1,19 +1,23 @@
 import express from "express";
 import cors from "cors";
-import bookingRoutes from "./routes/booking";
 import contactRoutes from "./routes/contact";
+import bookingRoutes from "./routes/booking";
 import trainerRoutes from "./routes/trainer";
 import { prisma } from "./lib/prisma";
 
+
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use("/api/bookings", bookingRoutes);
+// Primary booking endpoint expected by frontend
+app.use("/api/book", bookingRoutes);
+// Backward-compatible alias without /api prefix
+app.use("/book", bookingRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/trainers", trainerRoutes);
 
@@ -21,7 +25,6 @@ app.use("/api/trainers", trainerRoutes);
 app.get("/", (req, res) => {
   res.send("✅ StayFit backend is running");
 });
-
 // Start server
 app.listen(PORT, async () => {
   try {

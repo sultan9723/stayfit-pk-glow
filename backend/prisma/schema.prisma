@@ -1,48 +1,82 @@
-// This is your Prisma schema file
-// Learn more: https://pris.ly/d/prisma-schema
+// schema.prisma
 
 generator client {
   provider = "prisma-client-js"
- }
+}
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"   // ✅ Use Neon’s default (Postgres)
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  name      String
-  email     String    @unique
-  password  String
-  role      String    @default("user") // can be 'user' or 'admin'
-  phone     String?   // optional
-  createdAt DateTime  @default(now())
-  bookings  Booking[]
+  id         Int       @id @default(autoincrement())
+  name       String
+  email      String    @unique
+  password   String
+  role       String    @default("user") // 'user' | 'admin'
+  phone      String?
+  createdAt  DateTime  @default(now())
+  bookings   Booking[]
 }
 
 model Trainer {
-  id        Int       @id @default(autoincrement())
-  name      String
-  expertise String
-  bio       String?
-  createdAt DateTime  @default(now())
-  bookings  Booking[]
+  id             Int       @id @default(autoincrement())
+  name           String
+  specialization String
+  bio            String?
+  rating         Float     @default(0)
+  createdAt      DateTime  @default(now())
+  bookings       Booking[]
+}
+
+model Program {
+  id            Int       @id @default(autoincrement())
+  name          String
+  description   String
+  price         Decimal    @db.Decimal(10,2)
+  durationWeeks Int
+  createdAt     DateTime  @default(now())
+  bookings      Booking[]
+}
+
+model PricingPlan {
+  id             Int       @id @default(autoincrement())
+  planName       String
+  description    String?
+  price          Decimal    @db.Decimal(10,2)
+  durationMonths Int
+  isPopular      Boolean   @default(false)
+  bookings       Booking[]
 }
 
 model Booking {
-  id        Int       @id @default(autoincrement())
-  userId    Int
-  trainerId Int
-  date      DateTime
-  status    String    @default("pending")
+  id              Int        @id @default(autoincrement())
+  userId          Int
+  trainerId       Int?
+  programId       Int?
+  pricingPlanId   Int?
+  preferredDate   DateTime
+  preferredTime   String
+  alternativeTime String?
+  status          String     @default("pending")
+  createdAt       DateTime   @default(now())
 
-  user      User      @relation(fields: [userId], references: [id])
-  trainer   Trainer   @relation(fields: [trainerId], references: [id])
+  user    User        @relation(fields: [userId], references: [id])
+  trainer Trainer?    @relation(fields: [trainerId], references: [id])
+  program Program?    @relation(fields: [programId], references: [id])
+  plan    PricingPlan?@relation(fields: [pricingPlanId], references: [id])
 }
 
 model Newsletter {
   id        Int       @id @default(autoincrement())
   email     String    @unique
+  createdAt DateTime  @default(now())
+}
+
+model Blog {
+  id        Int       @id @default(autoincrement())
+  title     String
+  content   String
   createdAt DateTime  @default(now())
 }
