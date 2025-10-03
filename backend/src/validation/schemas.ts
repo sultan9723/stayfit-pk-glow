@@ -23,8 +23,8 @@ export const bookingSchema = z.object({
 
 // Trainer booking validation
 export const trainerBookingSchema = z.object({
-  trainerId: z.string().min(1, 'Trainer ID is required'),
-  trainerName: z.string().min(1, 'Trainer name is required'),
+  trainerId: z.number().int().optional(),
+  trainerName: z.string().optional(),
   name: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name must be less than 100 characters'),
   email: z.string().email('Invalid email address'),
   phone: z.string().optional(),
@@ -35,12 +35,8 @@ export const trainerBookingSchema = z.object({
 // Trainer creation validation
 export const trainerSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters').max(100, 'Name must be less than 100 characters'),
-  email: z.string().email('Invalid email address'),
-  phone: z.string().optional(),
-  specialty: z.string().min(1, 'Specialty is required'),
-  experience: z.number().int().min(0, 'Experience must be a positive number'),
+  specialization: z.string().min(1, 'Specialization is required'),
   bio: z.string().optional(),
-  imageUrl: z.string().url().optional(),
 });
 
 // Program creation validation

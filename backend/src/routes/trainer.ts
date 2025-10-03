@@ -10,15 +10,29 @@ router.post('/book', async (req, res) => {
     const validatedData: TrainerBookingInput = trainerBookingSchema.parse(req.body);
     const sessionDate = new Date(validatedData.sessionDate);
 
-    const trainerBooking = await prisma.trainerBooking.create({
+    // upsert user by email
+    const user = await prisma.user.upsert({
+      where: { email: validatedData.email },
+      update: { name: validatedData.name },
+      create: { name: validatedData.name, email: validatedData.email, password: 'N/A' },
+    });
+
+    // Resolve trainerId either from provided id or by name
+    let trainerId: number | null = null;
+    if (validatedData.trainerId != null) {
+      trainerId = validatedData.trainerId;
+    } else if (validatedData.trainerName) {
+      const t = await prisma.trainer.findFirst({ where: { name: validatedData.trainerName } });
+      if (t) trainerId = t.id;
+    }
+
+    const booking = await prisma.booking.create({
       data: {
-        trainerId: validatedData.trainerId,
-        trainerName: validatedData.trainerName,
-        name: validatedData.name,
-        email: validatedData.email,
-        phone: validatedData.phone,
-        sessionDate,
-        preferredTime: validatedData.preferredTime,
+        userId: user.id,
+        trainerId: trainerId ?? undefined,
+        preferredDate: sessionDate,
+        preferredTime: validatedData.preferredTime ?? 'Any',
+        alternativeTime: undefined,
       },
     });
 
@@ -26,13 +40,12 @@ router.post('/book', async (req, res) => {
       success: true,
       message: 'Trainer session booked successfully',
       data: {
-        id: trainerBooking.id,
-        name: trainerBooking.name,
-        email: trainerBooking.email,
-        trainerName: trainerBooking.trainerName,
-        sessionDate: trainerBooking.sessionDate,
-        status: trainerBooking.status,
-        createdAt: trainerBooking.createdAt,
+        id: booking.id,
+        userId: booking.userId,
+        trainerId: booking.trainerId,
+        sessionDate: booking.preferredDate,
+        status: booking.status,
+        createdAt: booking.createdAt,
       },
     });
   } catch (error: any) {
@@ -58,16 +71,13 @@ router.post('/book', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const trainers = await prisma.trainer.findMany({
-      where: { isActive: true },
       select: {
         id: true,
         name: true,
-        email: true,
-        phone: true,
-        specialty: true,
-        experience: true,
+        specialization: true,
         bio: true,
-        imageUrl: true,
+        rating: true,
+        createdAt: true,
       },
       orderBy: { name: 'asc' },
     });
@@ -90,19 +100,17 @@ router.get('/', async (req, res) => {
 // GET /api/trainers/:id - Get specific trainer
 router.get('/:id', async (req, res) => {
   try {
-    const { id } = req.params;
+    const id = Number(req.params.id);
 
     const trainer = await prisma.trainer.findUnique({
-      where: { id, isActive: true },
+      where: { id },
       select: {
         id: true,
         name: true,
-        email: true,
-        phone: true,
-        specialty: true,
-        experience: true,
+        specialization: true,
         bio: true,
-        imageUrl: true,
+        rating: true,
+        createdAt: true,
       },
     });
 
@@ -130,19 +138,17 @@ router.get('/:id', async (req, res) => {
 // GET /api/trainers/bookings - Get all trainer bookings (admin only)
 router.get('/bookings', async (req, res) => {
   try {
-    const bookings = await prisma.trainerBooking.findMany({
+    const bookings = await prisma.booking.findMany({
       orderBy: { createdAt: 'desc' },
       select: {
         id: true,
         trainerId: true,
-        trainerName: true,
-        name: true,
-        email: true,
-        phone: true,
-        sessionDate: true,
+        preferredDate: true,
         preferredTime: true,
         status: true,
         createdAt: true,
+        trainer: { select: { name: true } },
+        user: { select: { name: true, email: true, phone: true } },
       },
     });
 
@@ -166,26 +172,22 @@ router.post('/', async (req, res) => {
   try {
     const validatedData: TrainerInput = trainerSchema.parse(req.body);
 
-    const existingTrainer = await prisma.trainer.findUnique({
-      where: { email: validatedData.email },
+    const existingTrainer = await prisma.trainer.findFirst({
+      where: { name: validatedData.name, specialization: validatedData.specialization },
     });
 
     if (existingTrainer) {
       return res.status(409).json({
         success: false,
-        message: 'Trainer with this email already exists',
+        message: 'Trainer with this name and specialization already exists',
       });
     }
 
     const trainer = await prisma.trainer.create({
       data: {
         name: validatedData.name,
-        email: validatedData.email,
-        phone: validatedData.phone,
-        specialty: validatedData.specialty,
-        experience: validatedData.experience,
+        specialization: validatedData.specialization,
         bio: validatedData.bio,
-        imageUrl: validatedData.imageUrl,
       },
     });
 
@@ -195,9 +197,7 @@ router.post('/', async (req, res) => {
       data: {
         id: trainer.id,
         name: trainer.name,
-        email: trainer.email,
-        specialty: trainer.specialty,
-        experience: trainer.experience,
+        specialization: trainer.specialization,
         createdAt: trainer.createdAt,
       },
     });
