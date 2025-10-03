@@ -226,8 +226,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
         alternativeTime: formData.alternativeTime || undefined
       };
 
-      const base = import.meta.env.VITE_API_BASE || '';
-      const response = await fetch(`${base}/api/book`, {
+      const response = await fetch(buildApiUrl('/api/book'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
