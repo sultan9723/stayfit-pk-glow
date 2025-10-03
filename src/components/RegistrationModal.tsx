@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { buildApiUrl } from "@/lib/api";
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -73,8 +74,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose, 
         email: formData.email.trim(),
         phone: formData.phone.trim(),
       };
-      const base = import.meta.env.VITE_API_BASE || "";
-      const res = await fetch(`${base}/api/book`, {
+      const res = await fetch(buildApiUrl('/api/book'), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

@@ -14,6 +14,7 @@ import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { buildApiUrl } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 
@@ -137,8 +138,7 @@ const TrainerBookingModal: React.FC<TrainerBookingModalProps> = ({ isOpen, onClo
         alternativeTime: formData.alternativeTime || undefined,
       };
 
-      const base = import.meta.env.VITE_API_BASE || "";
-      const res = await fetch(`${base}/api/book`, {
+      const res = await fetch(buildApiUrl('/api/book'), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

@@ -22,6 +22,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { useToast } from '@/hooks/use-toast';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { buildApiUrl } from '@/lib/api';
 
 interface Program {
   id: string;
@@ -100,7 +101,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, selectedPr
     const fetchPrograms = async () => {
       setIsLoadingPrograms(true);
       try {
-        const response = await fetch('http://localhost:3001/api/book/programs');
+        const response = await fetch(buildApiUrl('/api/book/programs'));
         if (response.ok) {
           const data = await response.json();
           setPrograms(data.data || []);
