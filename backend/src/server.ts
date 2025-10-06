@@ -3,6 +3,7 @@ import cors from "cors";
 import contactRoutes from "./routes/contact";
 import bookingRoutes from "./routes/booking";
 import trainerRoutes from "./routes/trainer";
+import newsletterRoutes from "./routes/newsletter";
 import { prisma } from "./lib/prisma";
 
 
@@ -20,6 +21,7 @@ app.use("/api/book", bookingRoutes);
 app.use("/book", bookingRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/trainers", trainerRoutes);
+app.use("/api/newsletter", newsletterRoutes);
 
 // Health check
 app.get("/", (req, res) => {

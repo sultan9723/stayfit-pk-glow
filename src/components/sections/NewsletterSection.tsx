@@ -4,6 +4,7 @@ import { Button } from "@/components/Button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { buildApiUrl } from "@/lib/api";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
@@ -25,19 +26,23 @@ const NewsletterSection = () => {
 
     setIsLoading(true);
 
-    // Simulate API call (replace with actual Mailchimp/SendGrid integration)
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Here you would integrate with your email service provider
-      // Example: await subscribeToNewsletter(email);
-      
+      const res = await fetch(buildApiUrl('/api/newsletter'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || 'Failed to subscribe');
+      }
+
       setIsSubscribed(true);
-      setEmail("");
-      
+      setEmail('');
+
       toast({
-        title: "Successfully Subscribed!",
-        description: "Welcome to the StayFit.pk community. Check your email for confirmation.",
+        title: 'Successfully Subscribed!',
+        description: 'Welcome to the StayFit.pk community. Check your email for confirmation.',
       });
     } catch (error) {
       toast({
@@ -54,7 +59,6 @@ const NewsletterSection = () => {
     "Exclusive workout tips and nutrition advice",
     "Early access to new programs and classes",
     "Member-only discounts and special offers",
-    "Free downloadable fitness guides and meal plans",
     "Weekly motivation and success stories"
   ];
 

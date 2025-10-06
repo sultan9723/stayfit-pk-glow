@@ -1,31 +1,39 @@
 import { Router } from 'express';
 import { contactSchema, ContactInput } from '../validation/schemas';
+import { prisma } from '../lib/prisma';
 
 const router = Router();
 
-// POST /api/contact - Submit contact form
+// POST /api/contact - Save contact form submission
 router.post('/', async (req, res) => {
   try {
-    // Validate request body
     const validatedData: ContactInput = contactSchema.parse(req.body);
 
-    // No DB model for Contact in current schema.
-    // For deployment readiness, acknowledge receipt and log the message.
-    console.log('Contact submission:', validatedData);
-
-    return res.status(201).json({
-      success: true,
-      message: 'Contact form submitted successfully',
+    const contact = await prisma.contactForm.create({
       data: {
         name: validatedData.name,
         email: validatedData.email,
         subject: validatedData.subject ?? null,
-        createdAt: new Date().toISOString(),
+        message: validatedData.message,
+        phone: validatedData.phone ?? null,
       },
+    });
+
+    console.log('✅ Contact saved', {
+      id: contact.id,
+      name: contact.name,
+      email: contact.email,
+      createdAt: contact.createdAt,
+    });
+
+    return res.status(201).json({
+      success: true,
+      message: '✅ Contact form submitted successfully!',
+      data: contact,
     });
   } catch (error: any) {
     console.error('Contact form error:', error);
-    
+
     if (error.name === 'ZodError') {
       return res.status(400).json({
         success: false,
@@ -37,22 +45,26 @@ router.post('/', async (req, res) => {
     return res.status(500).json({
       success: false,
       message: 'Failed to submit contact form',
-      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
     });
   }
 });
 
-// GET /api/contact - Get all contact submissions (admin only)
-router.get('/', async (req, res) => {
+// GET /api/contact - Retrieve all contact submissions (admin use)
+router.get('/', async (_req, res) => {
   try {
-    // No persisted contacts; return empty list for compatibility.
-    return res.json({ success: true, data: [], count: 0 });
+    const contacts = await prisma.contactForm.findMany({
+      orderBy: { createdAt: 'desc' },
+    });
+    return res.json({
+      success: true,
+      count: contacts.length,
+      data: contacts,
+    });
   } catch (error: any) {
     console.error('Get contacts error:', error);
     return res.status(500).json({
       success: false,
       message: 'Failed to fetch contacts',
-      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error',
     });
   }
 });

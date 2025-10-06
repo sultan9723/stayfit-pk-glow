@@ -3,21 +3,28 @@ import { prisma } from '../lib/prisma';
 
 const router = Router();
 
-// POST /api/book - Handle program, trainer, and pricing submissions
+/**
+ * POST /api/book
+ * Handles bookings for:
+ *  - type: "program"  (expects programName)
+ *  - type: "trainer"  (expects trainerName)
+ *  - type: "pricing"  (expects planName)
+ *  - optional: preferredDate (YYYY-MM-DD or ISO), preferredTime, alternativeTime
+ */
 router.post('/', async (req, res) => {
   try {
-    const body = req.body || {};
-    const type: string = (body.type || '').toString();
+    const body = req.body ?? {};
+    const type = String(body.type ?? '').trim().toLowerCase();
 
-    const name: string = (body.name || '').toString().trim();
-    const email: string = (body.email || '').toString().trim();
-    const phone: string = (body.phone || '').toString().trim();
+    const name = String(body.name ?? '').trim();
+    const email = String(body.email ?? '').trim();
+    const phone = String(body.phone ?? '').trim();
 
     if (!name || !email) {
-      return res.status(400).json({ success: false, message: 'Name and email are required' });
+      return res.status(400).json({ success: false, message: 'Name and email are required.' });
     }
 
-    // upsert user by email
+    // Upsert user by email
     const user = await prisma.user.upsert({
       where: { email },
       update: { name, phone },
@@ -25,67 +32,103 @@ router.post('/', async (req, res) => {
     });
 
     // Common fields
-    let preferredDate: Date = new Date();
-    let preferredTime: string = 'Any';
-    let alternativeTime: string | null = null;
-    let trainerId: number | null = null;
-    let programId: number | null = null;
-    let pricingPlanId: number | null = null;
-
-    if (body.preferredDate) {
-      // Accept YYYY-MM-DD or ISO
-      const dStr = body.preferredDate.toString();
+    let preferredDate: Date;
+    const dStr = body.preferredDate ? String(body.preferredDate) : '';
+    if (dStr) {
       preferredDate = new Date(/T/.test(dStr) ? dStr : `${dStr}T00:00:00`);
     } else {
       // default tomorrow
       preferredDate = new Date(Date.now() + 24 * 60 * 60 * 1000);
     }
-    if (body.preferredTime) preferredTime = body.preferredTime.toString();
-    if (body.alternativeTime) alternativeTime = body.alternativeTime.toString();
+    const preferredTime = body.preferredTime ? String(body.preferredTime) : 'Any';
+    const alternativeTime = body.alternativeTime ? String(body.alternativeTime) : null;
 
+    // These will be resolved from names
+    let trainerId: number | null = null;
+    let programId: number | null = null;
+    let pricingPlanId: number | null = null;
+
+    // Resolve by name (case-insensitive)
     if (type === 'program') {
-      // Resolve program by name first, fallback by numeric id if provided
-      const programName = (body.programName || '').toString();
-      const programByName = programName
-        ? await prisma.program.findFirst({ where: { name: programName } })
-        : null;
-      if (programByName) programId = programByName.id;
+      const programName = String(body.programName ?? '');
+      if (!programName.trim()) {
+        return res.status(400).json({ success: false, message: 'Program name is required.' });
+      }
+      const program = await prisma.program.findFirst({
+        where: { name: { equals: programName, mode: 'insensitive' } },
+      });
+      if (!program) {
+        return res.status(400).json({ success: false, message: 'Invalid program selected.' });
+      }
+      programId = program.id;
     }
 
     if (type === 'trainer') {
-      const trainerName = (body.trainerName || '').toString();
-      const foundTrainer = trainerName
-        ? await prisma.trainer.findFirst({ where: { name: trainerName } })
-        : null;
-      if (foundTrainer) trainerId = foundTrainer.id;
+      const trainerName = String(body.trainerName ?? '');
+      if (!trainerName.trim()) {
+        return res.status(400).json({ success: false, message: 'Trainer name is required.' });
+      }
+      const trainer = await prisma.trainer.findFirst({
+        where: { name: { equals: trainerName, mode: 'insensitive' } },
+      });
+      if (!trainer) {
+        return res.status(400).json({ success: false, message: 'Invalid trainer selected.' });
+      }
+      trainerId = trainer.id;
     }
 
     if (type === 'pricing' || body.planName) {
-      const planName = (body.planName || '').toString();
-      const plan = planName
-        ? await prisma.pricingPlan.findFirst({ where: { planName } })
-        : null;
-      if (plan) pricingPlanId = plan.id;
+      const planName = String(body.planName ?? '');
+      if (!planName.trim() && type === 'pricing') {
+        return res.status(400).json({ success: false, message: 'Plan name is required.' });
+      }
+      if (planName.trim()) {
+        const plan = await prisma.pricingPlan.findFirst({
+          where: { planName: { equals: planName, mode: 'insensitive' } },
+        });
+        if (!plan) {
+          return res.status(400).json({ success: false, message: 'Invalid pricing plan selected.' });
+        }
+        pricingPlanId = plan.id;
+      }
     }
 
-    // Prevent duplicates: if a booking for the same user and same target already exists
-    const existing = await prisma.booking.findFirst({
-      where: {
-        userId: user.id,
-        OR: [
-          programId ? { programId } : undefined,
-          trainerId ? { trainerId } : undefined,
-          pricingPlanId ? { pricingPlanId } : undefined,
-        ].filter(Boolean) as any,
-        // treat any non-cancelled status as active
-        NOT: { status: 'cancelled' },
-      },
-    });
+    // Require at least one target based on type
+    if (type === 'program' && !programId) {
+      return res.status(400).json({ success: false, message: 'Program not found.' });
+    }
+    if (type === 'trainer' && !trainerId) {
+      return res.status(400).json({ success: false, message: 'Trainer not found.' });
+    }
+    if (type === 'pricing' && !pricingPlanId) {
+      return res.status(400).json({ success: false, message: 'Pricing plan not found.' });
+    }
+    if (!type) {
+      return res.status(400).json({ success: false, message: 'type is required: "program" | "trainer" | "pricing".' });
+    }
+
+    // Prevent duplicates: same user + same selected thing (program/trainer/plan) and not cancelled
+    const orFilters: any[] = [];
+    if (programId) orFilters.push({ programId });
+    if (trainerId) orFilters.push({ trainerId });
+    if (pricingPlanId) orFilters.push({ pricingPlanId });
+
+    let existing = null;
+    if (orFilters.length > 0) {
+      existing = await prisma.booking.findFirst({
+        where: {
+          userId: user.id,
+          OR: orFilters,
+          NOT: { status: 'cancelled' },
+        },
+      });
+    }
 
     if (existing) {
       return res.status(409).json({
         success: false,
-        message: 'A booking for this selection already exists for this email. Please wait for confirmation or contact support.',
+        message:
+          'A booking for this selection already exists for this email. Please wait for confirmation or contact support.',
       });
     }
 
@@ -99,6 +142,17 @@ router.post('/', async (req, res) => {
         preferredTime,
         alternativeTime: alternativeTime ?? undefined,
       },
+    });
+
+    console.log('✅ Booking created', {
+      id: booking.id,
+      userId: booking.userId,
+      trainerId: booking.trainerId,
+      programId: booking.programId,
+      pricingPlanId: booking.pricingPlanId,
+      preferredDate: booking.preferredDate.toISOString(),
+      preferredTime: booking.preferredTime,
+      status: booking.status,
     });
 
     return res.status(201).json({
@@ -120,13 +174,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET /api/book - Get all bookings (admin only)
-router.get('/', async (req, res) => {
+// GET /api/book - list (basic admin)
+router.get('/', async (_req, res) => {
   try {
     const bookings = await prisma.booking.findMany({
-      orderBy: {
-        createdAt: 'desc',
-      },
+      orderBy: { createdAt: 'desc' },
       select: {
         id: true,
         userId: true,
@@ -139,11 +191,7 @@ router.get('/', async (req, res) => {
       },
     });
 
-    return res.json({
-      success: true,
-      data: bookings,
-      count: bookings.length,
-    });
+    return res.json({ success: true, data: bookings, count: bookings.length });
   } catch (error: any) {
     console.error('Get bookings error:', error);
     return res.status(500).json({
@@ -154,17 +202,11 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET /api/book/programs - Get available programs
-router.get('/programs', async (req, res) => {
+// GET /api/book/programs
+router.get('/programs', async (_req, res) => {
   try {
     const programsRaw = await prisma.program.findMany({
-      select: {
-        id: true,
-        name: true,
-        description: true,
-        durationWeeks: true,
-        price: true,
-      },
+      select: { id: true, name: true, description: true, durationWeeks: true, price: true },
       orderBy: { name: 'asc' },
     });
 
@@ -176,11 +218,7 @@ router.get('/programs', async (req, res) => {
       price: p.price,
     }));
 
-    return res.json({
-      success: true,
-      data: programs,
-      count: programs.length,
-    });
+    return res.json({ success: true, data: programs, count: programs.length });
   } catch (error: any) {
     console.error('Get programs error:', error);
     return res.status(500).json({

@@ -6,6 +6,7 @@ export const contactSchema = z.object({
   email: z.string().email('Invalid email address'),
   subject: z.string().optional(),
   message: z.string().min(10, 'Message must be at least 10 characters').max(1000, 'Message must be less than 1000 characters'),
+  phone: z.string().optional(),
 });
 
 // Booking form validation

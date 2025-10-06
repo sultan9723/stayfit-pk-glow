@@ -5,19 +5,22 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"   // ✅ Use Neon’s default (Postgres)
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id         Int       @id @default(autoincrement())
-  name       String
-  email      String    @unique
-  password   String
-  role       String    @default("user") // 'user' | 'admin'
-  phone      String?
-  createdAt  DateTime  @default(now())
-  bookings   Booking[]
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("user") // 'user' | 'admin'
+  phone     String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  bookings     Booking[]
+  activityLogs ActivityLog[] // ✅ Added reverse relation
 }
 
 model Trainer {
@@ -34,7 +37,7 @@ model Program {
   id            Int       @id @default(autoincrement())
   name          String
   description   String
-  price         Decimal    @db.Decimal(10,2)
+  price         Decimal   @db.Decimal(10, 2)
   durationWeeks Int
   createdAt     DateTime  @default(now())
   bookings      Booking[]
@@ -44,14 +47,14 @@ model PricingPlan {
   id             Int       @id @default(autoincrement())
   planName       String
   description    String?
-  price          Decimal    @db.Decimal(10,2)
+  price          Decimal   @db.Decimal(10, 2)
   durationMonths Int
   isPopular      Boolean   @default(false)
   bookings       Booking[]
 }
 
 model Booking {
-  id              Int        @id @default(autoincrement())
+  id              Int      @id @default(autoincrement())
   userId          Int
   trainerId       Int?
   programId       Int?
@@ -59,24 +62,45 @@ model Booking {
   preferredDate   DateTime
   preferredTime   String
   alternativeTime String?
-  status          String     @default("pending")
-  createdAt       DateTime   @default(now())
+  status          String   @default("pending")
+  createdAt       DateTime @default(now())
 
-  user    User        @relation(fields: [userId], references: [id])
-  trainer Trainer?    @relation(fields: [trainerId], references: [id])
-  program Program?    @relation(fields: [programId], references: [id])
-  plan    PricingPlan?@relation(fields: [pricingPlanId], references: [id])
+  user    User         @relation(fields: [userId], references: [id])
+  trainer Trainer?     @relation(fields: [trainerId], references: [id])
+  program Program?     @relation(fields: [programId], references: [id])
+  plan    PricingPlan? @relation(fields: [pricingPlanId], references: [id])
 }
 
 model Newsletter {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
-  createdAt DateTime  @default(now())
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
 }
 
 model Blog {
-  id        Int       @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   title     String
   content   String
-  createdAt DateTime  @default(now())
+  createdAt DateTime @default(now())
+}
+
+model ContactForm {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  phone     String?
+  createdAt DateTime @default(now())
+}
+
+model ActivityLog {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  action    String
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
 }
