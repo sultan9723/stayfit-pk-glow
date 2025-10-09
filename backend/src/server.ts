@@ -6,46 +6,66 @@ import trainerRoutes from "./routes/trainer";
 import newsletterRoutes from "./routes/newsletter";
 import { prisma } from "./lib/prisma";
 
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+// 🌍 Detect environment
+const isProduction = process.env.NODE_ENV === "production";
 
-// Routes
-// Primary booking endpoint expected by frontend
+// ✅ Smart CORS configuration
+app.use(
+  cors({
+    origin: isProduction
+      ? ["https://stayfit.pk", "https://www.stayfit.pk"]
+      : ["http://localhost:5173"],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
+// ✅ Common middlewares
+app.use(express.json({ limit: "1mb" }));
+
+// Simple logger (for debugging form submissions)
+app.use((req, _res, next) => {
+  console.log(`➡ ${req.method} ${req.url}`);
+  next();
+});
+
+// ✅ Routes
 app.use("/api/book", bookingRoutes);
-// Backward-compatible alias without /api prefix
-app.use("/book", bookingRoutes);
+app.use("/book", bookingRoutes); // backward compatibility
 app.use("/api/contact", contactRoutes);
 app.use("/api/trainers", trainerRoutes);
 app.use("/api/newsletter", newsletterRoutes);
 
-// Health check
-app.get("/", (req, res) => {
-  res.send("✅ StayFit backend is running");
+// ✅ Health check endpoint
+app.get("/", (_req, res) => {
+  res.status(200).send("✅ StayFit backend is running");
 });
-// Start server
+
+// ✅ Start server with Prisma connection
 app.listen(PORT, async () => {
   try {
     await prisma.$connect();
     console.log("✅ Connected to PostgreSQL via Prisma");
     console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`🌐 Environment: ${isProduction ? "Production" : "Development"}`);
   } catch (err) {
     console.error("❌ Database connection failed:", err);
     process.exit(1);
   }
 });
 
-// Graceful shutdown
+// ✅ Graceful shutdown
 process.on("SIGINT", async () => {
+  console.log("🛑 Shutting down gracefully (SIGINT)...");
   await prisma.$disconnect();
   process.exit(0);
 });
 
 process.on("SIGTERM", async () => {
+  console.log("🛑 Shutting down gracefully (SIGTERM)...");
   await prisma.$disconnect();
   process.exit(0);
-}); 
+});

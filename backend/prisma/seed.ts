@@ -1,184 +1,230 @@
 import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 async function main() {
   console.log("🌱 Starting StayFit.pk database seed...");
 
-  // --- PROGRAMS ---
-  const programsData = [
-    {
-      name: "Weight Loss Program",
-      description:
-        "A 12-week guided fitness program focused on fat loss, nutrition, and endurance.",
-      durationWeeks: 12,
-      price: 299.99,
-    },
-    {
-      name: "Muscle Building Program",
-      description:
-        "A 16-week strength and hypertrophy program to build lean muscle mass.",
-      durationWeeks: 16,
-      price: 399.99,
-    },
-    {
-      name: "Cardio Fitness Program",
-      description:
-        "An 8-week cardio-focused plan including HIIT, cycling, and stamina training.",
-      durationWeeks: 8,
-      price: 199.99,
-    },
-    {
-      name: "MMA Training Program",
-      description:
-        "A 20-week MMA program covering striking, grappling, and combat techniques.",
-      durationWeeks: 20,
-      price: 499.99,
-    },
-  ];
-
-  await prisma.program.createMany({ data: programsData, skipDuplicates: true });
-  console.log(`✅ Seeded ${programsData.length} programs`);
-
-  // --- TRAINERS ---
+  // -----------------------------
+  // 🏋  TRAINERS
+  // -----------------------------
   const trainersData = [
     {
-      name: "Ahmed Khan",
-      specialization: "Weight Loss & Cardio",
-      bio: "Certified trainer with 8 years of experience helping clients reach weight goals.",
+      name: "Salman Ahmad",
+      specialization: "Strength & Body Building",
+      bio: "Senior trainer with extensive experience in strength training, bodybuilding, and fitness transformations. Expert in helping clients achieve their fitness goals through personalized training programs.",
+      rating: 4.9,
+    },
+    {
+      name: "Ammar Asif",
+      specialization: "Cardio & Nutrition",
+      bio: "Senior trainer focused on holistic fitness combining strength training, cardio, and nutrition. Expert in weight loss, muscle building, and lifestyle transformation.",
       rating: 4.8,
     },
     {
-      name: "Sara Ahmed",
-      specialization: "Strength Training & Bodybuilding",
-      bio: "Professional bodybuilder with expertise in strength and hypertrophy programs.",
-      rating: 4.9,
-    },
-    {
       name: "Hassan Ali",
-      specialization: "MMA & Combat Sports",
-      bio: "Ex-MMA fighter with 12 years of coaching experience in combat sports.",
+      specialization: "Mixed Martial Arts",
+      bio: "Professional MMA instructor with extensive combat sports background. Trained in multiple disciplines and self-defense techniques.",
       rating: 4.7,
     },
     {
-      name: "Fatima Sheikh",
-      specialization: "Yoga & Flexibility",
-      bio: "Certified yoga instructor focused on flexibility and holistic wellness.",
+      name: "Sarah Khan",
+      specialization: "Fitness Instructor",
+      bio: "Certified yoga and fitness instructor specializing in flexibility, mobility, and stress management. Focused on improving overall health and balance.",
       rating: 4.9,
+    },
+    {
+      name: "Alina Riaz",
+      specialization: "Nutrition Coach",
+      bio: "Expert nutritionist and health coach providing personalized diet plans and nutritional education for optimal health and performance.",
+      rating: 4.8,
+    },
+    {
+      name: "Ayesha Malik",
+      specialization: "Group Fitness Instructor",
+      bio: "Energetic group fitness instructor specializing in high-intensity workouts and circuit training. Creates fun and effective group training sessions.",
+      rating: 4.7,
     },
   ];
 
-  await prisma.trainer.createMany({ data: trainersData, skipDuplicates: true });
+  await prisma.trainer.createMany({ data: trainersData });
   console.log(`✅ Seeded ${trainersData.length} trainers`);
 
-  // --- PRICING PLANS ---
+  // -----------------------------
+  // 🧩 PROGRAMS
+  // -----------------------------
+  const programsData = [
+    {
+      name: "Strength & Body Building",
+      description:
+        "Build lean muscle mass and increase your strength with our comprehensive bodybuilding program designed for all levels.",
+      durationWeeks: 12,
+      price: 4000,
+    },
+    {
+      name: "Cardio and Strength",
+      description:
+        "Combine cardiovascular fitness with strength training for a complete body transformation and improved endurance.",
+      durationWeeks: 8,
+      price: 5000,
+    },
+    {
+      name: "Mixed Martial Arts",
+      description:
+        "Learn MMA techniques including striking, grappling, and self-defense with professional instructors.",
+      durationWeeks: 20,
+      price: 8000,
+    },
+    {
+      name: "Diet and Nutrition",
+      description:
+        "Expert nutritional guidance and meal planning to optimize your fitness results and achieve your health goals.",
+      durationWeeks: 4,
+      price: 3000,
+    },
+    {
+      name: "Crossfit",
+      description:
+        "Functional fitness training that combines weightlifting, cardio, and gymnastics for maximum strength and endurance.",
+      durationWeeks: 10,
+      price: 6000,
+    },
+    {
+      name: "Training Services",
+      description:
+        "One-on-one personal training with certified trainers for personalized fitness goals and maximum results.",
+      durationWeeks: 16,
+      price: 20000,
+    },
+  ];
+
+  await prisma.program.createMany({ data: programsData });
+  console.log(`✅ Seeded ${programsData.length} programs`);
+
+  // -----------------------------
+  // 💰 PRICING PLANS
+  // -----------------------------
   const plansData = [
     {
-      planName: "Basic Plan",
-      description: "Access to gym and group classes for 1 month.",
-      price: 49.99,
+      planName: "Strength Training",
+      description: "Strength training only, free weights access, and basic diet plan.",
+      price: 4000,
       durationMonths: 1,
       isPopular: false,
     },
     {
-      planName: "Pro Plan",
-      description: "3-month plan with trainer access and premium classes.",
-      price: 129.99,
-      durationMonths: 3,
+      planName: "Cardio Only",
+      description: "Cardio equipment access, running and cycling sessions, and basic diet plan.",
+      price: 5000,
+      durationMonths: 1,
+      isPopular: false,
+    },
+    {
+      planName: "Cardio + Strength",
+      description: "Full gym access, cardio & strength training, comprehensive diet plan, and personal guidance.",
+      price: 8000,
+      durationMonths: 1,
       isPopular: true,
     },
     {
-      planName: "Annual Elite Plan",
-      description: "Full-year access to all programs and 1-on-1 trainer sessions.",
-      price: 449.99,
-      durationMonths: 12,
+      planName: "Group Class (Strength)",
+      description: "Group strength training, instructor-led sessions, and community training.",
+      price: 6000,
+      durationMonths: 1,
+      isPopular: false,
+    },
+    {
+      planName: "Group Class (Cardio + Strength)",
+      description: "Cardio & strength classes, group coaching, and expert instruction.",
+      price: 10000,
+      durationMonths: 1,
+      isPopular: false,
+    },
+    {
+      planName: "Personal Training",
+      description: "1-on-1 training, personalized programs, flexible scheduling, and complete diet plan.",
+      price: 20000,
+      durationMonths: 1,
       isPopular: true,
     },
   ];
 
-  await prisma.pricingPlan.createMany({ data: plansData, skipDuplicates: true });
+  await prisma.pricingPlan.createMany({ data: plansData });
   console.log(`✅ Seeded ${plansData.length} pricing plans`);
 
-  // --- BLOGS ---
-  const blogsData = [
-    {
-      title: "Top 5 Tips for Sustainable Weight Loss",
-      content:
-        "Learn how to build healthy habits and lose weight sustainably through mindful nutrition and consistent workouts.",
-    },
-    {
-      title: "Why Yoga Is the Secret to Long-Term Fitness",
-      content:
-        "Yoga helps with flexibility, balance, and stress reduction—essential components for a lasting fitness lifestyle.",
-    },
-  ];
+  // -----------------------------
+  // 📰 BLOGS (optional sample)
+  // -----------------------------
+  await prisma.blog.createMany({
+    data: [
+      {
+        title: "10 Fitness Tips for a Healthier Life",
+        content:
+          "Consistency is the key to fitness success. Start small, stay dedicated, and focus on balanced nutrition.",
+      },
+      {
+        title: "How Strength Training Boosts Your Metabolism",
+        content:
+          "Strength training helps your body burn calories even after workouts. Learn how to include it in your routine.",
+      },
+    ],
+  });
+  console.log("✅ Seeded 2 blogs");
 
-  await prisma.blog.createMany({ data: blogsData, skipDuplicates: true });
-  console.log(`✅ Seeded ${blogsData.length} blogs`);
+  // -----------------------------
+  // 👤 USERS (for testing)
+  // -----------------------------
+  const users = await prisma.user.createMany({
+    data: [
+      {
+        name: "Test User",
+        email: "testuser@stayfit.pk",
+        password: "N/A",
+        phone: "+923001234567",
+      },
+    ],
+  });
+  console.log(`✅ Seeded ${users.count} user(s)`);
 
-  // --- USERS ---
-  const usersData = [
-    {
-      name: "John Doe",
-      email: "john@example.com",
-      password: "N/A",
-      phone: "+923001112233",
-      role: "user",
-    },
-    {
-      name: "Admin User",
-      email: "admin@stayfit.pk",
-      password: "N/A",
-      phone: "+923004445566",
-      role: "admin",
-    },
-  ];
+  // -----------------------------
+  // 📅 SAMPLE BOOKING
+  // -----------------------------
+  const sampleUser = await prisma.user.findFirst({ where: { email: "testuser@stayfit.pk" } });
+  const samplePlan = await prisma.pricingPlan.findFirst({ where: { planName: "Cardio + Strength" } });
 
-  await prisma.user.createMany({ data: usersData, skipDuplicates: true });
-  console.log(`✅ Seeded ${usersData.length} users`);
-
-  // --- BOOKINGS ---
-  const john = await prisma.user.findUnique({ where: { email: "john@example.com" } });
-  const weightLoss = await prisma.program.findFirst({ where: { name: "Weight Loss Program" } });
-  const trainerAhmed = await prisma.trainer.findFirst({ where: { name: "Ahmed Khan" } });
-
-  if (john && weightLoss && trainerAhmed) {
+  if (sampleUser && samplePlan) {
     await prisma.booking.create({
       data: {
-        userId: john.id,
-        programId: weightLoss.id,
-        trainerId: trainerAhmed.id,
+        userId: sampleUser.id,
+        pricingPlanId: samplePlan.id,
         preferredDate: new Date(),
         preferredTime: "Morning",
-        status: "confirmed",
+        alternativeTime: "Evening",
       },
     });
-    console.log("✅ Added 1 sample booking");
+    console.log("✅ Added sample booking");
   }
 
-  // --- CONTACT FORMS ---
+  // -----------------------------
+  // ✉ CONTACT FORM & NEWSLETTER
+  // -----------------------------
   await prisma.contactForm.create({
     data: {
-      name: "Ali Raza",
-      email: "ali.raza@gmail.com",
-      subject: "Inquiry about Annual Plan",
-      message: "Hi, I’d like to know if I can get a student discount on the Annual Plan.",
-      phone: "+923009998877",
+      name: "John Doe",
+      email: "john@example.com",
+      subject: "Just saying hi",
+      message: "Excited to join StayFit.pk!",
+      phone: "+923001234567",
     },
   });
-  console.log("✅ Added 1 contact form entry");
 
-  // --- ACTIVITY LOGS ---
-  if (john) {
-    await prisma.activityLog.create({
-      data: {
-        userId: john.id,
-        action: "Booked Weight Loss Program with Ahmed Khan",
-        ipAddress: "192.168.1.12",
-        userAgent: "Mozilla/5.0 (Windows NT 10.0)",
-      },
-    });
-    console.log("✅ Added 1 activity log");
-  }
+  await prisma.newsletter.create({
+    data: {
+      email: "subscriber@example.com",
+    },
+  });
+
+  console.log("✅ Added 1 contact form and 1 newsletter entry");
 
   console.log("🎉 All data seeded successfully!");
 }
