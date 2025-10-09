@@ -12,14 +12,19 @@ const PORT = process.env.PORT || 3001;
 // 🌍 Detect environment
 const isProduction = process.env.NODE_ENV === "production";
 
-// ✅ Smart CORS configuration
+// ✅ Improved CORS configuration for both local + production
 app.use(
   cors({
     origin: isProduction
-      ? ["https://stayfit.pk", "https://www.stayfit.pk"]
+      ? [
+          "https://stayfit.pk",
+          "https://www.stayfit.pk",
+          "https://api.stayfit.pk", // allow backend to talk to itself
+        ]
       : ["http://localhost:5173"],
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
+    methods: ["GET", "POST", "OPTIONS"], // OPTIONS needed for preflight
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 
