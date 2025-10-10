@@ -95,14 +95,15 @@ const BookingModal: React.FC<BookingModalProps> = ({
     alternativeTime: "",
   });
 
-  // ✅ Load static programs instantly (no CORS issue)
+  // ✅ Load static programs
   useEffect(() => {
     if (isOpen) {
       setPrograms([
         {
           id: "1",
           name: "Strength Training",
-          description: "Build power and endurance with guided strength sessions.",
+          description:
+            "Build power and endurance with guided strength sessions.",
           duration: "60–90 min",
           price: 4000,
         },
@@ -156,7 +157,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
     }
   }, [selectedProgram]);
 
-  const validate = () => {
+  const validate = (): boolean => {
     const errors: string[] = [];
     if (!formData.name.trim()) errors.push("Full name");
     if (!formData.email.trim()) errors.push("Email");
@@ -165,6 +166,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
     if (!formData.goal) errors.push("Goal");
     if (!formData.preferredDate) errors.push("Preferred date");
     if (!formData.preferredTime) errors.push("Time slot");
+
     if (errors.length) {
       toast({
         title: "Missing Required Fields",
@@ -183,13 +185,15 @@ const BookingModal: React.FC<BookingModalProps> = ({
     setIsLoading(true);
     try {
       const payload = {
+        type: "program",
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim(),
-        programId: formData.programId,
-        programName: formData.programName,
+        programId: Number(formData.programId),
         goal: formData.goal,
-        preferredDate: formData.preferredDate?.toISOString().split("T")[0],
+        preferredDate: formData.preferredDate
+          ? formData.preferredDate.toISOString().split("T")[0]
+          : undefined,
         preferredTime: formData.preferredTime,
         alternativeTime: formData.alternativeTime || undefined,
       };
@@ -252,41 +256,47 @@ const BookingModal: React.FC<BookingModalProps> = ({
             <Input
               placeholder="Full Name"
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, name: e.target.value })
+              }
             />
             <Input
               type="email"
               placeholder="Email Address"
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              onChange={(e) =>
+                setFormData({ ...formData, email: e.target.value })
+              }
             />
           </div>
 
           <Input
             placeholder="Phone Number"
             value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
           />
 
           {/* --- Program --- */}
           <Select
             value={formData.programId}
             onValueChange={(id) => {
-              const prog = programs.find((p) => p.id === id);
-              setFormData({
-                ...formData,
+              const p = programs.find((x) => String(x.id) === id);
+              setFormData((prev) => ({
+                ...prev,
                 programId: id,
-                programName: prog?.name || "",
-              });
+                programName: p?.name || "",
+              }));
             }}
           >
             <SelectTrigger>
               <SelectValue placeholder="Select Program" />
             </SelectTrigger>
             <SelectContent>
-              {programs.map((p) => (
-                <SelectItem key={p.id} value={p.id}>
-                  {p.name} — Rs.{p.price}
+              {programs.map((program) => (
+                <SelectItem key={program.id} value={String(program.id)}>
+                  {program.name} — {program.duration} — Rs{program.price}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -314,6 +324,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
             <PopoverTrigger asChild>
               <Button
                 variant="secondary"
+                type="button"
                 className={cn(
                   "w-full justify-start bg-white text-dark-brown border-accent-primary",
                   !formData.preferredDate && "text-muted-foreground"
@@ -340,7 +351,9 @@ const BookingModal: React.FC<BookingModalProps> = ({
           {/* --- Time Slot --- */}
           <Select
             value={formData.preferredTime}
-            onValueChange={(v) => setFormData({ ...formData, preferredTime: v })}
+            onValueChange={(v) =>
+              setFormData({ ...formData, preferredTime: v })
+            }
           >
             <SelectTrigger>
               <SelectValue placeholder="Select Time Slot" />
