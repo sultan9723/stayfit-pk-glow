@@ -12,21 +12,19 @@ const PORT = process.env.PORT || 3001;
 // 🌍 Detect environment
 const isProduction = process.env.NODE_ENV === "production";
 
-// ✅ Improved CORS configuration for both local + production
-app.use(
-  cors({
-    origin: isProduction
-      ? [
-          "https://stayfit.pk",
-          "https://www.stayfit.pk",
-          "https://api.stayfit.pk", // allow backend to talk to itself
-        ]
-      : ["http://localhost:5173"],
-    methods: ["GET", "POST", "OPTIONS"], // OPTIONS needed for preflight
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+// ✅ Standardized CORS configuration
+const corsOptions: cors.CorsOptions = {
+  origin: isProduction
+    ? ["https://stayfit.pk", "https://www.stayfit.pk"]
+    : ["http://localhost:5173"],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 // ✅ Common middlewares
 app.use(express.json({ limit: "1mb" }));

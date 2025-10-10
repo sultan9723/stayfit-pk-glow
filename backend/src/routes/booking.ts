@@ -43,38 +43,41 @@ router.post('/', async (req, res) => {
     const preferredTime = body.preferredTime ? String(body.preferredTime) : 'Any';
     const alternativeTime = body.alternativeTime ? String(body.alternativeTime) : null;
 
-    // These will be resolved from names
+    // These will be resolved from names or ids
     let trainerId: number | null = null;
     let programId: number | null = null;
     let pricingPlanId: number | null = null;
 
-    // Resolve by name (case-insensitive)
+    // Accept either numeric IDs or names for program/trainer
+    const programIdFromBody = body.programId ? Number(body.programId) : undefined;
+    const trainerIdFromBody = body.trainerId ? Number(body.trainerId) : undefined;
+
     if (type === 'program') {
-      const programName = String(body.programName ?? '');
-      if (!programName.trim()) {
-        return res.status(400).json({ success: false, message: 'Program name is required.' });
+      if (programIdFromBody && !Number.isNaN(programIdFromBody)) {
+        const p = await prisma.program.findUnique({ where: { id: programIdFromBody } });
+        if (!p) return res.status(400).json({ success: false, message: 'Invalid program selected.' });
+        programId = p.id;
+      } else {
+        const name = String(body.programName ?? '').trim();
+        if (!name) return res.status(400).json({ success: false, message: 'Program name is required.' });
+        const p = await prisma.program.findFirst({ where: { name: { equals: name, mode: 'insensitive' } } });
+        if (!p) return res.status(400).json({ success: false, message: 'Invalid program selected.' });
+        programId = p.id;
       }
-      const program = await prisma.program.findFirst({
-        where: { name: { equals: programName, mode: 'insensitive' } },
-      });
-      if (!program) {
-        return res.status(400).json({ success: false, message: 'Invalid program selected.' });
-      }
-      programId = program.id;
     }
 
     if (type === 'trainer') {
-      const trainerName = String(body.trainerName ?? '');
-      if (!trainerName.trim()) {
-        return res.status(400).json({ success: false, message: 'Trainer name is required.' });
+      if (trainerIdFromBody && !Number.isNaN(trainerIdFromBody)) {
+        const t = await prisma.trainer.findUnique({ where: { id: trainerIdFromBody } });
+        if (!t) return res.status(400).json({ success: false, message: 'Invalid trainer selected.' });
+        trainerId = t.id;
+      } else {
+        const name = String(body.trainerName ?? '').trim();
+        if (!name) return res.status(400).json({ success: false, message: 'Trainer name is required.' });
+        const t = await prisma.trainer.findFirst({ where: { name: { equals: name, mode: 'insensitive' } } });
+        if (!t) return res.status(400).json({ success: false, message: 'Invalid trainer selected.' });
+        trainerId = t.id;
       }
-      const trainer = await prisma.trainer.findFirst({
-        where: { name: { equals: trainerName, mode: 'insensitive' } },
-      });
-      if (!trainer) {
-        return res.status(400).json({ success: false, message: 'Invalid trainer selected.' });
-      }
-      trainerId = trainer.id;
     }
 
     if (type === 'pricing' || body.planName) {
