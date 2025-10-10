@@ -12,30 +12,47 @@ const PORT = process.env.PORT || 3001;
 // 🌍 Detect environment
 const isProduction = process.env.NODE_ENV === "production";
 
-// ✅ Standardized CORS configuration
+// ✅ Allowed origins for both local + deployed environments
+const allowedOrigins = [
+  "https://stayfit.pk",
+  "https://www.stayfit.pk",
+  "https://api.stayfit.pk",               // API subdomain
+  "https://stayfit-pk-glow.onrender.com", // Render deployment URL
+  "http://localhost:5173",                // Local dev
+];
+
+// ✅ Enhanced CORS configuration
 const corsOptions: cors.CorsOptions = {
-  origin: isProduction
-    ? ["https://stayfit.pk", "https://www.stayfit.pk"]
-    : ["http://localhost:5173"],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn(`🚫 Blocked CORS request from: ${origin}`);
+      callback(new Error(`Not allowed by CORS: ${origin}`));
+    }
+  },
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
   optionsSuccessStatus: 204,
 };
 
+// ✅ Apply CORS globally
 app.use(cors(corsOptions));
+
+// ✅ Handle preflight requests for all routes
 app.options("*", cors(corsOptions));
 
 // ✅ Common middlewares
 app.use(express.json({ limit: "1mb" }));
 
-// Simple logger (for debugging form submissions)
+// 🪵 Simple logger (for debugging form submissions)
 app.use((req, _res, next) => {
   console.log(`➡ ${req.method} ${req.url}`);
   next();
 });
 
-// ✅ Routes
+// ✅ API Routes
 app.use("/api/book", bookingRoutes);
 app.use("/book", bookingRoutes); // backward compatibility
 app.use("/api/contact", contactRoutes);
@@ -60,7 +77,7 @@ app.listen(PORT, async () => {
   }
 });
 
-// ✅ Graceful shutdown
+// ✅ Graceful shutdown handlers
 process.on("SIGINT", async () => {
   console.log("🛑 Shutting down gracefully (SIGINT)...");
   await prisma.$disconnect();
