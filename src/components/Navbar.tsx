@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/Button";
 import RegistrationModal from "@/components/RegistrationModal";
 
@@ -8,25 +8,81 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isRegOpen, setIsRegOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const location = useLocation();
 
-  // Scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
+    }
+  };
+
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "Programs", path: "/programs" },
-    { name: "Trainers", path: "/trainers" },
-    { name: "Pricing", path: "/pricing" },
-    { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" },
+    {
+      name: "Home",
+      path: "/",
+      subItems: [
+        { name: "Why Choose StayFit", path: "/#why-choose" },
+        { name: "Success Stories", path: "/#success-stories" },
+        { name: "Gallery Highlights", path: "/#gallery" },
+      ],
+    },
+    {
+      name: "Programs",
+      path: "/programs",
+      subItems: [
+        { name: "Strength & Bodybuilding", path: "/programs#strength" },
+        { name: "Cardio & Endurance", path: "/programs#cardio" },
+        { name: "Mixed Martial Arts", path: "/programs#mma" },
+        { name: "Diet & Nutrition", path: "/programs#nutrition" },
+        { name: "CrossFit", path: "/programs#crossfit" },
+        { name: "Training Services", path: "/programs#training" },
+      ],
+    },
+    {
+      name: "Trainers",
+      path: "/trainers",
+      subItems: [
+        { name: "Strength & Bodybuilding", path: "/trainers#strength" },
+        { name: "Cardio & Nutrition", path: "/trainers#cardio" },
+        { name: "Mixed Martial Arts", path: "/trainers#mma" },
+        { name: "Yoga & Wellness", path: "/trainers#yoga" },
+        { name: "Group Classes & HIIT", path: "/trainers#hiit" },
+      ],
+    },
+    {
+      name: "Pricing",
+      path: "/pricing",
+      subItems: [
+        { name: "Strength Training", path: "/pricing#strength" },
+        { name: "Cardio Only", path: "/pricing#cardio" },
+        { name: "Cardio + Strength", path: "/pricing#combo" },
+        { name: "Group Class Strength", path: "/pricing#groupstrength" },
+        { name: "Group Class Cardio + Strength", path: "/pricing#groupcombo" },
+        { name: "Personal Training", path: "/pricing#personal" },
+      ],
+    },
+    {
+      name: "Blog",
+      path: "/blog",
+    },
+    {
+      name: "Contact",
+      path: "/contact",
+      subItems: [
+        { name: "Find Us", path: "/contact#find-us" },
+        { name: "Send a Message", path: "/contact#message" },
+      ],
+    },
   ];
 
   const isActivePath = (path: string) => location.pathname === path;
@@ -34,9 +90,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-warm-beige dark:bg-very-dark-brown shadow-md"
-          : "bg-warm-beige dark:bg-transparent"
+        isScrolled ? "bg-white shadow-md" : "bg-white/95"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,54 +100,96 @@ const Navbar = () => {
             <img
               src="/stayfit.png"
               alt="StayFit Logo"
-              className="h-12 md:h-16 w-auto dark:invert"
+              className="h-10 md:h-12 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`relative px-3 py-2 rounded-lg transition-all duration-300 ${
-                  isActivePath(item.path)
-                    ? "text-[#FF3131]" // fiery red active
-                    : "text-dark-brown dark:text-white hover:text-[#FF3131]"
-                }`}
-              >
-                {item.name}
-              </Link>
+              <div key={item.name} className="relative group">
+                <Link
+                  to={item.path}
+                  className={`relative px-3 py-2 rounded-lg transition-all duration-300 ${
+                    isActivePath(item.path)
+                      ? "text-[#FF3131]"
+                      : "text-black hover:text-[#FF3131]"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+                {item.subItems && (
+                  <div className="absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 w-56 border border-gray-100">
+                    {item.subItems.map((sub) => (
+                      <Link
+                        key={sub.name}
+                        to={sub.path}
+                        className="block px-4 py-2 text-sm text-gray-800 hover:bg-[#FF3131]/10 hover:text-[#FF3131]"
+                      >
+                        {sub.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <Button
               variant="primary"
               size="lg"
-              className="bg-gradient-accent hover:bg-gradient-accent/90 text-white"
+              className="bg-[#FF3131] hover:bg-[#e02b2b] text-white"
               onClick={() => setIsRegOpen(true)}
             >
               Join Now
             </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          {/* Search + Mobile Menu */}
+          <div className="flex items-center space-x-4 md:hidden">
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              className="text-black hover:text-[#FF3131]"
+            >
+              <Search className="w-5 h-5" />
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-dark-brown dark:text-white hover:text-[#FF3131] transition-colors duration-200"
+              className="text-black hover:text-[#FF3131]"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation - Fullscreen Overlay */}
+        {/* Search Bar */}
+        {searchOpen && (
+          <form
+            onSubmit={handleSearch}
+            className="flex mt-2 mb-3 items-center bg-gray-100 rounded-lg overflow-hidden shadow-inner"
+          >
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="flex-1 px-4 py-2 text-sm outline-none bg-transparent"
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 bg-[#FF3131] text-white text-sm font-medium hover:bg-[#e02b2b]"
+            >
+              Go
+            </button>
+          </form>
+        )}
+
+        {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-[#f5f2ed] text-dark-brown animate-slideIn">
+          <div className="md:hidden fixed inset-0 z-50 bg-white text-black overflow-y-auto animate-slideIn">
             <div className="flex flex-col h-full px-6 py-8 space-y-6">
               {/* Close button */}
               <button
                 onClick={() => setIsOpen(false)}
-                className="self-end text-3xl text-dark-brown hover:text-[#FF3131]"
+                className="self-end text-3xl text-gray-800 hover:text-[#FF3131]"
               >
                 ×
               </button>
@@ -101,36 +197,65 @@ const Navbar = () => {
               {/* Nav Items */}
               <div className="flex flex-col space-y-4 mt-6">
                 {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`block text-2xl font-semibold px-2 py-1 rounded-lg transition ${
-                      isActivePath(item.path)
-                        ? "text-[#FF3131]"
-                        : "text-[#FF3131] hover:text-white hover:bg-[#FF3131]"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
+                  <div key={item.name}>
+                    <Link
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`block text-2xl font-semibold px-2 py-1 rounded-lg transition ${
+                        isActivePath(item.path)
+                          ? "text-[#FF3131]"
+                          : "hover:text-[#FF3131]"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                    {item.subItems && (
+                      <div className="ml-4 mt-2 space-y-1">
+                        {item.subItems.map((sub) => (
+                          <Link
+                            key={sub.name}
+                            to={sub.path}
+                            onClick={() => setIsOpen(false)}
+                            className="block text-base text-gray-700 hover:text-[#FF3131]"
+                          >
+                            {sub.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
 
-              {/* CTA Button */}
-              <div className="mt-auto">
-                <Button 
-                  variant="primary" 
-                  size="md"
-                  className="w-full bg-gradient-accent hover:bg-gradient-accent/90 text-white"
-                  onClick={() => setIsRegOpen(true)}
-                >
-                  Join Now
-                </Button>
+              {/* Bottom CTA */}
+              <div className="mt-auto border-t border-gray-200 pt-6 space-y-4">
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Become a <span className="font-semibold">StayFit Member</span>{" "}
+                  — Join the movement that transforms your health & strength.
+                </p>
+                <div className="flex space-x-3">
+                  <Button
+                    variant="primary"
+                    size="md"
+                    className="flex-1 bg-[#FF3131] text-white hover:bg-[#e02b2b]"
+                    onClick={() => setIsRegOpen(true)}
+                  >
+                    Join Now
+                  </Button>
+                  <Link
+                    to="/contact"
+                    onClick={() => setIsOpen(false)}
+                    className="flex-1 border border-[#FF3131] text-[#FF3131] text-center font-semibold rounded-lg py-2 hover:bg-[#FF3131]/10"
+                  >
+                    Get in Touch
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         )}
       </div>
+
       {/* Registration Modal */}
       <RegistrationModal
         isOpen={isRegOpen}
