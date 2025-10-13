@@ -23,7 +23,7 @@ const Navbar = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      navigate(/search?q=${encodeURIComponent(query.trim())});
+      navigate(`/search?q=${encodeURIComponent(query.trim())}`);
       setShowSearch(false);
       setQuery("");
     }
