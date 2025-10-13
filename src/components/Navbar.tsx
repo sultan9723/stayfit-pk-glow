@@ -11,7 +11,6 @@ const Navbar = () => {
 
   const location = useLocation();
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -33,33 +32,33 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
         isScrolled
-          ? "bg-warm-beige dark:bg-very-dark-brown shadow-md"
-          : "bg-warm-beige dark:bg-transparent"
+          ? "bg-warm-beige/95 shadow-md backdrop-blur-xl"
+          : "bg-warm-beige/60 backdrop-blur-lg"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src="/stayfit.png"
               alt="StayFit Logo"
-              className="h-12 md:h-16 w-auto dark:invert"
+              className="h-14 w-auto transition-transform duration-300 hover:scale-105"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`relative px-3 py-2 rounded-lg transition-all duration-300 ${
+                className={`text-[16px] font-medium transition-all duration-200 ${
                   isActivePath(item.path)
-                    ? "text-[#FF3131]" // fiery red active
-                    : "text-dark-brown dark:text-white hover:text-[#FF3131]"
+                    ? "text-[#FF3131]"
+                    : "text-dark-brown hover:text-[#FF3131] opacity-90 hover:opacity-100"
                 }`}
               >
                 {item.name}
@@ -68,29 +67,29 @@ const Navbar = () => {
             <Button
               variant="primary"
               size="lg"
-              className="bg-gradient-accent hover:bg-gradient-accent/90 text-white"
+              className="bg-[#FF3131] hover:brightness-110 text-white font-semibold px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
               onClick={() => setIsRegOpen(true)}
             >
               Join Now
             </Button>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-dark-brown dark:text-white hover:text-[#FF3131] transition-colors duration-200"
+              className="text-dark-brown hover:text-[#FF3131] transition-colors duration-200"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation - Fullscreen Overlay */}
+        {/* Mobile Drawer */}
         {isOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-[#f5f2ed] text-dark-brown animate-slideIn">
+          <div className="md:hidden fixed inset-0 z-50 bg-[#f5f2ed]/95 backdrop-blur-xl text-dark-brown animate-slideIn">
             <div className="flex flex-col h-full px-6 py-8 space-y-6">
-              {/* Close button */}
+              {/* Close Button */}
               <button
                 onClick={() => setIsOpen(false)}
                 className="self-end text-3xl text-dark-brown hover:text-[#FF3131]"
@@ -99,7 +98,7 @@ const Navbar = () => {
               </button>
 
               {/* Nav Items */}
-              <div className="flex flex-col space-y-4 mt-6">
+              <div className="flex flex-col space-y-5 mt-6">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
@@ -108,7 +107,7 @@ const Navbar = () => {
                     className={`block text-2xl font-semibold px-2 py-1 rounded-lg transition ${
                       isActivePath(item.path)
                         ? "text-[#FF3131]"
-                        : "text-[#FF3131] hover:text-white hover:bg-[#FF3131]"
+                        : "text-dark-brown hover:text-[#FF3131]"
                     }`}
                   >
                     {item.name}
@@ -116,12 +115,12 @@ const Navbar = () => {
                 ))}
               </div>
 
-              {/* CTA Button */}
+              {/* Join Now Button */}
               <div className="mt-auto">
-                <Button 
-                  variant="primary" 
+                <Button
+                  variant="primary"
                   size="md"
-                  className="w-full bg-gradient-accent hover:bg-gradient-accent/90 text-white"
+                  className="w-full bg-[#FF3131] hover:brightness-110 text-white font-semibold py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
                   onClick={() => setIsRegOpen(true)}
                 >
                   Join Now
@@ -131,6 +130,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
+
       {/* Registration Modal */}
       <RegistrationModal
         isOpen={isRegOpen}
