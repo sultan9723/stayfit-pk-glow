@@ -10,142 +10,125 @@ const Navbar = () => {
   const [isRegOpen, setIsRegOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [query, setQuery] = useState("");
+
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Handle scroll transparency
+  // ✅ Scroll transition effect (Apple-style)
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (query.trim()) {
-      navigate(/search?q=${encodeURIComponent(query.trim())});
-      setShowSearch(false);
-      setQuery("");
-    }
-  };
-
   const navItems = [
     {
       name: "Home",
       path: "/",
-      sub: [
-        { name: "Why Choose StayFit", href: "/#why" },
-        { name: "Success Stories", href: "/#stories" },
-        { name: "Gallery Highlights", href: "/#gallery" },
+      subItems: [
+        { label: "Why Choose StayFit?", path: "/#why-choose" },
+        { label: "Success Stories", path: "/#success-stories" },
+        { label: "Gallery Highlights", path: "/#gallery" },
       ],
     },
     {
       name: "Programs",
       path: "/programs",
-      sub: [
-        { name: "Strength & Bodybuilding", href: "/programs#strength" },
-        { name: "Cardio & Endurance", href: "/programs#cardio" },
-        { name: "Mixed Martial Arts", href: "/programs#mma" },
-        { name: "Diet & Nutrition", href: "/programs#nutrition" },
-        { name: "CrossFit", href: "/programs#crossfit" },
-        { name: "Training Services", href: "/programs#services" },
+      subItems: [
+        { label: "Strength & Bodybuilding", path: "/programs#strength" },
+        { label: "Cardio & Endurance", path: "/programs#cardio" },
+        { label: "Mixed Martial Arts", path: "/programs#mma" },
+        { label: "Diet & Nutrition", path: "/programs#nutrition" },
+        { label: "CrossFit", path: "/programs#crossfit" },
+        { label: "Training Services", path: "/programs#training" },
       ],
     },
-    {
-      name: "Trainers",
-      path: "/trainers",
-      sub: [
-        { name: "Strength & Bodybuilding", href: "/trainers#strength" },
-        { name: "Cardio & Nutrition", href: "/trainers#cardio" },
-        { name: "MMA & Combat", href: "/trainers#mma" },
-        { name: "Yoga & Wellness", href: "/trainers#yoga" },
-        { name: "Group Classes / HIIT", href: "/trainers#hiit" },
-      ],
-    },
-    {
-      name: "Pricing",
-      path: "/pricing",
-      sub: [
-        { name: "Strength Training", href: "/pricing#strength" },
-        { name: "Cardio Only", href: "/pricing#cardio" },
-        { name: "Cardio + Strength", href: "/pricing#combo" },
-        { name: "Group Class (Strength)", href: "/pricing#group-strength" },
-        { name: "Group Class (Cardio + Strength)", href: "/pricing#group-cardio" },
-        { name: "Personal Training", href: "/pricing#personal" },
-      ],
-    },
+    { name: "Trainers", path: "/trainers" },
+    { name: "Pricing", path: "/pricing" },
     { name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
   ];
 
   const isActivePath = (path: string) => location.pathname === path;
 
+  // ✅ Handle search
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (query.trim()) navigate(`/search?q=${encodeURIComponent(query)}`);
+    setShowSearch(false);
+  };
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-md ${
         isScrolled
-          ? "bg-charcoal/85 backdrop-blur-md shadow-md"
-          : "bg-seashell-white/95 backdrop-blur-sm"
+          ? "bg-[hsl(var(--charcoal)/0.8)] shadow-md"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
+          {/* ✅ Logo */}
+          <Link to="/" className="flex items-center z-50">
             <img
               src="/stayfit.png"
               alt="StayFit Logo"
-              className="h-10 md:h-12 w-auto"
+              className="h-10 md:h-12 w-auto object-contain drop-shadow-md"
             />
           </Link>
 
-          {/* Search Button */}
-          <div className="hidden md:flex items-center space-x-6">
+          {/* ✅ Search (Desktop) */}
+          <div className="hidden md:flex items-center space-x-4">
             {showSearch ? (
-              <form onSubmit={handleSearch} className="relative">
+              <form onSubmit={handleSearch} className="flex items-center">
                 <input
                   type="text"
+                  placeholder="Search..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search..."
-                  className="bg-white/10 text-dark-brown dark:text-white border border-border rounded-lg px-3 py-2 w-52 focus:w-64 focus:outline-none transition-all duration-300"
+                  className="bg-transparent border-b border-gray-400 text-white px-2 py-1 focus:outline-none placeholder:text-gray-muted"
                 />
               </form>
             ) : (
               <button
                 onClick={() => setShowSearch(true)}
-                className="text-dark-brown dark:text-white hover:text-[#FF3131]"
+                className="text-white hover:text-[#FF3131] transition-colors"
               >
                 <Search className="w-5 h-5" />
               </button>
             )}
+          </div>
 
-            {/* Desktop Navigation */}
+          {/* ✅ Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <div key={item.name} className="relative group">
                 <Link
                   to={item.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 text-sm font-medium transition-all ${
                     isActivePath(item.path)
                       ? "text-[#FF3131]"
-                      : "text-dark-brown dark:text-white hover:text-[#FF3131]"
+                      : "text-white hover:text-[#FF3131]"
                   }`}
                 >
                   {item.name}
                 </Link>
 
-                {/* Submenu */}
-                {item.sub && (
-                  <div className="absolute left-0 top-full mt-2 w-56 rounded-lg bg-seashell-white shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                    {item.sub.map((subItem) => (
-                      <a
-                        key={subItem.name}
-                        href={subItem.href}
-                        className="block px-4 py-2 text-sm text-dark-brown hover:bg-warm-beige hover:text-[#FF3131]"
-                      >
-                        {subItem.name}
-                      </a>
-                    ))}
+                {/* Dropdown (Nike-style hover) */}
+                {item.subItems && (
+                  <div className="absolute left-0 top-full hidden group-hover:block bg-[hsl(var(--charcoal))] rounded-md shadow-lg mt-2 w-56 border border-border-lines/40">
+                    <ul className="py-2">
+                      {item.subItems.map((sub, i) => (
+                        <li key={i}>
+                          <Link
+                            to={sub.path}
+                            className="block px-4 py-2 text-sm text-white hover:bg-[#FF3131]/10 hover:text-[#FF3131] transition"
+                          >
+                            {sub.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
               </div>
@@ -154,106 +137,105 @@ const Navbar = () => {
             <Button
               variant="primary"
               size="lg"
-              className="bg-gradient-accent hover:bg-gradient-accent/90 text-white"
+              className="bg-[#FF3131] text-white hover:bg-[#e12b2b]"
               onClick={() => setIsRegOpen(true)}
             >
               Join Now
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-3">
+          {/* ✅ Mobile menu button */}
+          <div className="md:hidden flex items-center z-50 space-x-4">
             <button
               onClick={() => setShowSearch(!showSearch)}
-              className="text-dark-brown dark:text-white hover:text-[#FF3131]"
+              className="text-white hover:text-[#FF3131]"
             >
-              <Search className="w-6 h-6" />
+              <Search className="w-5 h-5" />
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-dark-brown dark:text-white hover:text-[#FF3131]"
+              className="text-white hover:text-[#FF3131]"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Search */}
+        {/* ✅ Search (Mobile expand) */}
         {showSearch && (
-          <form
-            onSubmit={handleSearch}
-            className="md:hidden flex items-center mt-2 mb-3 bg-seashell-white border rounded-lg px-3 py-2"
-          >
-            <Search className="w-5 h-5 text-dark-brown mr-2" />
+          <form onSubmit={handleSearch} className="md:hidden mt-2 mb-4 flex">
             <input
               type="text"
+              placeholder="Search..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search..."
-              className="flex-1 bg-transparent outline-none text-dark-brown"
+              className="flex-grow bg-transparent border-b border-gray-400 text-white px-3 py-2 focus:outline-none placeholder:text-gray-muted"
             />
           </form>
         )}
 
-        {/* Mobile Drawer */}
+        {/* ✅ Mobile Drawer (Nike-style) */}
         {isOpen && (
-          <div className="md:hidden fixed inset-0 z-40 bg-seashell-white text-dark-brown overflow-y-auto">
-            <div className="flex flex-col px-6 py-8 space-y-6">
-              {/* Close */}
-              <button
-                onClick={() => setIsOpen(false)}
-                className="self-end text-3xl text-dark-brown hover:text-[#FF3131]"
-              >
-                ×
-              </button>
-
-              {/* Menu Items */}
+          <div className="fixed inset-0 z-40 bg-[hsl(var(--charcoal)/0.95)] text-white overflow-y-auto animate-slideIn">
+            <div className="flex flex-col h-full px-6 py-10 space-y-6">
+              {/* Nav Items */}
               {navItems.map((item) => (
                 <div key={item.name}>
                   <Link
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className="block text-xl font-semibold mb-2 hover:text-[#FF3131]"
+                    className="block text-2xl font-semibold mb-3 hover:text-[#FF3131]"
                   >
                     {item.name}
                   </Link>
-                  {item.sub && (
-                    <div className="ml-4 border-l border-border pl-3 space-y-1">
-                      {item.sub.map((subItem) => (
-                        <a
-                          key={subItem.name}
-                          href={subItem.href}
-                          onClick={() => setIsOpen(false)}
-                          className="block text-sm text-gray-muted hover:text-[#FF3131]"
-                        >
-                          {subItem.name}
-                        </a>
+                  {item.subItems && (
+                    <ul className="pl-4 space-y-2 text-gray-muted text-sm">
+                      {item.subItems.map((sub, i) => (
+                        <li key={i}>
+                          <Link
+                            to={sub.path}
+                            onClick={() => setIsOpen(false)}
+                            className="hover:text-[#FF3131]"
+                          >
+                            {sub.label}
+                          </Link>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   )}
                 </div>
               ))}
 
-              {/* CTA */}
-              <div className="mt-8 text-center border-t border-border pt-6">
-                <p className="text-sm text-gray-muted mb-3">
-                  Become a StayFit member today and unlock personalized plans,
-                  expert trainers, and exclusive offers.
+              {/* ✅ Bottom Description (Nike-style “Join Us” block) */}
+              <div className="mt-auto pt-6 border-t border-border-lines/30">
+                <p className="text-lg font-semibold mb-2">
+                  Become a StayFit Member
                 </p>
-                <div className="flex flex-col space-y-3">
+                <p className="text-sm text-gray-muted leading-relaxed mb-4">
+                  Unlock access to personalized programs, elite trainers, and
+                  exclusive community challenges.
+                </p>
+
+                <div className="flex space-x-3">
                   <Button
                     variant="primary"
-                    className="bg-gradient-accent text-white w-full"
+                    size="md"
+                    className="flex-1 bg-[#FF3131] hover:bg-[#e12b2b] text-white"
                     onClick={() => setIsRegOpen(true)}
                   >
-                    Join Us
+                    Join Now
                   </Button>
-                  <a
-                    href="tel:+923105648566"
-                    className="block w-full text-center py-2 rounded-lg border border-[#FF3131] text-[#FF3131] hover:bg-[#FF3131] hover:text-white transition"
+                  <Button
+                    variant="secondary"
+                    size="md"
+                    className="flex-1 border border-[#FF3131] text-[#FF3131] hover:bg-[#FF3131]/10"
+                    onClick={() => {
+                      navigate("/programs");
+                      setIsOpen(false);
+                    }}
                   >
-                    Call Us Now
-                  </a>
+                    View Programs
+                  </Button>
                 </div>
               </div>
             </div>
@@ -261,7 +243,7 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Registration Modal */}
+      {/* ✅ Registration Modal */}
       <RegistrationModal
         isOpen={isRegOpen}
         onClose={() => setIsRegOpen(false)}
