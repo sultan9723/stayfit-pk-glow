@@ -90,7 +90,7 @@ model ContactForm {
   email     String
   subject   String?
   message   String
-  phone     String?
+  phone     String?  
   createdAt DateTime @default(now())
 }
 

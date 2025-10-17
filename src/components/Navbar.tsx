@@ -105,6 +105,7 @@ const Navbar = () => {
               <div key={item.name} className="relative group">
                 <Link
                   to={item.path}
+                  aria-label={item.name}
                   className={`px-3 py-2 transition-all duration-300 ${
                     isActivePath(item.path)
                       ? "text-[#FF3131]"
@@ -120,6 +121,7 @@ const Navbar = () => {
                         key={sub.name}
                         to={sub.path}
                         className="block px-4 py-2 text-sm text-gray-800 hover:bg-[#FF3131]/10 hover:text-[#FF3131]"
+                        aria-label={sub.name}
                       >
                         {sub.name}
                       </Link>
@@ -128,6 +130,26 @@ const Navbar = () => {
                 )}
               </div>
             ))}
+            {/* Quick action icons */}
+            <a
+              href="https://wa.me/923001234567"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              className="text-white hover:text-[#16A34A]"
+              title="WhatsApp"
+            >
+              {/* WhatsApp glyph via emoji to avoid new deps */}
+              <span className="text-xl" role="img" aria-label="WhatsApp">💬</span>
+            </a>
+            <a
+              href="tel:+923001234567"
+              aria-label="Call StayFit"
+              className="text-white hover:text-[#FF3131]"
+              title="Call Now"
+            >
+              <span className="text-xl" role="img" aria-label="Phone">📞</span>
+            </a>
             <Button
               variant="primary"
               size="lg"
@@ -143,15 +165,33 @@ const Navbar = () => {
             <button
               onClick={() => setSearchOpen(!searchOpen)}
               className="text-white hover:text-[#FF3131]"
+              aria-label="Toggle search"
+              aria-expanded={searchOpen}
+              aria-controls="navbar-search-form"
             >
               <Search className="w-5 h-5" />
             </button>
+            <a
+              href="https://wa.me/923001234567"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Chat on WhatsApp"
+              className="text-white hover:text-[#16A34A]"
+            >
+              <span className="text-lg" role="img" aria-label="WhatsApp">💬</span>
+            </a>
+            <a href="tel:+923001234567" aria-label="Call StayFit" className="text-white hover:text-[#FF3131]">
+              <span className="text-lg" role="img" aria-label="Phone">📞</span>
+            </a>
             <button
               onClick={() => {
                 setIsOpen(!isOpen);
                 setIsSubOpen(null);
               }}
               className="text-white hover:text-[#FF3131]"
+              aria-label="Toggle menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu-panel"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -161,8 +201,10 @@ const Navbar = () => {
         {/* Search bar */}
         {searchOpen && (
           <form
+            id="navbar-search-form"
             onSubmit={handleSearch}
-            className="flex mt-2 mb-3 items-center bg-white/80 rounded-lg overflow-hidden shadow-inner"
+            role="search"
+            className="flex mt-2 mb-3 items-center bg-[#FFF5EE]/80 rounded-lg overflow-hidden shadow-inner"
           >
             <input
               type="text"
@@ -170,6 +212,7 @@ const Navbar = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="flex-1 px-4 py-2 text-sm outline-none bg-transparent text-black"
+              aria-label="Site search"
             />
             <button
               type="submit"
@@ -177,12 +220,20 @@ const Navbar = () => {
             >
               Go
             </button>
+            <button
+              type="button"
+              onClick={() => setSearchOpen(false)}
+              className="px-3 py-2 text-sm font-medium text-[#FF3131] hover:bg-[#FF3131]/10"
+              aria-label="Cancel search"
+            >
+              Cancel
+            </button>
           </form>
         )}
 
         {/* Mobile menu container */}
         {isOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-[#FFF5EE] text-[#FF3131] overflow-hidden">
+          <div id="mobile-menu-panel" className="md:hidden fixed inset-0 z-50 bg-[#FFF5EE] text-[#FF3131] overflow-hidden" role="dialog" aria-modal="true">
             {/* Slide containers */}
             <div
               className={`absolute inset-0 transform transition-transform duration-500 ${

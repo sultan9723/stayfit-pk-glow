@@ -9,6 +9,8 @@ import ProgramsPage from "./pages/ProgramsPage";
 import TrainersPage from "./pages/TrainersPage";
 import PricingPage from "./pages/PricingPage";
 import BlogPage from "./pages/BlogPage";
+import BlogPostPage from "./pages/BlogPostPage";
+
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
@@ -29,6 +31,8 @@ const App = () => (
               <Route path="/trainers" element={<TrainersPage />} />
               <Route path="/pricing" element={<PricingPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
+
               <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

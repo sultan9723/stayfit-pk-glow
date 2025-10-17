@@ -174,7 +174,10 @@ const ProgramsPage = () => {
           </div>
         </section>
 
-        {/* Programs Grid */}
+        {/* Programs Grid */
+        // Anchors correspond to navbar submenu hashes
+        // strength, cardio, mma, nutrition, crossfit
+        }
         <section
           id="mma"
           ref={programsRef as React.RefObject<HTMLDivElement>}
@@ -194,8 +197,94 @@ const ProgramsPage = () => {
               </p>
             </div>
 
-            {/* Same program cards here */}
-            {/* ... (No changes to card map or modal logic) */}
+            {/* Program Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {programs.map((program, index) => {
+                const title = program.title.toLowerCase();
+                let anchorId: string | undefined;
+                if (title.includes("strength")) anchorId = "strength";
+                else if (title.includes("cardio")) anchorId = "cardio";
+                else if (title.includes("mixed martial arts") || title.includes("mma")) anchorId = "mma";
+                else if (title.includes("nutrition")) anchorId = "nutrition";
+                else if (title.includes("cross")) anchorId = "crossfit";
+
+                return (
+                  <div key={index} id={anchorId}>
+                    <Card
+                      className={`card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative card-entrance ${
+                        programsVisible ? "animate" : ""
+                      } stagger-${(index % 6) + 1} min-h-[320px]`}
+                    >
+                      {program.popular && (
+                        <Badge className="absolute -top-3 left-6 bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1">
+                          <Star className="w-4 h-4 mr-1" />
+                          Most Popular
+                        </Badge>
+                      )}
+
+                      <CardHeader className="pb-4">
+                        <CardTitle className="text-2xl font-semibold text-white mb-2">
+                          {program.title}
+                        </CardTitle>
+                        <p className="text-warm-beige leading-relaxed">
+                          {program.description}
+                        </p>
+                      </CardHeader>
+
+                      <CardContent className="space-y-4 p-4">
+                        <div className="flex items-center justify-between text-sm">
+                          <div className="flex items-center text-warm-beige">
+                            <Clock className="w-4 h-4 mr-2" />
+                            {program.duration}
+                          </div>
+                          <div className="flex items-center text-warm-beige">
+                            <Users className="w-4 h-4 mr-2" />
+                            {program.capacity}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center justify-between">
+                          <Badge variant="outline" className="border-accent-primary text-accent-primary">
+                            {program.level}
+                          </Badge>
+                        </div>
+
+                        <ul className="space-y-2">
+                          {program.features.map((feature: string, featureIndex: number) => (
+                            <li key={featureIndex} className="flex items-center text-sm text-warm-beige">
+                              <CheckCircle className="w-4 h-4 text-accent-primary mr-3 flex-shrink-0" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+
+                        {showButtons && (
+                          <div className="flex gap-3">
+                            <Button
+                              variant="primary"
+                              size="sm"
+                              className="btn-premium flex-1 px-4 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                              onClick={() => handleBookNow(program, index)}
+                            >
+                              <Calendar className="w-4 h-4 mr-2" />
+                              Book Now
+                            </Button>
+                            <Button
+                              variant="secondary"
+                              size="sm"
+                              className="btn-premium flex-1 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                              asChild
+                            >
+                              <Link to={`/programs#${anchorId ?? "program"}-${index + 1}`}>Learn More</Link>
+                            </Button>
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </section>
 

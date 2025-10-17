@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, Facebook, Youtube } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
@@ -10,7 +10,11 @@ const Footer = () => {
     { name: "Privacy Policy", path: "/privacy" },
   ];
 
-  // Social links removed per request
+  const socialLinks = [
+    { name: "Instagram", href: "https://instagram.com/stayfitpk", Icon: Instagram },
+    { name: "Facebook", href: "https://facebook.com/stayfitpk", Icon: Facebook },
+    { name: "YouTube", href: "https://youtube.com/@stayfitpk", Icon: Youtube },
+  ];
 
   return (
     <footer className="bg-gradient-to-r from-very-dark-brown to-dark-brown border-t border-white/10">
@@ -25,7 +29,20 @@ const Footer = () => {
               Transform your fitness journey with StayFit — Pakistan's premier fitness center. 
               Expert trainers, state-of-the-art equipment, and personalized programs in Rawalpindi.
             </p>
-            {/* Social icons removed per request */}
+            <div className="flex items-center gap-4 pt-1">
+              {socialLinks.map(({ name, href, Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="text-warm-beige hover:text-accent-primary transition-colors"
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -51,24 +68,18 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center space-x-3">
                 <MapPin className="w-4 h-4 text-accent-primary flex-shrink-0" />
-                <span className="text-warm-beige">Rawalpindi, Pakistan</span>
+                <span className="text-warm-beige">StayFit Gym — 23-B, Street 10, Rawalpindi, Pakistan</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-accent-primary flex-shrink-0" />
-                <a
-                  href="tel:+923330711555"
-                  className="text-warm-beige hover:text-accent-primary transition-colors"
-                >
-                  +92 333 0711555
+                <a href="tel:+923001234567" className="text-warm-beige hover:text-accent-primary transition-colors">
+                  +92 300 1234567
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-accent-primary flex-shrink-0" />
-                <a
-                  href="mailto:info@stayfit.com"
-                  className="text-warm-beige hover:text-accent-primary transition-colors"
-                >
-                  info@stayfit.com
+                <a href="mailto:info@stayfit.pk" className="text-warm-beige hover:text-accent-primary transition-colors">
+                  info@stayfit.pk
                 </a>
               </li>
             </ul>
@@ -79,16 +90,12 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Business Hours</h3>
             <ul className="space-y-2 text-sm">
               <li className="flex justify-between">
-                <span className="text-warm-beige">Mon - Fri</span>
-                <span className="text-white font-medium">Slot 1 Co,8:00 AM - 11:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span className="text-warm-beige">Saturday</span>
-                <span className="text-white font-medium">Slot 2 females 11:00 AM - 7:00 PM</span>
+                <span className="text-warm-beige">Mon – Sat</span>
+                <span className="text-white font-medium">6:00 AM – 10:00 PM</span>
               </li>
               <li className="flex justify-between">
                 <span className="text-warm-beige">Sunday</span>
-                <span className="text-white font-medium">Slot 3 Co 7:00 PM - 12:00 AM</span>
+                <span className="text-white font-medium">Closed</span>
               </li>
             </ul>
           </div>

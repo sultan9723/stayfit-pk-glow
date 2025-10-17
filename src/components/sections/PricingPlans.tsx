@@ -144,13 +144,24 @@ const PricingPlans = () => {
           ref={cardsRef as React.RefObject<HTMLDivElement>}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
-          {plans.map((plan, index) => (
-            <Card
-              key={index}
-              className={`card-elegant pricing-card-premium group hover:shadow-accent transition-all duration-500 hover:-translate-y-3 relative h-full flex flex-col min-h-[320px] lg:min-h-[380px] w-full lg:min-w-[320px] lg:max-w-[360px] ${
-                plan.highlight ? "shadow-accent" : ""
-              } ${plan.popular ? "hover:scale-105 lg:hover:scale-110" : ""}`}
-            >
+          {plans.map((plan, index) => {
+            // map plan name to anchor id
+            const lower = plan.name.toLowerCase();
+            let anchorId: string | undefined;
+            if (lower.startsWith("strength")) anchorId = "strength";
+            else if (lower.startsWith("cardio only")) anchorId = "cardio";
+            else if (lower.includes("cardio + strength")) anchorId = "combo";
+            else if (lower.includes("group class (strength)")) anchorId = "groupstrength";
+            else if (lower.includes("group class (cardio + strength)")) anchorId = "groupcombo";
+            else if (lower.startsWith("personal")) anchorId = "personal";
+
+            return (
+              <div key={index} id={anchorId}>
+                <Card
+                  className={`card-elegant pricing-card-premium group hover:shadow-accent transition-all duration-500 hover:-translate-y-3 relative h-full flex flex-col min-h-[320px] lg:min-h-[380px] w-full lg:min-w-[320px] lg:max-w-[360px] ${
+                    plan.highlight ? "shadow-accent" : ""
+                  } ${plan.popular ? "hover:scale-105 lg:hover:scale-110" : ""}`}
+                >
               {/* Popular Badge */}
               {plan.popular && (
                 <Badge className="absolute -top-3 left-6 bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1 z-10">
@@ -219,8 +230,10 @@ const PricingPlans = () => {
                   </div>
                 )}
               </CardContent>
-            </Card>
-          ))}
+                </Card>
+              </div>
+            );
+          })}
         </div>
 
         {/* Free Consultation CTA */}
@@ -242,15 +255,19 @@ const PricingPlans = () => {
                     variant="primary"
                     size="lg"
                     className="btn-premium px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                    asChild
                   >
-                    Get Free Consultation
+                    <a href="https://wa.me/923001234567?text=Hello%20StayFit.pk%20—%20I%20want%20a%20free%20consultation" target="_blank" rel="noopener noreferrer">
+                      Get Free Consultation (WhatsApp)
+                    </a>
                   </Button>
                   <Button
                     variant="secondary"
                     size="lg"
                     className="btn-premium border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                    asChild
                   >
-                    Call Now: +92 300 1234567
+                    <a href="tel:+923001234567">Call Now: +92 300 1234567</a>
                   </Button>
                 </div>
               </div>

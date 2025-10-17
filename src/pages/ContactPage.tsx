@@ -7,8 +7,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { buildApiUrl } from "@/lib/api";
 import stayfitData from "../../data/stayfit_content.json";
+import { Instagram, Facebook, Youtube } from "lucide-react";
+import { useScrollToHash } from "@/hooks/useScrollToHash";
 
 const ContactPage = () => {
+  // Smooth scroll for #hash targets
+  useScrollToHash();
   const { contact } = stayfitData;
 
   // Controlled form submission state
@@ -85,10 +89,15 @@ const ContactPage = () => {
     <>
       <Helmet>
         <title>Contact Us - StayFit | Get in Touch</title>
+        <meta
+          name="description"
+          content="StayFit.pk — 23-B, Street 10, Rawalpindi, Pakistan. Open Mon–Sat, 6 AM – 10 PM. Contact us by phone, WhatsApp, or email for memberships, programs, and training."
+        />
       </Helmet>
 
       <div className="min-h-screen bg-navy-primary pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <section id="message">
           <Card className="card-elegant transition-transform duration-500 hover:scale-[1.02]">
             <CardHeader>
               <CardTitle className="text-white-text">
@@ -143,14 +152,53 @@ const ContactPage = () => {
               </form>
             </CardContent>
           </Card>
+          </section>
+
+          {/* Quick Contact Buttons */}
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <a
+              href="tel:+923001234567"
+              aria-label="Call Now"
+              className="text-center rounded-lg px-4 py-3 bg-white/10 text-white hover:bg-white/20 transition"
+            >
+              📞 Call Now
+            </a>
+            <a
+              href="https://wa.me/923001234567?text=Hello%20StayFit.pk%20—%20I%20have%20a%20question"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp Us"
+              className="text-center rounded-lg px-4 py-3 bg-[#16A34A] text-white hover:bg-[#138a3f] transition"
+            >
+              💬 WhatsApp Us
+            </a>
+            <a
+              href="mailto:info@stayfit.pk"
+              aria-label="Email Us"
+              className="text-center rounded-lg px-4 py-3 bg-white/10 text-white hover:bg-white/20 transition"
+            >
+              📧 Email Us
+            </a>
+          </div>
         </div>
 
-        {/* Google Map */}
+        {/* Find Us & Map */}
+        <section id="find-us" className="px-4 sm:px-6 lg:px-8">
         <Card className="card-elegant bg-gradient-card shadow-elegant transition-transform duration-500 hover:scale-[1.02]">
           <CardHeader>
             <CardTitle className="text-white-text">Find Us</CardTitle>
           </CardHeader>
           <CardContent>
+            <div className="mb-4 text-warm-beige text-sm">
+              <p>
+                <span className="text-white font-semibold">StayFit Gym</span> — 23-B, Street 10, Rawalpindi, Pakistan
+              </p>
+              <p>Open: Mon–Sat, 6 AM – 10 PM</p>
+              <p>
+                Phone: <a className="underline hover:text-accent-primary" href="tel:+923001234567">+92 300 1234567</a> ·
+                Email: <a className="underline hover:text-accent-primary" href="mailto:info@stayfit.pk">info@stayfit.pk</a>
+              </p>
+            </div>
             <div className="w-full h-96 rounded-lg overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.1729925857197!2d73.05588937656313!3d33.59818744194256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df9568a7b9c5b5%3A0x3a0e66e1dcf7712c!2sRawalpindi%2C%20Punjab!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
@@ -163,8 +211,39 @@ const ContactPage = () => {
                 title="StayFit.pk Location in Rawalpindi"
               />
             </div>
+            {/* Follow Us */}
+            <div className="mt-6 flex items-center justify-center gap-6">
+              <a
+                href="https://instagram.com/stayfitpk"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
+                className="text-white hover:text-accent-primary"
+              >
+                <Instagram className="w-6 h-6" />
+              </a>
+              <a
+                href="https://facebook.com/stayfitpk"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Facebook"
+                className="text-white hover:text-accent-primary"
+              >
+                <Facebook className="w-6 h-6" />
+              </a>
+              <a
+                href="https://youtube.com/@stayfitpk"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Subscribe on YouTube"
+                className="text-white hover:text-accent-primary"
+              >
+                <Youtube className="w-6 h-6" />
+              </a>
+            </div>
           </CardContent>
         </Card>
+        </section>
       </div>
     </>
   );
