@@ -121,9 +121,9 @@ const TrainersSection = () => {
         {showButtons && (
           <div className="text-center mt-12">
             <Button 
-              variant="secondary" 
+              variant="primary" 
               size="md" 
-              className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+              className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-accent-primary text-white shadow-accent hover:shadow-lg transition-all duration-300"
               asChild
             >
               <Link to="/trainers">View All Trainers</Link>

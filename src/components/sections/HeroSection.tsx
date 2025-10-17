@@ -55,7 +55,10 @@ const HeroSection = () => {
   };
 
   return (
-    <section ref={heroRef as React.RefObject<HTMLDivElement>} className="relative h-screen overflow-hidden">
+    <section
+      ref={heroRef as React.RefObject<HTMLDivElement>}
+      className="relative h-screen overflow-hidden"
+    >
       {/* Slides */}
       {slides.map((slide, index) => (
         <div
@@ -89,18 +92,18 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
               <Link to="/pricing">
                 <Button
-                  variant="primary"
+                  variant="heroPrimary"
                   size="lg"
-                  className="btn-premium px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                  className="btn-premium px-8 py-4 shadow-accent hover:shadow-lg transition-all duration-300"
                 >
                   Join Now
                 </Button>
               </Link>
               <Link to="/programs">
                 <Button
-                  variant="secondary"
+                  variant="heroSecondary"
                   size="lg"
-                  className="btn-premium border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                  className="btn-premium"
                 >
                   Explore Programs
                 </Button>
@@ -141,6 +144,7 @@ const HeroSection = () => {
         ))}
       </div>
 
+      {/* Scroll Indicator */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
           <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse" />
@@ -149,4 +153,5 @@ const HeroSection = () => {
     </section>
   );
 };
+
 export default HeroSection;

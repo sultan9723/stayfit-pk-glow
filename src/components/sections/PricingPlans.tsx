@@ -220,9 +220,9 @@ const PricingPlans = () => {
                 {showButtons && (
                   <div className="mt-6 pt-4 border-t border-gray-700">
                     <Button
-                      variant="primary"
+                      variant="heroPrimary"
                       size="md"
-                      className={`btn-premium px-8 py-3 transition-all duration-300 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg`}
+                      className={`btn-premium px-8 py-3 transition-all duration-300 shadow-accent hover:shadow-lg`}
                       onClick={() => openRegister(plan.name)}
                     >
                       {plan.price === "Free" ? "Start Free Trial" : "Enroll Now"}
@@ -252,9 +252,9 @@ const PricingPlans = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button
-                    variant="primary"
+                    variant="heroPrimary"
                     size="lg"
-                    className="btn-premium px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                    className="btn-premium px-8 py-4 shadow-accent hover:shadow-lg transition-all duration-300"
                     asChild
                   >
                     <a href="https://wa.me/923001234567?text=Hello%20StayFit.pk%20—%20I%20want%20a%20free%20consultation" target="_blank" rel="noopener noreferrer">
@@ -262,9 +262,9 @@ const PricingPlans = () => {
                     </a>
                   </Button>
                   <Button
-                    variant="secondary"
+                    variant="heroSecondary"
                     size="lg"
-                    className="btn-premium border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                    className="btn-premium"
                     asChild
                   >
                     <a href="tel:+923001234567">Call Now: +92 300 1234567</a>

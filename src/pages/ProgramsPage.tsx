@@ -261,18 +261,18 @@ const ProgramsPage = () => {
                         {showButtons && (
                           <div className="flex gap-3">
                             <Button
-                              variant="primary"
+                              variant="heroPrimary"
                               size="sm"
-                              className="btn-premium flex-1 px-4 py-2 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+                              className="btn-premium flex-1 px-4 py-2 shadow-accent hover:shadow-lg transition-all duration-300"
                               onClick={() => handleBookNow(program, index)}
                             >
                               <Calendar className="w-4 h-4 mr-2" />
                               Book Now
                             </Button>
                             <Button
-                              variant="secondary"
+                              variant="heroSecondary"
                               size="sm"
-                              className="btn-premium flex-1 border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+                              className="btn-premium flex-1 transition-all duration-300"
                               asChild
                             >
                               <Link to={`/programs#${anchorId ?? "program"}-${index + 1}`}>Learn More</Link>
@@ -305,9 +305,9 @@ const ProgramsPage = () => {
               {showButtons && (
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button
-                    variant="primary"
+                    variant="heroPrimary"
                     size="lg"
-                    className="btn-premium px-8 py-4 bg-gradient-accent hover:bg-gradient-accent/90 text-white"
+                    className="btn-premium px-8 py-4 shadow-accent hover:shadow-lg transition-all duration-300"
                     onClick={() => {
                       setSelectedProgram({ id: "program-0", title: "First Session Booking" });
                       setIsBookingModalOpen(true);
@@ -318,9 +318,9 @@ const ProgramsPage = () => {
                   </Button>
 
                   <Button
-                    variant="secondary"
+                    variant="heroSecondary"
                     size="lg"
-                    className="btn-premium border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown"
+                    className="btn-premium"
                     asChild
                   >
                     <Link to="/trainers">Meet Our Trainers</Link>

@@ -69,16 +69,15 @@ const BlogSection = () => {
 
                 <div className="flex items-center justify-between pt-4 border-t border-white/10">
                   <div className="flex items-center text-sm text-gray-muted">
-                    <Calendar className="w-4 h-4 mr-2" />
                     <time dateTime={post.date}>
                       {formatDate(post.date)}
                     </time>
                   </div>
 
                   <Button 
-                    variant="secondary" 
+                    variant="heroSecondary" 
                     size="sm"
-                    className="btn-premium border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown group-hover:translate-x-1 transition-all duration-300"
+                    className="btn-premium group-hover:translate-x-1 transition-all duration-300"
                   >
                     Read More
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -89,39 +88,39 @@ const BlogSection = () => {
           ))}
         </div>
 
-        {/* SEO-friendly structured data would be added here */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Blog",
-            "name": "StayFit.pk Blog",
-            "description": "Fitness tips, nutrition advice, and wellness insights",
-            "url": "https://stayfit.pk/blog",
-            "blogPost": blog_posts.map(post => ({
-              "@type": "BlogPosting",
-              "headline": post.title,
-              "description": post.excerpt,
-              "author": {
-                "@type": "Person",
-                "name": post.author
-              },
-              "datePublished": post.date,
-              "image": post.image,
-              "url": `https://stayfit.pk/blog/${post.slug}`
-            }))
-          })
-        }} />
-
         <div className="text-center mt-12">
           <Button 
-            variant="primary" 
+            variant="heroPrimary" 
             size="md"
-            className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-gradient-accent/90 text-white shadow-accent hover:shadow-lg transition-all duration-300"
+            className="btn-premium w-full md:w-auto px-8 py-3 shadow-accent hover:shadow-lg transition-all duration-300"
           >
             View All News
           </Button>
         </div>
       </div>
+
+      {/* SEO-friendly structured data */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "StayFit.pk Blog",
+          "description": "Fitness tips, nutrition advice, and wellness insights",
+          "url": "https://stayfit.pk/blog",
+          "blogPost": blog_posts.map(post => ({
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.excerpt,
+            "author": {
+              "@type": "Person",
+              "name": post.author
+            },
+            "datePublished": post.date,
+            "image": post.image,
+            "url": `https://stayfit.pk/blog/${post.slug}`
+          }))
+        })
+      }} />
     </section>
   );
 };

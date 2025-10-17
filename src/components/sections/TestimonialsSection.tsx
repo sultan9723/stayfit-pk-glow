@@ -196,13 +196,14 @@ const TestimonialsSection = () => {
         {/* CTA Button */}
         <div className="text-center mt-8 sm:mt-12">
           <Button
-            variant="secondary"
+            variant="primary"
             size="md"
-            className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+            className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-accent-primary text-white shadow-accent hover:shadow-lg transition-all duration-300"
           >
             View All Success Stories
           </Button>
         </div>
+      
       </div>
 
       {/* ✅ Video Modal — Works for Shorts & Normal YouTube Links */}
@@ -218,14 +219,15 @@ const TestimonialsSection = () => {
               allow="autoplay; encrypted-media; picture-in-picture"
               allowFullScreen
               title="Testimonial Video"
-            ></iframe>
+            />
+            <button
+              className="absolute -top-3 -right-3 bg-white/10 hover:bg-white/20 rounded-full p-2"
+              onClick={() => setActiveVideo(null)}
+              aria-label="Close video"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
           </div>
-          <button
-            className="absolute top-5 right-5 text-white text-3xl"
-            onClick={() => setActiveVideo(null)}
-          >
-            <X className="w-7 h-7 sm:w-8 sm:h-8" />
-          </button>
         </div>
       )}
     </section>

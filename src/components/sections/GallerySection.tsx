@@ -192,9 +192,9 @@ const GallerySection = () => {
         {/* View All Button */}
         <div className="text-center mt-12">
           <Button 
-            variant="secondary" 
+            variant="heroSecondary"
             size="md"
-            className="btn-premium w-full md:w-auto border-accent-primary text-accent-primary hover:bg-accent-primary hover:text-very-dark-brown transition-all duration-300"
+            className="btn-premium w-full md:w-auto"
           >
             View Full Gallery
           </Button>

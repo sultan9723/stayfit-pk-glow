@@ -151,9 +151,9 @@ const Navbar = () => {
               <span className="text-xl" role="img" aria-label="Phone">📞</span>
             </a>
             <Button
-              variant="primary"
+              variant="heroPrimary"
               size="lg"
-              className="bg-[#FF3131] hover:bg-[#e02b2b] text-white"
+              className="btn-premium px-6 py-3 shadow-accent hover:shadow-lg transition-all duration-300"
               onClick={() => setIsRegOpen(true)}
             >
               Join Now
@@ -282,20 +282,21 @@ const Navbar = () => {
                   </p>
                   <div className="flex space-x-3">
                     <Button
-                      variant="primary"
+                      variant="heroPrimary"
                       size="md"
-                      className="flex-1 bg-[#FF3131] text-white hover:bg-[#e02b2b]"
+                      className="flex-1 btn-premium shadow-accent hover:shadow-lg transition-all duration-300"
                       onClick={() => setIsRegOpen(true)}
                     >
                       Join Now
                     </Button>
-                    <Link
-                      to="/contact"
-                      onClick={() => setIsOpen(false)}
-                      className="flex-1 border border-[#FF3131] text-[#FF3131] text-center font-semibold rounded-lg py-2 hover:bg-[#FF3131]/10"
-                    >
-                      Get in Touch
-                    </Link>
+                    <Button variant="heroSecondary" size="md" className="flex-1 btn-premium" asChild>
+                      <Link
+                        to="/contact"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Get in Touch
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </div>

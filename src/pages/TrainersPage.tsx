@@ -260,13 +260,13 @@ const TrainersPage = () => {
               <p className="text-xl text-warm-beige mb-8 leading-relaxed">Book a free consultation with one of our expert trainers and take the first step.</p>
               {showButtons && (
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                  <Button variant="primary" size="lg" asChild>
+                  <Button variant="heroPrimary" size="lg" className="btn-premium px-8 py-4 shadow-accent hover:shadow-lg transition-all duration-300" asChild>
                     <Link to="/contact">
                       <Calendar className="w-5 h-5 mr-2" />
                       Book Free Consultation
                     </Link>
                   </Button>
-                  <Button variant="secondary" size="lg" asChild>
+                  <Button variant="heroPrimary" size="lg" className="btn-premium px-8 py-4 shadow-accent hover:shadow-lg transition-all duration-300" asChild>
                     <Link to="/programs">View Training Programs</Link>
                   </Button>
                 </div>
