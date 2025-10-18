@@ -42,17 +42,10 @@ const HeroSection = () => {
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
+  const goToSlide = (index: number) => setCurrentSlide(index);
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const prevSlide = () =>
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
 
   return (
     <section
@@ -78,7 +71,11 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 flex items-center justify-center h-full">
         <div className="text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className={`${heroVisible ? "fade-in-up animate" : "fade-in-up"}`}>
+          <div
+            className={`${
+              heroVisible ? "fade-in-up animate" : "fade-in-up"
+            } transition-all duration-700`}
+          >
             <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold mb-6 text-white leading-tight gradient-animate">
               {slides[currentSlide].title}
             </h1>
@@ -89,21 +86,23 @@ const HeroSection = () => {
               {slides[currentSlide].description}
             </p>
 
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
               <Link to="/pricing">
                 <Button
                   variant="heroPrimary"
                   size="lg"
-                  className="btn-premium px-8 py-4 shadow-accent hover:shadow-lg transition-all duration-300"
+                  className="shadow-accent hover:shadow-lg active:scale-95 transition-all duration-300"
                 >
                   Join Now
                 </Button>
               </Link>
+
               <Link to="/programs">
                 <Button
                   variant="heroSecondary"
                   size="lg"
-                  className="btn-premium"
+                  className="shadow-accent hover:shadow-lg active:scale-95 transition-all duration-300"
                 >
                   Explore Programs
                 </Button>
@@ -137,7 +136,9 @@ const HeroSection = () => {
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-accent-primary" : "bg-white/30 hover:bg-white/50"
+              index === currentSlide
+                ? "bg-accent-primary"
+                : "bg-white/30 hover:bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />

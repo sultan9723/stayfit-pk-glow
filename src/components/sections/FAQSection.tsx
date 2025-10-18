@@ -92,6 +92,31 @@ const FAQSection = () => {
           </Accordion>
         </div>
 
+        <div className="text-center mt-12">
+          <p className="text-gray-muted mb-6">
+            Still have questions? We're here to help!
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              variant="primary"
+              size="lg"
+              className="transition-all duration-300"
+              onClick={() => window.location.href = 'tel:+923330711555'}
+            >
+              Call Us Now
+            </Button>
+
+            <Button
+              variant="secondary"
+              size="lg"
+              className="transition-all duration-300"
+              onClick={() => window.location.href = 'mailto:info@stayfit.pk'}
+            >
+              Send Email
+            </Button>
+          </div>
+        </div>
+
         {/* SEO-friendly FAQ structured data */}
         <script
           type="application/ld+json"
@@ -110,32 +135,6 @@ const FAQSection = () => {
             }),
           }}
         />
-
-        {/* ✅ Updated Consistent Buttons */}
-        <div className="text-center mt-12">
-          <p className="text-gray-muted mb-6">
-            Still have questions? We're here to help!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              variant="primary"
-              size="lg"
-              className="transition-all duration-300"
-            >
-              <a href="tel:+923330711555">Call Us Now</a>
-            </Button>
-
-            <Button
-              asChild
-              variant="secondary"
-              size="lg"
-              className="transition-all duration-300"
-            >
-              <a href="mailto:info@stayfit.pk">Send Email</a>
-            </Button>
-          </div>
-        </div>
       </div>
     </section>
   );

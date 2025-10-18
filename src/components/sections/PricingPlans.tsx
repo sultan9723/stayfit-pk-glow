@@ -162,74 +162,74 @@ const PricingPlans = () => {
                     plan.highlight ? "shadow-accent" : ""
                   } ${plan.popular ? "hover:scale-105 lg:hover:scale-110" : ""}`}
                 >
-              {/* Popular Badge */}
-              {plan.popular && (
-                <Badge className="absolute -top-3 left-6 bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1 z-10">
-                  <Star className="w-4 h-4 mr-1" />
-                  Most Popular
-                </Badge>
-              )}
+                  {/* Popular Badge - Updated styling */}
+                  {plan.popular && (
+                    <Badge className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-accent text-white font-bold px-6 py-2 rounded-full z-10 shadow-lg flex items-center gap-2">
+                      <Star className="w-4 h-4 fill-white" />
+                      Most Popular
+                    </Badge>
+                  )}
 
-              {/* Card Header */}
-              <CardHeader className="pb-4 text-center">
-                <CardTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2">
-                  {plan.name}
-                </CardTitle>
-                <div className="mb-2">
-                  <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-accent-primary">
-                    {plan.price}
-                  </span>
-                  <span className="text-sm text-warm-beige ml-2">{plan.period}</span>
-                </div>
-              </CardHeader>
+                  {/* Card Header */}
+                  <CardHeader className="pb-4 text-center pt-8">
+                    <CardTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2">
+                      {plan.name}
+                    </CardTitle>
+                    <div className="mb-2">
+                      <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-accent-primary">
+                        {plan.price}
+                      </span>
+                      <span className="text-sm text-warm-beige ml-2">{plan.period}</span>
+                    </div>
+                  </CardHeader>
 
-              {/* Card Content */}
-              <CardContent className="flex-1 flex flex-col space-y-4 p-4 sm:px-6 sm:pb-6">
-                {/* Plan Details */}
-                <div className="grid grid-cols-2 gap-3 text-sm">
-                  <div className="flex items-center text-warm-beige bg-navy-primary/50 rounded-lg p-2">
-                    <Clock className="w-4 h-4 mr-2 text-accent-primary" />
-                    <span className="text-xs lg:text-sm">{plan.duration}</span>
-                  </div>
-                  <div className="flex items-center text-warm-beige bg-navy-primary/50 rounded-lg p-2">
-                    <Users className="w-4 h-4 mr-2 text-accent-primary" />
-                    <span className="text-xs lg:text-sm">{plan.capacity}</span>
-                  </div>
-                </div>
+                  {/* Card Content */}
+                  <CardContent className="flex-1 flex flex-col space-y-4 p-4 sm:px-6 sm:pb-6">
+                    {/* Plan Details */}
+                    <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div className="flex items-center text-warm-beige bg-navy-primary/50 rounded-lg p-2">
+                        <Clock className="w-4 h-4 mr-2 text-accent-primary" />
+                        <span className="text-xs lg:text-sm">{plan.duration}</span>
+                      </div>
+                      <div className="flex items-center text-warm-beige bg-navy-primary/50 rounded-lg p-2">
+                        <Users className="w-4 h-4 mr-2 text-accent-primary" />
+                        <span className="text-xs lg:text-sm">{plan.capacity}</span>
+                      </div>
+                    </div>
 
-                {/* Level Badge */}
-                <div className="text-center">
-                  <Badge variant="outline" className="border-accent-primary text-accent-primary bg-accent-primary/10">
-                    {plan.level}
-                  </Badge>
-                </div>
+                    {/* Level Badge */}
+                    <div className="text-center">
+                      <Badge variant="outline" className="border-accent-primary text-accent-primary bg-accent-primary/10">
+                        {plan.level}
+                      </Badge>
+                    </div>
 
-                {/* Features List */}
-                <div className="flex-1">
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start text-sm text-warm-beige">
-                        <Check className="w-4 h-4 text-accent-primary mr-3 flex-shrink-0 mt-0.5" />
-                        <span className="text-xs lg:text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                    {/* Features List */}
+                    <div className="flex-1">
+                      <ul className="space-y-3">
+                        {plan.features.map((feature, featureIndex) => (
+                          <li key={featureIndex} className="flex items-start text-sm text-warm-beige">
+                            <Check className="w-4 h-4 text-accent-primary mr-3 flex-shrink-0 mt-0.5" />
+                            <span className="text-xs lg:text-sm">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-                {/* Action Button */}
-                {showButtons && (
-                  <div className="mt-6 pt-4 border-t border-gray-700">
-                    <Button
-                      variant="heroPrimary"
-                      size="md"
-                      className={`btn-premium px-8 py-3 transition-all duration-300 shadow-accent hover:shadow-lg`}
-                      onClick={() => openRegister(plan.name)}
-                    >
-                      {plan.price === "Free" ? "Start Free Trial" : "Enroll Now"}
-                    </Button>
-                  </div>
-                )}
-              </CardContent>
+                    {/* Action Button - Centered */}
+                    {showButtons && (
+                      <div className="mt-6 pt-4 border-t border-gray-700 flex justify-center">
+                        <Button
+                          variant="primary"
+                          size="md"
+                          className="w-full transition-all duration-300"
+                          onClick={() => openRegister(plan.name)}
+                        >
+                          {plan.price === "Free" ? "Start Free Trial" : "Enroll Now"}
+                        </Button>
+                      </div>
+                    )}
+                  </CardContent>
                 </Card>
               </div>
             );
@@ -252,22 +252,20 @@ const PricingPlans = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <Button
-                    variant="heroPrimary"
+                    variant="primary"
                     size="lg"
-                    className="btn-premium px-8 py-4 shadow-accent hover:shadow-lg transition-all duration-300"
-                    asChild
+                    className="transition-all duration-300"
+                    onClick={() => window.open('https://wa.me/923001234567?text=Hello%20StayFit.pk%20—%20I%20want%20a%20free%20consultation', '_blank')}
                   >
-                    <a href="https://wa.me/923001234567?text=Hello%20StayFit.pk%20—%20I%20want%20a%20free%20consultation" target="_blank" rel="noopener noreferrer">
-                      Get Free Consultation (WhatsApp)
-                    </a>
+                    Get Free Consultation (WhatsApp)
                   </Button>
                   <Button
-                    variant="heroSecondary"
+                    variant="secondary"
                     size="lg"
-                    className="btn-premium"
-                    asChild
+                    className="transition-all duration-300"
+                    onClick={() => window.location.href = 'tel:+923001234567'}
                   >
-                    <a href="tel:+923001234567">Call Now: +92 300 1234567</a>
+                    Call Now: +92 300 1234567
                   </Button>
                 </div>
               </div>
@@ -283,5 +281,5 @@ const PricingPlans = () => {
     </section>
   );
 };
- 
+
 export default PricingPlans;
