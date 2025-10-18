@@ -10,27 +10,22 @@ import { Link } from "react-router-dom";
 const ProgramsSection = () => {
   const { programs } = stayfitData;
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  const [selectedProgram, setSelectedProgram] = useState<{id: string, title: string} | undefined>(undefined);
-  
-  // Optional button configuration
-  const showButtons = true; // Set to false to hide all action buttons
+  const [selectedProgram, setSelectedProgram] = useState<{ id: string; title: string } | undefined>(undefined);
+
+  const showButtons = true;
 
   const handleBookNow = (program: any, index: number) => {
     setSelectedProgram({
-      id: `program-${index + 1}`, // Generate ID based on index
-      title: program.title
+      id: `program-${index + 1}`,
+      title: program.title,
     });
-    setIsBookingModalOpen(true);
-  };
-
-  const handleViewAllPrograms = () => {
-    setSelectedProgram(undefined);
     setIsBookingModalOpen(true);
   };
 
   return (
     <section className="py-20 bg-very-dark-brown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
             Programs & Classes
@@ -41,6 +36,7 @@ const ProgramsSection = () => {
           </p>
         </div>
 
+        {/* Programs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, index) => (
             <Card
@@ -48,12 +44,12 @@ const ProgramsSection = () => {
               className="card-elegant group hover:shadow-accent transition-all duration-500 hover:-translate-y-2 relative min-h-[380px] w-full lg:min-w-[320px] lg:max-w-[360px]"
             >
               {program.popular && (
-                <Badge className="absolute -top-3 left-6 bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1">
+                <Badge className="absolute -top-3 left-6 bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1 flex items-center">
                   <Star className="w-4 h-4 mr-1" />
                   Popular
                 </Badge>
               )}
-              
+
               <CardHeader className="pb-4">
                 <h3 className="text-2xl font-semibold text-white mb-2">
                   {program.title}
@@ -76,7 +72,10 @@ const ProgramsSection = () => {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="border-accent-primary text-accent-primary">
+                  <Badge
+                    variant="outline"
+                    className="border-accent-primary text-accent-primary"
+                  >
                     {program.level}
                   </Badge>
                 </div>
@@ -109,15 +108,15 @@ const ProgramsSection = () => {
           ))}
         </div>
 
+        {/* ✅ View All Programs (EXACT same scheme as Gallery View Full Gallery) */}
         {showButtons && (
           <div className="text-center mt-12">
             <Button 
-              variant="primary" 
-              size="md" 
-              className="btn-premium w-full md:w-auto px-8 py-3 bg-gradient-accent hover:bg-accent-primary text-white shadow-accent hover:shadow-lg transition-all duration-300"
-              asChild
+              variant="heroSecondary"
+              size="md"
+              className="btn-premium w-full md:w-auto"
             >
-              <Link to="/programs">View All Programs</Link>
+              View All Programs
             </Button>
           </div>
         )}
