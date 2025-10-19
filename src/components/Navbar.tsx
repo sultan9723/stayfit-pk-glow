@@ -132,7 +132,7 @@ const Navbar = () => {
             ))}
             {/* Quick action icons */}
             <a
-              href="https://wa.me/923001234567"
+              href="https://wa.me/923330711555"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
@@ -143,7 +143,7 @@ const Navbar = () => {
               <span className="text-xl" role="img" aria-label="WhatsApp">💬</span>
             </a>
             <a
-              href="tel:+923001234567"
+              href="tel:+923330711555"
               aria-label="Call StayFit"
               className="text-white hover:text-[#FF3131]"
               title="Call Now"
@@ -172,7 +172,7 @@ const Navbar = () => {
               <Search className="w-5 h-5" />
             </button>
             <a
-              href="https://wa.me/923001234567"
+              href="https://wa.me/923330711555"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"

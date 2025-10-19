@@ -2,7 +2,7 @@ import { MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const FloatingElements = () => {
-  const whatsappNumber = "+92XXXXXXXXX"; // Replace with actual WhatsApp number
+  const whatsappNumber = "+923330711555"; // Replace with actual WhatsApp number
   const whatsappMessage = "Hi! I'm interested in joining StayFit.pk. Can you provide more information?";
   const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^\d]/g, "")}?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -21,7 +21,7 @@ const FloatingElements = () => {
 
       {/* Call Button */}
       <a
-        href="tel:+92XXXXXXXXX"
+        href="tel:+923330711555"
         className="floating-element bottom-24 right-6 w-12 h-12 bg-golden-accent hover:bg-yellow-500 rounded-full flex items-center justify-center shadow-golden"
         aria-label="Call StayFit.pk"
       >

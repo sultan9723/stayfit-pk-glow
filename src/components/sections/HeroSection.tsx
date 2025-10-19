@@ -98,15 +98,18 @@ const HeroSection = () => {
                 </Button>
               </Link>
 
-              <Link to="/programs">
-                <Button
-                  variant="heroSecondary"
-                  size="lg"
-                  className="shadow-accent hover:shadow-lg active:scale-95 transition-all duration-300"
-                >
-                  Explore Programs
-                </Button>
-              </Link>
+              {/* ✅ Exact match with View Full Gallery */}
+              <div className="text-center">
+                <Link to="/programs">
+                  <Button
+                    variant="heroSecondary"
+                    size="md"
+                    className="btn-premium w-full md:w-auto"
+                  >
+                    Explore Programs
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

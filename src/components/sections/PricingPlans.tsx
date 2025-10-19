@@ -255,7 +255,7 @@ const PricingPlans = () => {
                     variant="primary"
                     size="lg"
                     className="transition-all duration-300"
-                    onClick={() => window.open('https://wa.me/923001234567?text=Hello%20StayFit.pk%20—%20I%20want%20a%20free%20consultation', '_blank')}
+                    onClick={() => window.open('https://wa.me/923330711555?text=Hello%20StayFit.pk%20—%20I%20want%20a%20free%20consultation', '_blank')}
                   >
                     Get Free Consultation (WhatsApp)
                   </Button>
@@ -263,9 +263,9 @@ const PricingPlans = () => {
                     variant="secondary"
                     size="lg"
                     className="transition-all duration-300"
-                    onClick={() => window.location.href = 'tel:+923001234567'}
+                    onClick={() => window.location.href = 'tel:+923330711555'}
                   >
-                    Call Now: +92 300 1234567
+                    Call Now: +92 333 0711555
                   </Button>
                 </div>
               </div>

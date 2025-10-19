@@ -11,9 +11,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: "Instagram", href: "https://instagram.com/stayfitpk", Icon: Instagram },
-    { name: "Facebook", href: "https://facebook.com/stayfitpk", Icon: Facebook },
-    { name: "YouTube", href: "https://youtube.com/@stayfitpk", Icon: Youtube },
+    { name: "Instagram", href: "https://www.instagram.com/stayfitpakistan?igsh=MXZzdzN4b2s2dTdkdw==", Icon: Instagram },
+    { name: "Facebook", href: "https://www.facebook.com/share/1AC1Mp4QT7/?mibextid=wwXIfr", Icon: Facebook },
+    { name: "YouTube", href: "https://youtube.com/@stayfitpakistan1?si=7DMN1j9SCpaUY1Bt", Icon: Youtube },
   ];
 
   return (
@@ -72,8 +72,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-4 h-4 text-accent-primary flex-shrink-0" />
-                <a href="tel:+923001234567" className="text-warm-beige hover:text-accent-primary transition-colors">
-                  +92 300 1234567
+                <a href="tel:+923330711555" className="text-warm-beige hover:text-accent-primary transition-colors">
+                  +92 333 0711555
                 </a>
               </li>
               <li className="flex items-center space-x-3">
