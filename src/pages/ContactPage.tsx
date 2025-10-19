@@ -157,14 +157,14 @@ const ContactPage = () => {
           {/* Quick Contact Buttons */}
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
             <a
-              href="tel:+923001234567"
+              href="tel:+923330711555"
               aria-label="Call Now"
               className="text-center rounded-lg px-4 py-3 bg-white/10 text-white hover:bg-white/20 transition"
             >
               📞 Call Now
             </a>
             <a
-              href="https://wa.me/923001234567?text=Hello%20StayFit.pk%20—%20I%20have%20a%20question"
+              href="https://wa.me/923330711555?text=Hello%20StayFit.pk%20—%20I%20have%20a%20question"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp Us"
@@ -214,7 +214,7 @@ const ContactPage = () => {
             {/* Follow Us */}
             <div className="mt-6 flex items-center justify-center gap-6">
               <a
-                href="https://instagram.com/stayfitpk"
+                href="https://www.instagram.com/stayfitpakistan?igsh=MXZzdzN4b2s2dTdkdw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on Instagram"
@@ -223,7 +223,7 @@ const ContactPage = () => {
                 <Instagram className="w-6 h-6" />
               </a>
               <a
-                href="https://facebook.com/stayfitpk"
+                href="https://www.facebook.com/share/1AC1Mp4QT7/?mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow us on Facebook"
@@ -232,7 +232,7 @@ const ContactPage = () => {
                 <Facebook className="w-6 h-6" />
               </a>
               <a
-                href="https://youtube.com/@stayfitpk"
+                href="https://youtube.com/@stayfitpakistan1?si=7DMN1j9SCpaUY1Bt"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Subscribe on YouTube"
