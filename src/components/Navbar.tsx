@@ -13,7 +13,6 @@ const Navbar = () => {
 
   const location = useLocation();
 
-  // handle search
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -21,7 +20,6 @@ const Navbar = () => {
     }
   };
 
-  // Navigation structure
   const navItems = [
     {
       name: "Home",
@@ -153,13 +151,17 @@ const Navbar = () => {
             >
               📞
             </a>
+
+            {/* ✅ Fixed: Fully colored Join Now */}
             <Button
               variant="heroPrimary"
               size="lg"
-              className="btn-premium px-6 py-3 shadow-accent hover:shadow-lg transition-all duration-300"
-              onClick={() => setIsRegOpen(true)}
+              className="btn-premium px-6 py-3 shadow-accent hover:shadow-lg transition-all duration-300 bg-[#FF3131] hover:bg-[#e02b2b] text-white"
+              asChild
             >
-              Join Now
+              <Link to="/programs" className="text-white font-semibold">
+                Join Now
+              </Link>
             </Button>
           </div>
 
@@ -231,9 +233,13 @@ const Navbar = () => {
           </form>
         )}
 
-        {/* Mobile Menu (Seashell background retained) */}
+        {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden fixed inset-0 z-50 bg-[#FFF5EE] text-[#FF3131]" role="dialog" aria-modal="true">
+          <div
+            className="md:hidden fixed inset-0 z-50 bg-[#FFF5EE] text-[#FF3131]"
+            role="dialog"
+            aria-modal="true"
+          >
             <div
               className={`absolute inset-0 transform transition-transform duration-500 ${
                 isSubOpen ? "-translate-x-full" : "translate-x-0"
@@ -281,15 +287,23 @@ const Navbar = () => {
                     Become a <span className="font-semibold">StayFit Member</span> — Join the movement that transforms your health & strength.
                   </p>
                   <div className="flex space-x-3">
+                    {/* ✅ Fixed Mobile Button */}
                     <Button
                       variant="heroPrimary"
                       size="md"
-                      className="flex-1 btn-premium shadow-accent hover:shadow-lg transition-all duration-300"
-                      onClick={() => setIsRegOpen(true)}
+                      className="flex-1 btn-premium shadow-accent hover:shadow-lg transition-all duration-300 bg-[#FF3131] hover:bg-[#e02b2b] text-white"
+                      asChild
                     >
-                      Join Now
+                      <Link to="/programs" onClick={() => setIsOpen(false)} className="text-white font-semibold">
+                        Join Now
+                      </Link>
                     </Button>
-                    <Button variant="heroSecondary" size="md" className="flex-1 btn-premium" asChild>
+                    <Button
+                      variant="heroSecondary"
+                      size="md"
+                      className="flex-1 btn-premium"
+                      asChild
+                    >
                       <Link to="/contact" onClick={() => setIsOpen(false)}>
                         Get in Touch
                       </Link>
@@ -335,7 +349,7 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Registration Modal */}
+      {/* Registration Modal kept for potential future use */}
       <RegistrationModal
         isOpen={isRegOpen}
         onClose={() => setIsRegOpen(false)}
