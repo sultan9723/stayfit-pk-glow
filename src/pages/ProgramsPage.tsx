@@ -4,11 +4,9 @@ import { Filter, Search, Calendar, Clock, Users, CheckCircle, Star } from "lucid
 import { Button } from "@/components/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
 import stayfitData from "../../data/stayfit_content.json";
 import BookingModal from "@/components/BookingModal";
 
-// ✅ Clean framer-motion variant type
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: (custom: number = 0) => ({
@@ -49,7 +47,7 @@ const ProgramsSection = () => {
   return (
     <section
       id="programs"
-      className="py-12 lg:py-16 bg-gradient-to-b from-navy-primary to-very-dark-brown"
+      className="pt-[6rem] pb-12 lg:pb-16 bg-gradient-to-b from-navy-primary to-very-dark-brown"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Header */}
@@ -58,18 +56,19 @@ const ProgramsSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUp}
+          className="space-y-4"
         >
-          <h2 className="text-4xl font-bold mb-4 text-gradient-accent">
+          <h2 className="text-4xl font-bold text-gradient-accent">
             Find Your Perfect Program
           </h2>
-          <p className="text-warm-beige max-w-2xl mx-auto mb-10 text-base sm:text-lg leading-relaxed">
+          <p className="text-warm-beige max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
             Search and filter our programs by level to find the perfect match for your fitness goals.
           </p>
         </motion.div>
 
         {/* Search + Filter */}
         <motion.div
-          className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto mb-12"
+          className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto mt-10 mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -125,14 +124,15 @@ const ProgramsSection = () => {
                 scale: 0.97,
                 boxShadow: "0 0 15px rgba(255,193,7,0.3)",
               }}
-              className="transition-transform duration-300 relative z-10"
+              className="transition-transform duration-300 relative"
             >
-              <Card className="card-elegant group overflow-hidden min-h-[320px] relative z-20">
-                {/* ✅ Fixed Most Popular Badge */}
+              <Card className="card-elegant group overflow-hidden min-h-[320px] relative">
+                
+                {/* ✅ Professionally aligned badge */}
                 {program.popular && (
-                  <div className="absolute top-3 left-3 z-30">
-                    <Badge className="bg-gradient-accent text-very-dark-brown font-semibold px-4 py-1 flex items-center rounded-md shadow-lg">
-                      <Star className="w-4 h-4 mr-1 text-very-dark-brown" />
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-30">
+                    <Badge className="bg-gradient-accent text-very-dark-brown font-semibold px-3 py-1 sm:px-4 sm:py-1.5 flex items-center rounded-full shadow-md backdrop-blur-md">
+                      <Star className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1 text-very-dark-brown" />
                       Most Popular
                     </Badge>
                   </div>
@@ -178,23 +178,16 @@ const ProgramsSection = () => {
                     ))}
                   </ul>
 
-                  <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                  {/* Single CTA only */}
+                  <div className="mt-4">
                     <Button
                       variant="heroPrimary"
                       size="sm"
-                      className="btn-premium flex-1"
+                      className="btn-premium w-full"
                       onClick={() => handleBookNow(program, index)}
                     >
                       <Calendar className="w-4 h-4 mr-2" />
                       Book Now
-                    </Button>
-                    <Button
-                      variant="heroSecondary"
-                      size="sm"
-                      className="btn-premium flex-1"
-                      asChild
-                    >
-                      <Link to={`/programs#${index + 1}`}>Learn More</Link>
                     </Button>
                   </div>
                 </CardContent>
