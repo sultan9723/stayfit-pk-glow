@@ -7,19 +7,13 @@ import RegistrationModal from "@/components/RegistrationModal";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubOpen, setIsSubOpen] = useState<string | null>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isRegOpen, setIsRegOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  // handle search
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
@@ -27,6 +21,7 @@ const Navbar = () => {
     }
   };
 
+  // Navigation structure
   const navItems = [
     {
       name: "Home",
@@ -92,18 +87,16 @@ const Navbar = () => {
   const isActivePath = (path: string) => location.pathname === path;
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/90 backdrop-blur-md shadow-md"
-          : "bg-transparent"
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center">
-            <img src="/stayfit.png" alt="StayFit Logo" className="h-10 md:h-12 w-auto" />
+            <img
+              src="/stayfit.png"
+              alt="StayFit Logo"
+              className="h-10 md:h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -116,9 +109,7 @@ const Navbar = () => {
                   className={`px-3 py-2 transition-all duration-300 flex items-center gap-1 ${
                     isActivePath(item.path)
                       ? "text-[#FF3131] font-semibold"
-                      : isScrolled
-                      ? "text-[#111827] hover:text-[#FF3131]"
-                      : "text-white hover:text-[#FF3131]"
+                      : "text-[#111827] hover:text-[#FF3131]"
                   }`}
                 >
                   {item.name}
@@ -128,15 +119,16 @@ const Navbar = () => {
                 </Link>
 
                 {item.subItems && (
-                  <div className="absolute hidden group-hover:block bg-white shadow-xl rounded-md mt-2 w-56 border border-gray-100">
+                  <div className="absolute hidden group-hover:block bg-[#FFF5EE] shadow-xl rounded-md mt-2 w-56 border border-gray-100">
                     {item.subItems.map((sub) => (
                       <Link
                         key={sub.name}
                         to={sub.path}
-                        className="block px-4 py-2 text-sm text-gray-800 hover:bg-[#FF3131]/10 hover:text-[#FF3131]"
+                        className="flex items-center justify-between px-4 py-2 text-sm text-gray-800 hover:bg-[#FF3131]/10 hover:text-[#FF3131]"
                         aria-label={sub.name}
                       >
-                        {sub.name}
+                        <span>{sub.name}</span>
+                        <ChevronRight className="w-4 h-4 opacity-70" />
                       </Link>
                     ))}
                   </div>
@@ -150,18 +142,14 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
-              className={`${
-                isScrolled ? "text-[#16A34A]" : "text-white"
-              } hover:opacity-80 transition`}
+              className="text-[#16A34A] hover:opacity-80 transition"
             >
               💬
             </a>
             <a
               href="tel:+923330711555"
               aria-label="Call StayFit"
-              className={`${
-                isScrolled ? "text-[#FF3131]" : "text-white"
-              } hover:text-[#e02b2b] transition`}
+              className="text-[#FF3131] hover:text-[#e02b2b] transition"
             >
               📞
             </a>
@@ -179,7 +167,7 @@ const Navbar = () => {
           <div className="flex items-center space-x-4 md:hidden">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="text-white hover:text-[#FF3131]"
+              className="text-[#111827] hover:text-[#FF3131]"
               aria-label="Toggle search"
             >
               <Search className="w-5 h-5" />
@@ -189,14 +177,14 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"
-              className="text-white hover:text-[#16A34A]"
+              className="text-[#16A34A] hover:opacity-80"
             >
               💬
             </a>
             <a
-              href="tel:+923001234567"
+              href="tel:+923330711555"
               aria-label="Call StayFit"
-              className="text-white hover:text-[#FF3131]"
+              className="text-[#FF3131] hover:text-[#e02b2b]"
             >
               📞
             </a>
@@ -205,7 +193,7 @@ const Navbar = () => {
                 setIsOpen(!isOpen);
                 setIsSubOpen(null);
               }}
-              className="text-white hover:text-[#FF3131]"
+              className="text-[#111827] hover:text-[#FF3131]"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -243,7 +231,7 @@ const Navbar = () => {
           </form>
         )}
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu (Seashell background retained) */}
         {isOpen && (
           <div className="md:hidden fixed inset-0 z-50 bg-[#FFF5EE] text-[#FF3131]" role="dialog" aria-modal="true">
             <div
@@ -262,6 +250,7 @@ const Navbar = () => {
                   ×
                 </button>
 
+                {/* Main Mobile Nav */}
                 <div className="flex flex-col space-y-5 mt-6">
                   {navItems.map((item) => (
                     <div key={item.name}>
@@ -301,10 +290,7 @@ const Navbar = () => {
                       Join Now
                     </Button>
                     <Button variant="heroSecondary" size="md" className="flex-1 btn-premium" asChild>
-                      <Link
-                        to="/contact"
-                        onClick={() => setIsOpen(false)}
-                      >
+                      <Link to="/contact" onClick={() => setIsOpen(false)}>
                         Get in Touch
                       </Link>
                     </Button>
@@ -313,9 +299,9 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Submenu View */}
+            {/* Submenu Panel */}
             {isSubOpen && (
-              <div className="absolute inset-0 transition-transform duration-500 translate-x-0">
+              <div className="absolute inset-0 transition-transform duration-500 translate-x-0 bg-[#FFF5EE]">
                 <div className="flex flex-col h-full px-6 py-8 space-y-6">
                   <button
                     onClick={() => setIsSubOpen(null)}
@@ -335,9 +321,10 @@ const Navbar = () => {
                             setIsSubOpen(null);
                             setIsOpen(false);
                           }}
-                          className="text-xl text-[#FF3131] font-medium hover:opacity-80"
+                          className="flex items-center justify-between text-xl text-[#FF3131] font-medium hover:opacity-80"
                         >
-                          {sub.name}
+                          <span>{sub.name}</span>
+                          <ChevronRight className="w-5 h-5" />
                         </Link>
                       ))}
                   </div>
