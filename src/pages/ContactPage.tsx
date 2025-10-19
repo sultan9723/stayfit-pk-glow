@@ -193,22 +193,22 @@ const ContactPage = () => {
               <p>
                 <span className="text-white font-semibold">StayFit Gym</span> — 23-B, Street 10, Rawalpindi, Pakistan
               </p>
-              <p>Open: Mon–Sat, 6 AM – 10 PM</p>
+              <p>Open: Mon–Sat, 6 AM – 12 PM</p>
               <p>
-                Phone: <a className="underline hover:text-accent-primary" href="tel:+923001234567">+92 300 1234567</a> ·
-                Email: <a className="underline hover:text-accent-primary" href="mailto:info@stayfit.pk">info@stayfit.pk</a>
+                Phone: <a className="underline hover:text-accent-primary" href="tel:+923330711555">+92 333 0711555</a> ·
+                
               </p>
             </div>
             <div className="w-full h-96 rounded-lg overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.1729925857197!2d73.05588937656313!3d33.59818744194256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38df9568a7b9c5b5%3A0x3a0e66e1dcf7712c!2sRawalpindi%2C%20Punjab!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                src="https://maps.app.goo.gl/vxN7rKEQcyH48n4P9?g_st=ipc"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="StayFit.pk Location in Rawalpindi"
+                title="StayFit Gym Location in Rawalpindi"
               />
             </div>
             {/* Follow Us */}
