@@ -1,114 +1,153 @@
-# StayFit.pk
+StayFit — Fitness & Wellness Platform
 
-StayFit.pk is a modern, high-performance fitness website built with React + TypeScript and Vite. It’s fully responsive, SEO-friendly, and integrates form modals wired to a backend API via environment configuration.
+StayFit.pk is a modern fitness platform that allows users to explore workout programs, connect with certified trainers, and begin their fitness transformation.
+It features a clean architecture with an optimized frontend–backend workflow for speed, scalability, and maintainability.
 
----
 
-## Tech Stack (current)
+Live Deployments
 
-- React 18
-- TypeScript
-- Vite
-- Tailwind CSS
-- React Router
-- shadcn/ui (Radix + Tailwind component primitives)
-- lucide-react (icons)
-- react-helmet-async (SEO)
+| Service | URL |
+|----------|-----|
+| Frontend (Vercel) | https://stayfit.pk |
+| Backend API (Render) | https://api.stayfit.pk |
+| Database (Neon PostgreSQL) | https://neon.tech |
+| Domain (Hostinger) | Managed via Hostinger DNS |
 
----
+Tech Stack
 
-## Features
+Frontend
+- React + Vite + TypeScript
+- TailwindCSS for responsive styling
+- React Router for navigation
+- Deployed via Vercel
 
-- Hero carousel with animated content and CTAs
-- Programs, Trainers, Pricing, Blog sections/pages
-- Registration, Booking, and Trainer Booking modals
-- Mobile-first responsive design with refined button and typography scales
-- Accessibility-conscious components (focus rings, contrast)
-- SEO: per-page titles and descriptions via `react-helmet-async`
+Backend
+- Node.js + Express.js
+- Prisma ORM with PostgreSQL
+- JWT Authentication
+- Deployed via Render
 
----
+Database
+- Neon.tech (PostgreSQL Cloud)
+- SSL-enabled connection
+- Prisma schema-based migrations
 
-## Environment
 
-Create a `.env` at the project root:
+Project Structure
 
-```env
-# Base URL for backend (optional). If unset, relative URLs are used.
-VITE_API_BASE=http://localhost:3001
-```
+stayfit-pk-glow/
+│
+├── backend/
+│   ├── src/
+│   │   ├── routes/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── utils/
+│   │   ├── index.ts
+│   │   └── server.ts
+│   ├── prisma/
+│   │   └── schema.prisma
+│   ├── .env
+│   ├── package.json
+│   └── README.md
+│
+├── frontend/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── hooks/
+│   │   ├── lib/
+│   │   ├── pages/
+│   │   ├── sections/
+│   │   ├── styles/
+│   │   └── App.tsx
+│   ├── public/
+│   ├── vite.config.ts
+│   ├── .env
+│   └── package.json
+│
+├── database/
+│   ├── migrations/
+│   └── seed/
+│
+├── docs/
+│   ├── setup-guide.md
+│   └── screenshots/
+│
+├── .gitignore
+├── .env.example
+├── LICENSE
+└── README.md
 
-The following components submit to `${import.meta.env.VITE_API_BASE || ''}/api/book`:
-- `src/components/RegistrationModal.tsx`
-- `src/components/BookingModal.tsx`
-- `src/components/TrainerBookingModal.tsx`
+Setup & Installation
 
-Ensure your backend exposes a POST `/api/book` endpoint to receive JSON form payloads.
+1. Clone the repository
+git clone https://github.com/sultan9723/stayfit.git
+cd stayfit
 
----
+2. Install dependencies
+cd backend && npm install
+cd ../frontend && npm install
 
-## Scripts
+3. Configure environment variables
+Copy .env.example into each folder:
+cp .env.example backend/.env
+cp .env.example frontend/.env
 
-```bash
-npm install           # install deps
-npm run dev           # start Vite dev server
-npm run build         # production build
-npm run preview       # preview production build locally
-```
+4. Run the backend
+cd backend
+npm run dev
 
----
+5. Run the frontend
+cd ../frontend
+npm run dev
 
-## Project Structure (key)
+6. Access the app
+Frontend: http://localhost:5173
+Backend API: http://localhost:3001
 
-```
-src/
-  assets/                    # images
-  components/
-    sections/                # Hero, PricingPlans, ProgramsSection, TrainersSection, etc.
-    RegistrationModal.tsx    # membership registration form modal
-    BookingModal.tsx         # program booking modal
-    TrainerBookingModal.tsx  # trainer booking modal
-    Button.jsx               # shared responsive button component
-    ui/                      # shadcn/ui wrappers (card, badge, dialog, input, etc.)
-  pages/
-    ProgramsPage.tsx
-    TrainersPage.tsx
-  data/
-    stayfit_content.json     # content source for programs/trainers/blog
-  hooks/
-    useScrollAnimation.ts
-  index.css                  # Tailwind styles + custom utilities
-```
+------------------------------------------------------------
+Database Setup (Neon PostgreSQL)
 
----
+cd backend
+npx prisma generate
+npx prisma migrate deploy
 
-## Design System (mobile responsiveness)
+Example database connection:
+DATABASE_URL=postgresql://stayfit_user:<password>@ep-your-neon-host.ap-south-1.aws.neon.tech/stayfitdb?sslmode=require
 
-- Buttons (≤640px): compact by default via `Button.jsx`
-  - Primary/Secondary: `px-4 py-2 text-sm rounded-md` (grow at `sm:`)
-- HeroSection (≤640px): `h1 text-3xl`, `h2 text-lg`, body `text-sm`
-- Cards: single-column on mobile, `min-h-[320px]`, `p-4` content padding
-- Sections: `py-8` on mobile, animations preserved
 
-These styles are applied without changing desktop appearance.
+Environment Variables
 
----
+Frontend (.env)
+VITE_API_URL=https://api.stayfit.pk
+VITE_MODE=production
 
-## Deployment
+Backend (.env)
+DATABASE_URL=postgresql://stayfit_user:<password>@ep-your-neon-host.ap-south-1.aws.neon.tech/stayfitdb?sslmode=require
+PORT=3001
+CORS_ORIGIN=https://stayfit.pk
+JWT_SECRET=yourStrongSecretKey
 
-Any static host that supports SPA routing works:
-- Vercel / Netlify / Cloudflare Pages / Static S3 + CloudFront
 
-Build and deploy the `dist/` folder:
+Development Notes
 
-```bash
-npm run build
-# upload dist/ to your host
-```
+- Code formatting via Prettier and ESLint
+- Full TypeScript support for type safety
+- Structured as a monorepo for clarity and modular development
+- Compatible with CI/CD workflows for automated deployment
 
-If your backend is separate, deploy it independently and set `VITE_API_BASE` to its public URL.
 
----
+Author
 
-## License
+Sultan Qaiser
+Cybersecurity and IT Student, NUML
+Email: sultan.malik9723@gmail.com
+Website: https://stayfit.pk
 
-Proprietary. All rights reserved.
+
+License
+
+This project is licensed under the MIT License.
+You may use and modify it for personal or commercial purposes with proper credit.
+
